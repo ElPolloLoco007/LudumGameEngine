@@ -1,27 +1,9 @@
-# fv-react-engine
+![Ludum logo](extra/logo_1.png)
 
-React boilerplate that is used with the Software Engineering Course at the Faroe Islands University, a React Game Engine Boilerplate.
+Link to our [Game engine](https://bergurijohansen.github.io/Ludum/)
 
-First run
+---
 
-```
-npm install
-```
+### Ludum **ad infinitum**
 
-To start the app locally in development mode run
-
-```
-npm start
-```
-
-To start using docker run
-
-```
-docker-compose up --build
-```
-
-To build the production version run
-
-```
-npm run build
-```
+Fróði H. **_Joensen_**, Bergur I. **_Johansen_**, Herborg **_Kristoffersen_**, Lív **_Olsen_**, Helgi **_Poulsen_**
