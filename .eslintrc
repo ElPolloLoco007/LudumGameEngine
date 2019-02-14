@@ -1,6 +1,11 @@
 {
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "plugins": ["react"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "react"
+  ],
   "parser": "babel-eslint",
   "env": {
     "browser": true,
@@ -10,6 +15,8 @@
   },
   "rules": {
     "no-console": "off",
-    "react/prop-types": ["error"]
+    "react/prop-types": [
+      "off"
+    ]
   }
 }

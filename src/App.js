@@ -1,12 +1,12 @@
 import React from "react";
-import PropTypes from "prop-types";
+import Entity from "./gameEngine/Frame";
 
-const App = props => {
-  return <button onClick={props.onClick}>Hello there World!</button>;
-};
-
-App.propTypes = {
-  onClick: PropTypes.func
+const App = () => {
+  return (
+    <div>
+      <Entity />
+    </div>
+  );
 };
 
 export default App;
