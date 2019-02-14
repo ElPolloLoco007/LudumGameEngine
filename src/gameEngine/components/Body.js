@@ -2,13 +2,14 @@ import React from "react";
 
 class Body extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
+
     this.state = {
-      x: this.props.x,
-      y: props.y,
-      heigth: props.heigth,
-      width: props.width
-    };
+      x: 4,
+      y: 4,
+      height: 100,
+      width: 100
+    }
   }
 
   setX = x => {
@@ -27,16 +28,18 @@ class Body extends React.Component {
     return this.state.y;
   };
 
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.heigth !== this.props.heigth) {
-  //     this.setState({ heigth: this.props.heigth });
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (prevProps.heigth !== this.props.heigth) {
+      this.setState({ heigth: this.props.heigth });
+    }
+  }
 
   render() {
     let style = {
-      heigth: this.state.heigth,
+      height: this.state.height,
       width: this.state.width,
+      left: this.state.x,
+      top: this.state.y,
       background: "red"
     };
     return <div style={style}>bla</div>;
