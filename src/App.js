@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./style/App.css";
 import Player from "./game/Player";
 import Player2 from "./game/Player2";
 import Player3 from "./game/Player3";
