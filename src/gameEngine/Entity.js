@@ -22,15 +22,20 @@ class Entity {
     console.log("Calling update method in Entity class!");
     this.physics.update();
 
-    console.log("left: " + this.body.getX());
+    console.log("left: " + this.body.getLeft());
   }
 
   getEntityProps() {
     const props = {
-      height: this.body.getHeight(),
-      width: this.body.getWidth(),
-      top: this.body.getY(),
-      left: this.body.getX()
+      // body props
+      bodyHeight: this.body.getHeight(),
+      bodyWidth: this.body.getWidth(),
+      bodyTop: this.body.getTop(),
+      bodyLeft: this.body.getLeft(),
+
+      // physics props
+      physicsLeft: this.physics.getLeft(),
+      physicsTop: this.physics.getTop()
     };
     return props;
   }

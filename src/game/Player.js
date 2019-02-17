@@ -17,7 +17,7 @@ class Player extends React.Component {
       entityProps: entityProps
     };
 
-    console.log("x: " + entity.getBody().getX());
+    console.log("x: " + entity.getBody().getLeft());
   }
 
   // override
@@ -45,10 +45,10 @@ class Player extends React.Component {
     let entityProps = this.getEntityProps();
 
     let divStyle = {
-      height: entityProps.height,
-      width: entityProps.width,
-      top: entityProps.top,
-      left: entityProps.left,
+      height: entityProps.bodyHeight,
+      width: entityProps.bodyWidth,
+      top: entityProps.bodyTop,
+      left: entityProps.bodyLeft,
       background: "green",
       position: "absolute"
     };
