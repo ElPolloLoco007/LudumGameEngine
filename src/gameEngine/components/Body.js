@@ -1,7 +1,7 @@
 class Body {
-  constructor(entity, x, y, height, width) {
-    this.x = x;
-    this.y = y;
+  constructor(entity, left, top, height, width) {
+    this.left = left;
+    this.top = top;
     this.height = height;
     this.width = width;
     this.entity = entity;
@@ -11,19 +11,19 @@ class Body {
   setEntity(entity) {
     this.entity = entity;
   }
-  setX(value) {
-    this.x = value;
+  setLeft(value) {
+    this.left = value;
   }
-  setY(value) {
-    this.y = value;
+  setTop(value) {
+    this.top = value;
   }
 
   // getters
-  getX() {
-    return this.x;
+  getLeft() {
+    return this.left;
   }
-  getY() {
-    return this.y;
+  getTop() {
+    return this.top;
   }
   getHeight() {
     return this.height;

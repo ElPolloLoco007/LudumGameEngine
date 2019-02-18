@@ -52,6 +52,17 @@ class Game extends Component {
     console.log("handleClick");
   };
 
+  // returning all the objects of the playerArr
+  getObjects = () => {
+    return (
+      this.state.playerArr.map((object) => {
+        return (
+          object.render()
+        )
+      })
+    )
+  }
+
   render() {
     let divStyle = {
       height: 1100,
@@ -64,10 +75,7 @@ class Game extends Component {
 
     return (
       <div style={divStyle} onClick={this.handleClick}>
-        {this.state.playerArr[0].render()}
-        {this.state.playerArr[1].render()}
-        {this.state.playerArr[2].render()}
-        {this.state.playerArr[3].render()}
+        {this.getObjects()}
       </div>
     );
   }

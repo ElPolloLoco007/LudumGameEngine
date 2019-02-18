@@ -1,25 +1,40 @@
 
 class Physics {
-    constructor(entity, x, y) {
-        this.x = x;
-        this.y = y;
-        this.entity = entity;
-    }
+  constructor(entity, left, top) {
+    this.left = left;
+    this.top = top;
+    this.entity = entity;
+  }
 
-    setEntity(entity) {
-        this.entity = entity;
-    }
+  // setters
+  setEntity(entity) {
+    this.entity = entity;
+  }
+  setLeft(value) {
+    this.left = value;
+  }
+  setTop(value) {
+    this.top = value;
+  }
 
-    update = () => {
-        let prevX = this.entity.getBody().getX();
-        let prevY = this.entity.getBody().getY();
+  // getters
+  getLeft() {
+    return this.left;
+  }
+  getTop() {
+    return this.top;
+  }
 
-        this.entity.getBody().setX(prevX + this.x);
-        this.entity.getBody().setY(prevY + this.y);
+  update = () => {
+    let prevX = this.entity.getBody().getLeft();
+    let prevY = this.entity.getBody().getTop();
 
-        console.log(this.entity.getBody().getX())
-        console.log(this.entity.getBody().getY())
-    }
+    this.entity.getBody().setLeft(prevX + this.left);
+    this.entity.getBody().setTop(prevY + this.top);
+
+    console.log(this.entity.getBody().getLeft())
+    console.log(this.entity.getBody().getTop())
+  }
 }
 
 export default Physics
