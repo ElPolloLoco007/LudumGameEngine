@@ -19,9 +19,11 @@ class Game extends Component {
       delta: 0
     };
 
+    // commencing the game loop
     requestAnimationFrame(this.gameLoop);
   }
 
+  // this function is basically the game itself
   gameLoop = () => {
     let now = Date.now();
     let then = this.state.then;
@@ -40,16 +42,24 @@ class Game extends Component {
         element.update();
       });
 
+      // checking for collision
+      let player = this.state.playerArr[0];
+
+      // only checking if player has collided with player2, player3 or player4
+      for (let index = 1; index < this.state.playerArr.length; index++) {
+        let check = player.getCollisionDetection().checkForCollision(this.state.playerArr[index].getEntity());
+
+        // if a collision is detected, checkForCollision() returns true
+        if (check === true) {
+          console.log('COLLISION DETECTED!')
+        }
+      }
+
+      // forcing this component to update
       this.forceUpdate();
     }
 
     requestAnimationFrame(this.gameLoop);
-  };
-
-  handleClick = () => {
-    this.state.player.update();
-    this.forceUpdate();
-    console.log("handleClick");
   };
 
   // returning all the objects of the playerArr
@@ -71,10 +81,8 @@ class Game extends Component {
       position: "absolute"
     };
 
-    console.log("Updating App.js");
-
     return (
-      <div style={divStyle} onClick={this.handleClick}>
+      <div style={divStyle}>
         {this.getObjects()}
       </div>
     );

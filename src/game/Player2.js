@@ -8,6 +8,7 @@ class Player2 extends React.Component {
     super(props);
 
     let entity = new Entity(
+      'Player2',
       new Body(this, 1000, 1000, 100, 100),
       new Physics(this, -0.1, -0.1)
     );
@@ -16,27 +17,29 @@ class Player2 extends React.Component {
       entity: entity,
       entityProps: entityProps
     };
-
-    console.log("x: " + entity.getBody().getLeft());
   }
 
-  // override
+  // entity method
+  getEntity() {
+    return this.state.entity;
+  }
+
+  // entity method
   getBody() {
     return this.state.entity.getBody();
   }
 
-  // override
+  // entity method
   getPhysics() {
     return this.state.entity.getPhysics();
   }
 
-  // override
+  // entity method
   update() {
-    console.log("hello from update!");
     this.state.entity.update();
   }
 
-  // override
+  // entity method
   getEntityProps() {
     return this.state.entity.getEntityProps();
   }

@@ -1,6 +1,7 @@
 import Entity from "../gameEngine/Entity";
 import Body from "../gameEngine/components/Body";
 import Physics from "../gameEngine/components/Physics";
+import CollisionDetection from '../gameEngine/components/CollisionDetection'
 import React from "react";
 
 class Player extends React.Component {
@@ -8,35 +9,44 @@ class Player extends React.Component {
     super(props);
 
     let entity = new Entity(
+      'Player',
       new Body(this, 0, 0, 100, 100),
-      new Physics(this, 0.1, 0.1)
+      new Physics(this, 0.1, 0.1),
+      new CollisionDetection(this)
     );
     let entityProps = entity.getEntityProps();
     this.state = {
       entity: entity,
       entityProps: entityProps
     };
-
-    console.log("x: " + entity.getBody().getLeft());
   }
 
-  // override
+  // entity method
+  getCollisionDetection() {
+    return this.state.entity.getCollisionDetection();
+  }
+
+  // entity method
+  getEntity() {
+    return this.state.entity;
+  }
+
+  // entity method
   getBody() {
     return this.state.entity.getBody();
   }
 
-  // override
+  // entity method
   getPhysics() {
     return this.state.entity.getPhysics();
   }
 
-  // override
+  // entity method
   update() {
-    console.log("hello from update!");
     this.state.entity.update();
   }
 
-  // override
+  // entity method
   getEntityProps() {
     return this.state.entity.getEntityProps();
   }

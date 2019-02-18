@@ -31,9 +31,6 @@ class Physics {
 
     this.entity.getBody().setLeft(prevX + this.left);
     this.entity.getBody().setTop(prevY + this.top);
-
-    console.log(this.entity.getBody().getLeft())
-    console.log(this.entity.getBody().getTop())
   }
 }
 
