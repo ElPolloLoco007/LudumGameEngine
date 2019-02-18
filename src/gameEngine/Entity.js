@@ -1,5 +1,8 @@
 class Entity {
-  constructor(body, physics) {
+  constructor(name, body, physics, collisionDetection) {
+    // name of entity
+    this.name = name;
+
     if (body !== null) {
       this.body = body;
       console.log("Successfully set body!");
@@ -8,6 +11,18 @@ class Entity {
       this.physics = physics;
       console.log("Successfully set physics!");
     }
+    if (collisionDetection !== null) {
+      this.collisionDetection = collisionDetection;
+      console.log("Successfully set collisionDetection!")
+    }
+  }
+
+  getEntity() {
+    return this;
+  }
+
+  getName() {
+    return this.name;
   }
 
   getBody() {
@@ -18,15 +33,19 @@ class Entity {
     return this.physics;
   }
 
-  update() {
-    console.log("Calling update method in Entity class!");
-    this.physics.update();
+  getCollisionDetection() {
+    return this.collisionDetection;
+  }
 
-    console.log("left: " + this.body.getLeft());
+  update() {
+    this.physics.update();
   }
 
   getEntityProps() {
     const props = {
+      // entity name
+      name: this.name,
+
       // body props
       bodyHeight: this.body.getHeight(),
       bodyWidth: this.body.getWidth(),
