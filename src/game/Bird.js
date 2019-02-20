@@ -1,21 +1,20 @@
 import Entity from "../gameEngine/Entity";
 import Body from "../gameEngine/components/Body";
-import React from "react";
-import BackgroundImg from "../resource/image/background.png";
 import Physics from "../gameEngine/components/Physics";
+import CollisionDetection from '../gameEngine/components/CollisionDetection'
+import React from "react";
 
-class Background extends React.Component {
+class Bird extends React.Component {
   constructor(props) {
     super(props);
 
     let entity = new Entity(
-      "Background",
-      new Body(this, 0, 0, 1080, 1920),
-      new Physics(this, -0.5, 0)
+      'Bird',
+      new Body(this, 400, 400, 70, 70),
+      new Physics(this, 2, 2),
+      new CollisionDetection(this)
     );
-
     let entityProps = entity.getEntityProps();
-
     this.state = {
       entity: entity,
       entityProps: entityProps
@@ -23,31 +22,38 @@ class Background extends React.Component {
   }
 
   // entity method
+  getCollisionDetection() {
+    return this.state.entity.getCollisionDetection();
+  }
+
+  // entity method
   getEntity() {
     return this.state.entity;
   }
 
-  // override
+  // entity method
   getBody() {
-    if (this.state.entity.getBody().getLeft() == -1920) 
+    if (this.state.entity.getBody().getTop() == 900) 
     {
-      this.state.entity.getBody().setLeft(0);
+      this.state.entity.getBody().setTop(400);
+      this.state.entity.getBody().setLeft(400);
     }
+      
 
     return this.state.entity.getBody();
   }
 
-  // override
+  // entity method
   getPhysics() {
     return this.state.entity.getPhysics();
   }
 
-  // override
+  // entity method
   update() {
     this.state.entity.update();
   }
 
-  // override
+  // entity method
   getEntityProps() {
     return this.state.entity.getEntityProps();
   }
@@ -55,40 +61,20 @@ class Background extends React.Component {
   render() {
     let entityProps = this.getEntityProps();
 
-    let outerDiv = {
-      height: 1080,
-      width: 1920,
-      position: "absolute",
-      overflow: "hidden"
-    };
-
     let divStyle = {
       height: entityProps.bodyHeight,
       width: entityProps.bodyWidth,
       top: entityProps.bodyTop,
       left: entityProps.bodyLeft,
-      position: "absolute"
-    };
-
-    let divStyle2 = {
-      height: entityProps.bodyHeight,
-      width: entityProps.bodyWidth,
-      top: entityProps.bodyTop,
-      left: entityProps.bodyLeft + 1920,
+      background: 'black',
       position: "absolute"
     };
 
     return (
-      <div style={outerDiv}>
-        <div style={divStyle}>
-          <img src={BackgroundImg} />
-        </div>
-        <div style={divStyle2}>
-          <img src={BackgroundImg} />
-        </div>
+      <div style={divStyle}>
       </div>
-    );
+    ) 
   }
 }
 
-export default Background;
+export default Bird;
