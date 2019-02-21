@@ -10,7 +10,7 @@ class Player extends React.Component {
 
     let entity = new Entity(
       "Player",
-      new Body(this, 300, 540, 100, 100),
+      new Body(this, 300, 0, 100, 100),
       new Physics(this, 0.0, 0.6),
       new CollisionDetection(this)
     );

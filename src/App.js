@@ -5,9 +5,10 @@ import Player2 from "./game/Player2";
 import Player3 from "./game/Player3";
 import Player4 from "./game/player4";
 import Pipe from "./game/Pipe";
+import Pipe1 from "./game/Pipe1";
+import Pipe2 from "./game/Pipe2";
 import Background from "./gameEngine/components/background/Background";
 import BackgroundImg from "./game/resources/images/background.png";
-
 class Game extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,9 @@ class Game extends Component {
       new Player2(),
       new Player3(),
       new Player4(),
-      new Pipe()
+      new Pipe(),
+      new Pipe1(),
+      new Pipe2()
     ];
 
     this.state = {
@@ -89,7 +92,7 @@ class Game extends Component {
           speed={0.5}
           image={BackgroundImg}
         >
-          {" "}
+          {this.getObjects()}
         </Background>{" "}
         {this.getObjects()}
       </div>
