@@ -1,8 +1,8 @@
-import Entity from "../gameEngine/Entity";
-import Body from "../gameEngine/components/Body";
-import Physics from "../gameEngine/components/Physics";
+import Entity from "../../gameEngine/Entity";
+import Body from "../../gameEngine/components/Body";
+import Physics from "../../gameEngine/components/Physics";
 import PipeReverseImg from "../resource/image/pipeReverse.png";
-import CollisionDetection from "../gameEngine/components/CollisionDetection";
+import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 
 class PipeReverse extends React.Component {

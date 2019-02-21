@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./style/App.css";
 import Background from "./gameEngine/components/background/Background";
-import BackgroundImg from "./game/resources/images/background.png";
-import Bird from "./game/Bird";
+//import ResourceManager from "./gameEngine/components/resourceManager/ResourceManager";
+import Bird from "./game/objects/Bird";
+import backgroundImg from "./game/resources/images/background.png";
 
 class Game extends Component {
   constructor(props) {
@@ -46,11 +47,13 @@ class Game extends Component {
 
       // only checking if player has collided with player2, player3 or player4
       for (let index = 1; index < this.state.playerArr.length; index++) {
-        let check = player.getCollisionDetection().checkForCollision(this.state.playerArr[index].getEntity());
+        let check = player
+          .getCollisionDetection()
+          .checkForCollision(this.state.playerArr[index].getEntity());
 
         // if a collision is detected, checkForCollision() returns true
         if (check === true) {
-          console.log('COLLISION DETECTED!')
+          console.log("COLLISION DETECTED!");
         }
       }
 
@@ -63,26 +66,23 @@ class Game extends Component {
 
   // returning all the objects of the playerArr
   getObjects = () => {
-    return (
-      this.state.playerArr.map((object) => {
-        return (
-          object.render()
-        )
-      })
-    )
-  }
+    return this.state.playerArr.map(object => {
+      return object.render();
+    });
+  };
 
   render() {
-
+    //    let img = new ResourceManager().getImageElement("background.png");
     return (
       <div>
-      <Background
-        height={1080}
-        width={1920}
-        speed={0.5}
-        image={BackgroundImg}
-        >{" "}
-      </Background>{" "}
+        <Background
+          height={1080}
+          width={1920}
+          speed={0.5}
+          image={backgroundImg}
+        >
+          {" "}
+        </Background>{" "}
         {this.getObjects()}
       </div>
     );
