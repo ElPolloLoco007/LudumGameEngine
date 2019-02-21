@@ -4,12 +4,14 @@ import Background from "./gameEngine/components/background/Background";
 //import ResourceManager from "./gameEngine/components/resourceManager/ResourceManager";
 import Bird from "./game/objects/Bird";
 import backgroundImg from "./game/resources/images/background.png";
-
+import Pipe from "./game/objects/Pipe";
+import Pipe1 from "./game/objects/Pipe1";
+import Pipe2 from "./game/objects/Pipe2";
 class Game extends Component {
   constructor(props) {
     super(props);
 
-    let playerArr = [new Bird()];
+    let playerArr = [new Bird(), new Pipe(), new Pipe1(), new Pipe2()];
 
     this.state = {
       playerArr: playerArr.slice(),
