@@ -5,6 +5,8 @@ import Player2 from "./game/Player2";
 import Player3 from "./game/Player3";
 import Player4 from "./game/player4";
 import Pipe from "./game/Pipe";
+import Background from "./gameEngine/components/background/Background";
+import BackgroundImg from "./game/resources/images/background.png";
 
 class Game extends Component {
   constructor(props) {
@@ -79,14 +81,19 @@ class Game extends Component {
   };
 
   render() {
-    let divStyle = {
-      height: "1080px",
-      width: "1920px",
-      background: "red",
-      position: "absolute"
-    };
-
-    return <div style={divStyle}>{this.getObjects()}</div>;
+    return (
+      <div>
+        <Background
+          height={1080}
+          width={1920}
+          speed={0.5}
+          image={BackgroundImg}
+        >
+          {" "}
+        </Background>{" "}
+        {this.getObjects()}
+      </div>
+    );
   }
 }
 

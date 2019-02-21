@@ -11,12 +11,13 @@ class Pipe extends React.Component {
 
     let entity = new Entity(
       "Pipe",
-      new Body(this, 1920, 1080 - 370, 370, 150),
-      new Physics(this, -0.5, 0),
+      new Body(this, 1920 + 170, 1080 - 600, 800, 150),
+      new Physics(this, -2.85, 0),
       new CollisionDetection(this)
     );
     let entityProps = entity.getEntityProps();
     this.state = {
+      gap: 400,
       entity: entity,
       entityProps: entityProps
     };
@@ -52,10 +53,25 @@ class Pipe extends React.Component {
     return this.state.entity.getEntityProps();
   }
 
+  respawn = () => {
+    let entity = Object.assign({}, this.state.entity); //creating copy of object
+    const len = 200 + Math.random() * 700;
+    entity.body.left = 2000; //updating value
+    entity.body.top = 1080 - len;
+    // entity.body.height = len;
+    this.setState({
+      entity,
+      gap: len
+    });
+  };
+
   render() {
     let entityProps = this.getEntityProps();
+    if (entityProps.bodyLeft < 1700) {
+      this.respawn();
+    }
     //let delta = this.props.delta; // this.state.arr[0][0]
-    console.log(`entityProps: ${entityProps.bodyHeight}`);
+
     let divStyle = {
       position: "absolute",
       //overflow: "hidden",
@@ -67,6 +83,18 @@ class Pipe extends React.Component {
       top: entityProps.bodyTop
     };
 
+    let divStyleTop = {
+      transform: "scaleY(-1)",
+      position: "absolute",
+      //overflow: "hidden",
+      //height: entityProps.bodyHeight - delta,
+      height: entityProps.bodyHeight,
+      width: entityProps.bodyWidth,
+      left: entityProps.bodyLeft,
+      //top: entityProps.bodyTop + delta
+      top: -280
+    };
+
     const imgStyle = {
       height: "100%",
       width: "100%",
@@ -74,9 +102,14 @@ class Pipe extends React.Component {
     };
 
     return (
-      <div style={divStyle}>
-        <img src={PipeImg} style={imgStyle} />
-      </div>
+      <span>
+        <div style={divStyle}>
+          <img src={PipeImg} style={imgStyle} />
+        </div>
+        <div style={divStyleTop}>
+          <img src={PipeImg} style={imgStyle} />
+        </div>
+      </span>
     );
   }
 }
