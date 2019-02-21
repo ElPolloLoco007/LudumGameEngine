@@ -4,12 +4,19 @@ import Player from "./game/Player";
 import Player2 from "./game/Player2";
 import Player3 from "./game/Player3";
 import Player4 from "./game/player4";
+import Pipe from "./game/Pipe";
 
 class Game extends Component {
   constructor(props) {
     super(props);
 
-    let playerArr = [new Player(), new Player2(), new Player3(), new Player4()];
+    let playerArr = [
+      new Player(),
+      new Player2(),
+      new Player3(),
+      new Player4(),
+      new Pipe()
+    ];
 
     this.state = {
       playerArr: playerArr.slice(),
@@ -47,11 +54,13 @@ class Game extends Component {
 
       // only checking if player has collided with player2, player3 or player4
       for (let index = 1; index < this.state.playerArr.length; index++) {
-        let check = player.getCollisionDetection().checkForCollision(this.state.playerArr[index].getEntity());
+        let check = player
+          .getCollisionDetection()
+          .checkForCollision(this.state.playerArr[index].getEntity());
 
         // if a collision is detected, checkForCollision() returns true
         if (check === true) {
-          console.log('COLLISION DETECTED!')
+          console.log("COLLISION DETECTED!");
         }
       }
 
@@ -64,28 +73,20 @@ class Game extends Component {
 
   // returning all the objects of the playerArr
   getObjects = () => {
-    return (
-      this.state.playerArr.map((object) => {
-        return (
-          object.render()
-        )
-      })
-    )
-  }
+    return this.state.playerArr.map(object => {
+      return object.render();
+    });
+  };
 
   render() {
     let divStyle = {
-      height: 1100,
-      width: 1100,
+      height: "1080px",
+      width: "1920px",
       background: "red",
       position: "absolute"
     };
 
-    return (
-      <div style={divStyle}>
-        {this.getObjects()}
-      </div>
-    );
+    return <div style={divStyle}>{this.getObjects()}</div>;
   }
 }
 

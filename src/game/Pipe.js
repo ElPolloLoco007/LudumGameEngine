@@ -11,7 +11,7 @@ class Pipe extends React.Component {
 
     let entity = new Entity(
       "Pipe",
-      new Body(this, 0, 192, 700, 150),
+      new Body(this, 1920, 1080 - 370, 370, 150),
       new Physics(this, -0.5, 0),
       new CollisionDetection(this)
     );
@@ -55,7 +55,7 @@ class Pipe extends React.Component {
   render() {
     let entityProps = this.getEntityProps();
     //let delta = this.props.delta; // this.state.arr[0][0]
-
+    console.log(`entityProps: ${entityProps.bodyHeight}`);
     let divStyle = {
       position: "absolute",
       //overflow: "hidden",
@@ -67,9 +67,15 @@ class Pipe extends React.Component {
       top: entityProps.bodyTop
     };
 
+    const imgStyle = {
+      height: "100%",
+      width: "100%",
+      objectFit: "fill"
+    };
+
     return (
       <div style={divStyle}>
-        <img src={PipeImg} />
+        <img src={PipeImg} style={imgStyle} />
       </div>
     );
   }
