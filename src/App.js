@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import "./style/App.css";
-import Player from "./game/Player";
-import Player2 from "./game/Player2";
-import Player3 from "./game/Player3";
-import Player4 from "./game/player4";
 import Background from "./gameEngine/components/background/Background";
 import BackgroundImg from "./game/resources/images/background.png";
+import Bird from "./game/Bird";
 
 class Game extends Component {
   constructor(props) {
     super(props);
 
-    let playerArr = [new Player(), new Player2(), new Player3(), new Player4()];
+    let playerArr = [new Bird()];
 
     this.state = {
       playerArr: playerArr.slice(),
