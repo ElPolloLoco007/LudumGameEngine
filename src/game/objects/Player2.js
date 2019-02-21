@@ -1,18 +1,16 @@
-import Entity from "../gameEngine/Entity";
-import Body from "../gameEngine/components/Body";
-import Physics from "../gameEngine/components/Physics";
-import CollisionDetection from '../gameEngine/components/CollisionDetection'
+import Entity from "../../gameEngine/Entity";
+import Body from "../../gameEngine/components/Body";
+import Physics from "../../gameEngine/components/Physics";
 import React from "react";
 
-class Bird extends React.Component {
+class Player2 extends React.Component {
   constructor(props) {
     super(props);
 
     let entity = new Entity(
-      'Bird',
-      new Body(this, 400, 400, 70, 70),
-      new Physics(this, 2, 2),
-      new CollisionDetection(this)
+      'Player2',
+      new Body(this, 1000, 1000, 100, 100),
+      new Physics(this, -0.1, -0.1)
     );
     let entityProps = entity.getEntityProps();
     this.state = {
@@ -22,24 +20,12 @@ class Bird extends React.Component {
   }
 
   // entity method
-  getCollisionDetection() {
-    return this.state.entity.getCollisionDetection();
-  }
-
-  // entity method
   getEntity() {
     return this.state.entity;
   }
 
   // entity method
   getBody() {
-    if (this.state.entity.getBody().getTop() == 900) 
-    {
-      this.state.entity.getBody().setTop(400);
-      this.state.entity.getBody().setLeft(400);
-    }
-      
-
     return this.state.entity.getBody();
   }
 
@@ -66,15 +52,12 @@ class Bird extends React.Component {
       width: entityProps.bodyWidth,
       top: entityProps.bodyTop,
       left: entityProps.bodyLeft,
-      background: 'black',
+      background: "blue",
       position: "absolute"
     };
 
-    return (
-      <div style={divStyle}>
-      </div>
-    ) 
+    return <div style={divStyle} />;
   }
 }
 
-export default Bird;
+export default Player2;

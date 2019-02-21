@@ -1,10 +1,10 @@
-import Entity from "../gameEngine/Entity";
-import Body from "../gameEngine/components/Body";
-import Physics from "../gameEngine/components/Physics";
-import PipeImg from "../resource/image/pipe.png";
-import CollisionDetection from "../gameEngine/components/CollisionDetection";
+import Entity from "../../gameEngine/Entity";
+import Body from "../../gameEngine/components/Body";
+import Physics from "../../gameEngine/components/Physics";
+import PipeImg from "../resources/images/pipe.png";
+import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
-import "../style/Frame.css";
+import "../../style/Frame.css";
 
 class Pipe extends React.Component {
   constructor(props) {

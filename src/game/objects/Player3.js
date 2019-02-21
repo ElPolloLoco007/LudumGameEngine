@@ -1,16 +1,16 @@
-import Entity from "../gameEngine/Entity";
-import Body from "../gameEngine/components/Body";
-import Physics from "../gameEngine/components/Physics";
+import Entity from "../../gameEngine/Entity";
+import Body from "../../gameEngine/components/Body";
+import Physics from "../../gameEngine/components/Physics";
 import React from "react";
 
-class Player4 extends React.Component {
+class Player3 extends React.Component {
   constructor(props) {
     super(props);
 
     let entity = new Entity(
-      'Player4',
-      new Body(this, 0, 1000, 100, 100),
-      new Physics(this, 0.1, -0.1)
+      "Player3",
+      new Body(this, 1000, 0, 100, 100),
+      new Physics(this, -0.1, 0.1)
     );
     let entityProps = entity.getEntityProps();
     this.state = {
@@ -52,7 +52,7 @@ class Player4 extends React.Component {
       width: entityProps.bodyWidth,
       top: entityProps.bodyTop,
       left: entityProps.bodyLeft,
-      background: "orange",
+      background: "black",
       position: "absolute"
     };
 
@@ -60,4 +60,4 @@ class Player4 extends React.Component {
   }
 }
 
-export default Player4;
+export default Player3;
