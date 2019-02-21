@@ -1,41 +1,37 @@
 import Entity from "../../gameEngine/Entity";
 import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
-import CollisionDetection from '../../gameEngine/components/CollisionDetection'
+import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
-import BirdSprites from "./resources/sprites/birds.png";
+import BirdSprites from "../resources/sprites/birds.png";
 
 class Bird extends React.Component {
   constructor(props) {
     super(props);
 
     let entity = new Entity(
-      'Bird',
+      "Bird",
       new Body(this, 300, 540, 100, 200),
       new Physics(this, 0, 5),
       new CollisionDetection(this)
     );
 
-    let row = 2
-    let rowHeight = 50
-    let rows = []
-    let column = 4
-    let columnsWidth = 50
-    let columns = []
+    let row = 2;
+    let rowHeight = 50;
+    let rows = [];
+    let column = 4;
+    let columnsWidth = 50;
+    let columns = [];
 
-    for (let i=0; i<row; i++)
-    {
-      for (let j=0; j<column; j++)
-      {
-        rows.push(-i * rowHeight)
+    for (let i = 0; i < row; i++) {
+      for (let j = 0; j < column; j++) {
+        rows.push(-i * rowHeight);
       }
     }
 
-    for (let i=0; i<row; i++) 
-    {
-      for (let j=0; j<column; j++) 
-      {
-        columns.push(-j * columnsWidth)
+    for (let i = 0; i < row; i++) {
+      for (let j = 0; j < column; j++) {
+        columns.push(-j * columnsWidth);
       }
     }
 
@@ -50,7 +46,7 @@ class Bird extends React.Component {
       counter: 0,
       spriteTop: 0,
       spriteLeft: 0,
-      size: 4*2,
+      size: 4 * 2,
       score: 0,
       fps: 60,
       now: 0,
@@ -58,10 +54,10 @@ class Bird extends React.Component {
       interval: 0,
       delta: 0,
       counterChange: 0
-    }
+    };
     //requestAnimationFrame(this.animatePlayer)
   }
-/*
+  /*
   animatePlayer = () => {
     let fps = this.state.fps
     let now = this.state.now
@@ -119,12 +115,10 @@ class Bird extends React.Component {
 
   // entity method
   getBody() {
-    if (this.state.entity.getBody().getTop() == 1040) 
-    {
+    if (this.state.entity.getBody().getTop() == 1040) {
       this.state.entity.getBody().setTop(400);
       this.state.entity.getBody().setLeft(300);
     }
-      
 
     return this.state.entity.getBody();
   }
@@ -152,24 +146,24 @@ class Bird extends React.Component {
       height: this.state.spriteHeight,
       top: entityProps.bodyTop,
       left: entityProps.bodyLeft,
-      overflow: 'hidden',
-      position: 'absolute',
-      background: 'red'
-    }
+      overflow: "hidden",
+      position: "absolute",
+      background: "red"
+    };
 
     let imgStyle = {
       width: entityProps.bodyWidth,
       height: entityProps.bodyHeight,
       top: this.state.spriteTop,
       left: this.state.spriteLeft,
-      position: 'absolute'
-    }
+      position: "absolute"
+    };
 
     return (
       <div style={divStyle}>
-        <img src={BirdSprites} style={imgStyle}></img>
+        <img src={BirdSprites} style={imgStyle} />
       </div>
-    ) 
+    );
   }
 }
 

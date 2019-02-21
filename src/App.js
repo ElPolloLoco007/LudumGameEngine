@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import "./style/App.css";
-
 import Background from "./gameEngine/components/background/Background";
-import ResourceManager from "./gameEngine/components/resourceManager/ResourceManager";
-
-import Background from "./gameEngine/components/background/Background";
-import BackgroundImg from "./game/resources/images/background.png";
-import Bird from "./game/Bird";
+//import ResourceManager from "./gameEngine/components/resourceManager/ResourceManager";
+import Bird from "./game/objects/Bird";
+import backgroundImg from "./game/resources/images/background.png";
 
 class Game extends Component {
   constructor(props) {
@@ -75,11 +72,15 @@ class Game extends Component {
   };
 
   render() {
-    let img = new ResourceManager().getImageElement("background.png");
+    //    let img = new ResourceManager().getImageElement("background.png");
     return (
       <div>
-        {bla}
-        <Background height={1080} width={1920} speed={0.5} image={img}>
+        <Background
+          height={1080}
+          width={1920}
+          speed={0.5}
+          image={backgroundImg}
+        >
           {" "}
         </Background>{" "}
         {this.getObjects()}
