@@ -4,6 +4,7 @@ import Physics from "../../gameEngine/components/Physics";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import BirdSprites from "../resources/sprites/birds.png";
+import { isNullOrUndefined } from "util";
 
 class Bird extends React.Component {
   constructor(props) {
@@ -129,7 +130,36 @@ class Bird extends React.Component {
   }
 
   // entity method
-  update() {
+  update(value) {
+    // if value is something else than null or undefined, it will be put into a switch
+    if (!isNullOrUndefined(value)) {
+      let props = this.state.entity.getEntityProps()
+      switch (value) {
+        case 'w':
+        case 'ArrowUp':
+          this.state.entity.getBody().setTop(props.bodyTop - 100)
+          console.log(value)
+          break;
+        case 'ArrowRight':
+        case 'd':
+          this.state.entity.getBody().setLeft(props.bodyLeft + 100)
+          console.log(value)
+          break;
+        case 'ArrowLeft':
+        case 'a':
+          this.state.entity.getBody().setLeft(props.bodyLeft - 100)
+          console.log(value)
+          break;
+        case 'ArrowDown':
+        case 's':
+          this.state.entity.getBody().setTop(props.bodyTop + 100)
+          break;
+        default:
+          console.log(value + ' Invalid input!')
+          break;
+      }
+    }
+    // updating this.entity
     this.state.entity.update();
   }
 

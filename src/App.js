@@ -18,7 +18,9 @@ class Game extends Component {
       now: 0,
       then: Date.now(),
       interval: 1000 / 60,
-      delta: 0
+      delta: 0,
+      input: 'default',
+      keyPressed: false
     };
 
     // commencing the game loop
@@ -41,7 +43,12 @@ class Game extends Component {
 
       // updating every player
       this.state.playerArr.forEach(element => {
-        element.update();
+        if (this.state.keyPressed === true) {
+          element.update(this.state.input);
+          this.setState({ keyPressed: false })
+        } else {
+          element.update();
+        }
       });
 
       // checking for collision
@@ -73,10 +80,17 @@ class Game extends Component {
     });
   };
 
+  // getting the input from the main div
+  getInput = (e) => {
+    //console.log(this.state.input)
+    this.setState({ input: e.key, keyPressed: true })
+    //console.log(e.key)
+  }
+
   render() {
     //    let img = new ResourceManager().getImageElement("background.png");
     return (
-      <div>
+      <div onKeyDown={e => this.getInput(e)} tabIndex='0'>
         <Background
           height={1080}
           width={1920}
