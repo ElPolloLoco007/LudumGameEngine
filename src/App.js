@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import "./style/App.css";
-import Player from "./game/objects/Player";
-import Player2 from "./game/objects/Player2";
-import Player3 from "./game/objects/Player3";
-import Player4 from "./game/objects/player4";
+
 import Background from "./gameEngine/components/background/Background";
 import ResourceManager from "./gameEngine/components/resourceManager/ResourceManager";
+
+import Background from "./gameEngine/components/background/Background";
+import BackgroundImg from "./game/resources/images/background.png";
+import Bird from "./game/Bird";
 
 class Game extends Component {
   constructor(props) {
     super(props);
 
-    let playerArr = [new Player(), new Player2(), new Player3(), new Player4()];
+    let playerArr = [new Bird()];
 
     this.state = {
       playerArr: playerArr.slice(),
@@ -74,11 +75,11 @@ class Game extends Component {
   };
 
   render() {
-    let bla = new ResourceManager().getImageElement("background.png");
+    let img = new ResourceManager().getImageElement("background.png");
     return (
       <div>
         {bla}
-        <Background height={1080} width={1920} speed={0.5} image={bla}>
+        <Background height={1080} width={1920} speed={0.5} image={img}>
           {" "}
         </Background>{" "}
         {this.getObjects()}
