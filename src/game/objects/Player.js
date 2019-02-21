@@ -1,7 +1,7 @@
-import Entity from "../gameEngine/Entity";
-import Body from "../gameEngine/components/Body";
-import Physics from "../gameEngine/components/Physics";
-import CollisionDetection from '../gameEngine/components/CollisionDetection'
+import Entity from "../../gameEngine/Entity";
+import Body from "../../gameEngine/components/Body";
+import Physics from "../../gameEngine/components/Physics";
+import CollisionDetection from '../../gameEngine/components/CollisionDetection'
 import React from "react";
 
 class Player extends React.Component {
