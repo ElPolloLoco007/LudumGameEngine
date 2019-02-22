@@ -5,13 +5,13 @@ import Background from "./gameEngine/components/background/Background";
 import Bird from "./game/objects/Bird";
 import backgroundImg from "./game/resources/images/background.png";
 import Pipe from "./game/objects/Pipe";
-import Pipe1 from "./game/objects/Pipe1";
-import Pipe2 from "./game/objects/Pipe2";
+//import Pipe1 from "./game/objects/Pipe1";
+//import Pipe2 from "./game/objects/Pipe2";
 class Game extends Component {
   constructor(props) {
     super(props);
 
-    let playerArr = [new Bird(), new Pipe(), new Pipe1(), new Pipe2()];
+    let playerArr = [new Bird(), new Pipe()];
 
     this.state = {
       playerArr: playerArr.slice(),
@@ -19,7 +19,7 @@ class Game extends Component {
       then: Date.now(),
       interval: 1000 / 60,
       delta: 0,
-      input: 'default',
+      input: "default",
       keyPressed: false
     };
 
@@ -45,7 +45,7 @@ class Game extends Component {
       this.state.playerArr.forEach(element => {
         if (this.state.keyPressed === true) {
           element.update(this.state.input);
-          this.setState({ keyPressed: false })
+          this.setState({ keyPressed: false });
         } else {
           element.update();
         }
@@ -81,16 +81,16 @@ class Game extends Component {
   };
 
   // getting the input from the main div
-  getInput = (e) => {
+  getInput = e => {
     //console.log(this.state.input)
-    this.setState({ input: e.key, keyPressed: true })
+    this.setState({ input: e.key, keyPressed: true });
     //console.log(e.key)
-  }
+  };
 
   render() {
     //    let img = new ResourceManager().getImageElement("background.png");
     return (
-      <div onKeyDown={e => this.getInput(e)} tabIndex='0'>
+      <div onKeyDown={e => this.getInput(e)} tabIndex="0">
         <Background
           height={1080}
           width={1920}
