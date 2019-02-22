@@ -100,14 +100,14 @@ class Pipe extends React.Component {
     };
 
     return (
-      <div className="frame">
+      <span className="frame">
         <div style={divStyle}>
           <img src={PipeImg} style={imgStyle} />
         </div>
         <div style={divStyleTop}>
           <img src={PipeImg} style={imgStyle} />
         </div>
-      </div>
+      </span>
     );
   }
 }

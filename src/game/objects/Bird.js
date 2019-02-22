@@ -12,16 +12,16 @@ class Bird extends React.Component {
 
     let entity = new Entity(
       "Bird",
-      new Body(this, 300, 540, 100, 200),
+      new Body(this, 300, 540, 100, 100),
       new Physics(this, 0, 5),
       new CollisionDetection(this)
     );
 
     let row = 2;
-    let rowHeight = 50;
+    let rowHeight = 100;
     let rows = [];
     let column = 4;
-    let columnsWidth = 50;
+    let columnsWidth = 100;
     let columns = [];
 
     for (let i = 0; i < row; i++) {
@@ -133,29 +133,29 @@ class Bird extends React.Component {
   update(value) {
     // if value is something else than null or undefined, it will be put into a switch
     if (!isNullOrUndefined(value)) {
-      let props = this.state.entity.getEntityProps()
+      let props = this.state.entity.getEntityProps();
       switch (value) {
-        case 'w':
-        case 'ArrowUp':
-          this.state.entity.getBody().setTop(props.bodyTop - 100)
-          console.log(value)
+        case "w":
+        case "ArrowUp":
+          this.state.entity.getBody().setTop(props.bodyTop - 100);
+          console.log(value);
           break;
-        case 'ArrowRight':
-        case 'd':
-          this.state.entity.getBody().setLeft(props.bodyLeft + 100)
-          console.log(value)
+        case "ArrowRight":
+        case "d":
+          this.state.entity.getBody().setLeft(props.bodyLeft + 100);
+          console.log(value);
           break;
-        case 'ArrowLeft':
-        case 'a':
-          this.state.entity.getBody().setLeft(props.bodyLeft - 100)
-          console.log(value)
+        case "ArrowLeft":
+        case "a":
+          this.state.entity.getBody().setLeft(props.bodyLeft - 100);
+          console.log(value);
           break;
-        case 'ArrowDown':
-        case 's':
-          this.state.entity.getBody().setTop(props.bodyTop + 100)
+        case "ArrowDown":
+        case "s":
+          this.state.entity.getBody().setTop(props.bodyTop + 100);
           break;
         default:
-          console.log(value + ' Invalid input!')
+          console.log(value + " Invalid input!");
           break;
       }
     }
