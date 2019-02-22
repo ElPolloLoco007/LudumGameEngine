@@ -6,23 +6,31 @@ class Menu extends Component {
     super(props);
 
     this.state = {
-      menuItems: [
-        { text: "Press any button to start game" },
-        { text: "Score" }
-      ],
-      showMenu: null
+      showMenu: true
     };
+    this.handleClick = this.handleClick.bind(this);
   }
- 
+  handleClick = e => {
+    if (e === "WHAT")
+      this.setState(state => ({
+        showMenu: !state.showMenu
+      }));
+  };
 
   render() {
-    return (
+    const menu = (
       <div className={"wrapper"}>
-        <button className={"menu-item"}>WHAT</button>
+        <button
+          onClick={() => this.handleClick("WHAT")}
+          className={"menu-item"}
+        >
+          WHAT
+        </button>
         <button className={"menu-item"}>THE</button>
         <button className={"menu-item"}>Fuck</button>
       </div>
     );
+    return <div>{this.state.showMenu ? menu : null} </div>;
   }
 }
 
