@@ -7,6 +7,7 @@ import backgroundImg from "./game/resources/images/background.png";
 import Pipe from "./game/objects/Pipe";
 import Pipe1 from "./game/objects/Pipe1";
 import Pipe2 from "./game/objects/Pipe2";
+import Menu from "./gameEngine/components/menu/menu";
 class Game extends Component {
   constructor(props) {
     super(props);
@@ -96,7 +97,7 @@ class Game extends Component {
   render() {
     //    let img = new ResourceManager().getImageElement("background.png");
     return (
-      <div onKeyDown={e => this.getInput(e)} tabIndex='0'>
+      <div onKeyDown={e => this.getInput(e)} tabIndex="0">
         <Background
           height={1080}
           width={1920}
@@ -106,6 +107,7 @@ class Game extends Component {
           {" "}
         </Background>{" "}
         {this.getObjects()}
+        <Menu />
       </div>
     );
   }
