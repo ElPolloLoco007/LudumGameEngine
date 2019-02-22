@@ -5,175 +5,104 @@ import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import BirdSprites from "../resources/sprites/birds.png";
 import { isNullOrUndefined } from "util";
+import mp3 from '../resources/audio/SoundEffect1.mp3'
+import mp3Three from '../resources/audio/SoundEffect3.mp3'
 
-class Bird extends React.Component {
-  constructor(props) {
-    super(props);
-
-    let entity = new Entity(
+class Bird {
+  constructor() {
+    this.entity = new Entity(
       "Bird",
       new Body(this, 300, 540, 100, 200),
       new Physics(this, 0, 5),
       new CollisionDetection(this)
     );
 
-    let row = 2;
-    let rowHeight = 50;
-    let rows = [];
-    let column = 4;
-    let columnsWidth = 50;
-    let columns = [];
-
-    for (let i = 0; i < row; i++) {
-      for (let j = 0; j < column; j++) {
-        rows.push(-i * rowHeight);
-      }
-    }
-
-    for (let i = 0; i < row; i++) {
-      for (let j = 0; j < column; j++) {
-        columns.push(-j * columnsWidth);
-      }
-    }
-
-    let entityProps = entity.getEntityProps();
-    this.state = {
-      entity: entity,
-      entityProps: entityProps,
-      rows: rows.slice(),
-      columns: columns.slice(),
-      spriteHeight: rowHeight,
-      spriteWidth: columnsWidth,
-      counter: 0,
-      spriteTop: 0,
-      spriteLeft: 0,
-      size: 4 * 2,
-      score: 0,
-      fps: 60,
-      now: 0,
-      then: Date.now(),
-      interval: 0,
-      delta: 0,
-      counterChange: 0
-    };
-    //requestAnimationFrame(this.animatePlayer)
+    this.counterBirdJump = 0;
   }
-  /*
-  animatePlayer = () => {
-    let fps = this.state.fps
-    let now = this.state.now
-    let then = this.state.then
-    let interval = 1000 / this.state.fps
-    let delta
-
-    now = Date.now()
-    delta = now - then
-    this.setState({ fps: fps, now: now, then: then, interval: interval, delta: delta })
-
-    if (delta > interval) {
-      let counter = this.state.counter
-      let spriteTop = this.state.spriteTop
-      let spriteLeft = this.state.spriteLeft
-      let size = (this.state.row * this.state.column) - 1
-      let counterChange = this.state.counterChange
-
-      ++counterChange
-
-      then = now - (delta % interval)
-      this.setState({ then: then })
-
-      if (counterChange > 5) {
-        this.setState({ counterChange: 0 })
-        spriteTop = this.state.rows[counter]
-        spriteLeft = this.state.columns[counter]
-
-        if (counter >= size) {
-          this.setState({ counter: 0 })
-
-        }
-        else {
-          ++counter
-          this.setState({ counter: counter })
-        }
-        this.setState({ spriteTop: spriteTop, spriteLeft: spriteLeft })
-      }
-      else {
-        this.setState({ counterChange: counterChange })
-      }
-    }
-    requestAnimationFrame(this.animatePlayer)
-  }*/
 
   // entity method
   getCollisionDetection() {
-    return this.state.entity.getCollisionDetection();
+    return this.entity.getCollisionDetection();
   }
 
   // entity method
   getEntity() {
-    return this.state.entity;
+    return this.entity;
   }
 
   // entity method
   getBody() {
-    if (this.state.entity.getBody().getTop() == 1040) {
-      this.state.entity.getBody().setTop(400);
-      this.state.entity.getBody().setLeft(300);
-    }
-
-    return this.state.entity.getBody();
+    return this.entity.getBody();
   }
 
   // entity method
   getPhysics() {
-    return this.state.entity.getPhysics();
+    return this.entity.getPhysics();
   }
 
   // entity method
   update(value) {
-    // if value is something else than null or undefined, it will be put into a switch
+
+    // if the bird touches the bottom of the screen, it will be restored to the starting position
+    if (this.entity.getBody().getTop() > 1040) {
+      this.entity.getBody().setTop(400);
+      this.entity.getBody().setLeft(300);
+    }
+
+    // if collision flag is set true
+    if (this.entity.getCollisionDetection().getFlag() === true) {
+      console.log('Collsion flagged!')
+      new Audio(mp3Three).play(); // only for testing
+    }
+
+    //if value is something else than null or undefined, it will be put into a switch
     if (!isNullOrUndefined(value)) {
-      let props = this.state.entity.getEntityProps()
       switch (value) {
         case 'w':
         case 'ArrowUp':
-          this.state.entity.getBody().setTop(props.bodyTop - 100)
-          console.log(value)
-          break;
-        case 'ArrowRight':
-        case 'd':
-          this.state.entity.getBody().setLeft(props.bodyLeft + 100)
-          console.log(value)
-          break;
-        case 'ArrowLeft':
-        case 'a':
-          this.state.entity.getBody().setLeft(props.bodyLeft - 100)
-          console.log(value)
-          break;
-        case 'ArrowDown':
-        case 's':
-          this.state.entity.getBody().setTop(props.bodyTop + 100)
+        case ' ':
+          this.counterBirdJump += 10
+          new Audio(mp3).play(); // only for testing
           break;
         default:
           console.log(value + ' Invalid input!')
           break;
       }
     }
+
+    // bird jump and gravity
+    if (this.counterBirdJump > 0) {
+      this.entity.getPhysics().setTop(0)
+      --this.counterBirdJump
+      this.entity.getBody().setTop(this.getEntityProps().bodyTop - 12)
+    } else {
+      const gravityAcceleration = 0.5;
+      const prevTop = this.entity.getPhysics().getTop()
+      if (prevTop < 20) {
+        if (prevTop === 0) {
+          this.entity.getPhysics().setTop(1)
+        } else {
+          this.entity.getPhysics().setTop(prevTop + gravityAcceleration)
+        }
+      }
+    }
+
     // updating this.entity
-    this.state.entity.update();
+    this.entity.update();
   }
 
   // entity method
   getEntityProps() {
-    return this.state.entity.getEntityProps();
+    return this.entity.getEntityProps();
   }
 
+  // rendering this class
   render() {
     let entityProps = this.getEntityProps();
 
     let divStyle = {
-      width: this.state.spriteWidth,
-      height: this.state.spriteHeight,
+      width: 50,
+      height: 50,
       top: entityProps.bodyTop,
       left: entityProps.bodyLeft,
       overflow: "hidden",
@@ -184,8 +113,8 @@ class Bird extends React.Component {
     let imgStyle = {
       width: entityProps.bodyWidth,
       height: entityProps.bodyHeight,
-      top: this.state.spriteTop,
-      left: this.state.spriteLeft,
+      top: 0,
+      left: 0,
       position: "absolute"
     };
 
