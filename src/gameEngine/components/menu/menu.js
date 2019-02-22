@@ -1,37 +1,61 @@
-import React, { Component } from "react";
+import React from "react";
 import "./menu.css";
+import Score from "../score/Score";
 
-class Menu extends Component {
+class Menu extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showMenu: true
+      menuItems: [{ text: "Start Game" }, { text: "Score" }],
+      showMenu: true,
+      showScore: false
     };
+
     this.handleClick = this.handleClick.bind(this);
   }
-  handleClick = e => {
-    if (e === "WHAT")
-      this.setState(state => ({
-        showMenu: !state.showMenu
-      }));
-  };
 
+  handleClick(e) {
+    if (e === "Start Game")
+      this.setState({
+        showMenu: false
+      });
+    if (e === "Score")
+      this.setState({
+        showScore: !this.state.showScore
+      });
+  }
   render() {
-    const menu = (
-      <div className={"wrapper"}>
-        <button
-          onClick={() => this.handleClick("WHAT")}
-          className={"menu-item"}
-        >
-          WHAT
-        </button>
-        <button className={"menu-item"}>THE</button>
-        <button className={"menu-item"}>Fuck</button>
+    const menuItems = this.state.menuItems.map(item => (
+      <MenuItem item={item} handleClick={this.handleClick} />
+    ));
+
+    let scoreBoard = (
+      <div className="wrapper">
+        <Score />
       </div>
     );
-    return <div>{this.state.showMenu ? menu : null} </div>;
+    let gameMenu = <div className="wrapper"> {menuItems}</div>;
+
+    return (
+      <div className={`menu ${this.props.position}`}>
+        {this.state.showMenu ? gameMenu : this.props.showMenu}
+        {this.state.showScore ? scoreBoard : this.props.showScore}
+      </div>
+    );
   }
+}
+
+function MenuItem(props) {
+  return (
+    <button
+      className="menu-item"
+      id={props.item.text}
+      onClick={() => props.handleClick(props.item.text)}
+    >
+      {props.item.text.toUpperCase()}
+    </button>
+  );
 }
 
 export default Menu;
