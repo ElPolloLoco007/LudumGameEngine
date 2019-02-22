@@ -41,7 +41,7 @@ class Score extends Component {
           .sort((a, b) => b - a)
           .map((item, index) => {
             return (
-              <tr key={item}>
+              <tr key={index}>
                 <td>{index + 1}.</td>
                 <td>
                   {item} {this.renderPrize(index)}

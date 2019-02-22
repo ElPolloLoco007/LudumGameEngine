@@ -6,10 +6,8 @@ import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import "../../style/Frame.css";
 
-class Pipe extends React.Component {
-  constructor(props) {
-    super(props);
-
+class Pipe {
+  constructor() {
     let entity = new Entity(
       "Pipe set 1",
       new Body(this, 1920 + 200, 1080 - 500, 800, 150),
@@ -101,10 +99,10 @@ class Pipe extends React.Component {
 
     return (
       <span className="frame">
-        <div style={divStyle}>
+        <div style={divStyleTop}>
           <img src={PipeImg} style={imgStyle} />
         </div>
-        <div style={divStyleTop}>
+        <div style={divStyle}>
           <img src={PipeImg} style={imgStyle} />
         </div>
       </span>
