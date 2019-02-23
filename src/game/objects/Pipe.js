@@ -18,7 +18,7 @@ class Pipe {
 
     this.entity2 = new Entity(
       "Pipe set 2",
-      new Body(this, 300, 1080 - 500, 800, 150),
+      new Body(this, 1920, 0 - 500, 800, 150),
       new Physics(this, -12.85, 0),
       new CollisionDetection(this)
     );
@@ -28,68 +28,77 @@ class Pipe {
 
   // entity method
   getCollisionDetection() {
-    return this.entity.map(index => {
-      return index.getCollisionDetection();
-    });
-    // return this.entity.getCollisionDetection();
+    for (let i = 0; i < this.entity.length; i++) {
+      return this.entity[1].getCollisionDetection();
+    }
+    // return this.entity.map(item => {
+    //   return item.getCollisionDetection();
+    // });
+    // return this.entity1.getCollisionDetection();
   }
 
   // entity method
   getEntity() {
-    // return this.entity.map(index => {
-    //   return index;
-    // });
-    return this.entity1;
+    for (let i = 0; i < this.entity.length; i++) {
+      return this.entity[1];
+    }
+    //return this.entity1;
   }
 
   // entity method
   getBody() {
-    return this.entity.map(index => {
-      return index.getBody();
-    });
-    // return this.entity.getBody();
+    for (let i = 0; i < this.entity.length; i++) {
+      return this.entity[1].getBody();
+    }
+    // return this.entity.map(item => {
+    //   return item.body.getBody();
+    // });
+    //return this.entity[1].getBody();
+    // return this.entity1.getBody();
   }
 
   // entity method
   getPhysics() {
-    return this.entity.map(index => {
-      return index.getPhysics();
-    });
-    // return this.entity.getPhysics();
+    for (let i = 0; i < this.entity.length; i++) {
+      return this.entity[1].getPhysics();
+    }
+    // return this.entity1.getPhysics();
   }
 
   // entity method
   update() {
-    this.entity1.update();
+    //this.entity1.update();
     this.entity2.update();
   }
 
   // entity method
   getEntityProps() {
-    return this.entity[0].getEntityProps();
+    return this.entity1.getEntityProps();
   }
 
-  // getEntityProps2() {
-  //   // return this.entity2.getEntityProps();
-  // }
+  getEntityProps2() {
+    return this.entity2.getEntityProps();
+  }
 
   respawn = () => {
-    let entity = Object.assign({}, this.entity); //creating copy of object
+    // let entity = Object.assign({}, this.entity); //creating copy of object
     const min = 200;
     const max = 500;
     const len = min + Math.random() * max;
-    entity.body.left = 1920; //updating value
-    entity.body.top = 1080 - len;
+    this.entity1.body.left = 1920; //updating value
+    this.entity1.body.top = 1080 - len;
+
+    this.entity2.body.left = 1920; //updating value
+    this.entity2.body.top = 1080 - len - 280 - 800;
     // entity.body.height = 1080 - (1080 - len);
-    this.setState({
-      entity
-    });
   };
 
   render() {
     let entityProps = this.getEntityProps();
-    // let entityProps2 = this.getEntityProps2();
-    if (entityProps.bodyLeft < -150) {
+    let entityProps2 = this.getEntityProps2();
+    console.log(entityProps2);
+    console.log(this.entity2.body);
+    if (entityProps.bodyLeft < -150 || entityProps2.bodyLeft < -150) {
       this.respawn();
     }
     //let delta = this.props.delta; // this.state.arr[0][0]
@@ -103,15 +112,15 @@ class Pipe {
       top: entityProps.bodyTop
     };
 
-    // let divStyleTop = {
-    //   transform: "scaleY(-1)",
-    //   position: "absolute",
-    //   overflow: "hidden",
-    //   height: entityProps2.bodyHeight,
-    //   width: entityProps2.bodyWidth,
-    //   left: entityProps2.bodyLeft,
-    //   top: entityProps2.bodyTop - 280 - 800
-    // };
+    let divStyleTop = {
+      transform: "scaleY(-1)",
+      position: "absolute",
+      overflow: "hidden",
+      height: entityProps2.bodyHeight,
+      width: entityProps2.bodyWidth,
+      left: entityProps2.bodyLeft,
+      top: entityProps.bodyTop - 280 - 800
+    };
 
     const imgStyle = {
       overflow: "hidden",
@@ -122,9 +131,9 @@ class Pipe {
 
     return (
       <span className="frame">
-        {/* <div style={divStyleTop}>
+        <div style={divStyleTop}>
           <img src={PipeImg} style={imgStyle} />
-        </div> */}
+        </div>
         <div style={divStyle}>
           <img src={PipeImg} style={imgStyle} />
         </div>
