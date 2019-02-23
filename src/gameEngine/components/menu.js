@@ -1,6 +1,6 @@
 import React from "react";
-import "./menu.css";
-import Score from "../score/Score";
+import "../../style/menu.css";
+import Score from "./Score";
 
 class Menu extends React.Component {
   constructor(props) {

@@ -14,7 +14,7 @@ class ResourceManager {
   getImageElement = name => {
     return (
       <img
-        src={require(`../../../game/resources/images/${name}`)}
+        src={require(`../game/resources/images/${name}`)}
         alt={`pic: ${name}`}
       />
     );
@@ -27,7 +27,7 @@ class ResourceManager {
   getAudioElement = name => {
     // let out = new Audio("../../../game/resources/audio/" + name);
     // return out;
-    return <audio src={require(`../../../game/resources/audio/${name}`)} />;
+    return <audio src={require(`../game/resources/audio/${name}`)} />;
   };
 
   // ===< Path >=================================================================
@@ -36,7 +36,7 @@ class ResourceManager {
   // };
 
   getAudioPath = name => {
-    return require(`../../../game/resources/audio/${name}`);
+    return require(`../game/resources/audio/${name}`);
   };
 
   // getSpritePath = name => {

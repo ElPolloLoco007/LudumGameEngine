@@ -13,7 +13,7 @@ class Entity {
     }
     if (collisionDetection !== null) {
       this.collisionDetection = collisionDetection;
-      console.log("Successfully set collisionDetection!")
+      console.log("Successfully set collisionDetection!");
     }
   }
 

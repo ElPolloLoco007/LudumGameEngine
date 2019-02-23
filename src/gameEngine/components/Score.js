@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Score.css";
+import "../../style/Score.css";
 
 // Shows the top ten scoreboard
 class Score extends Component {
