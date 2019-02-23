@@ -11,7 +11,7 @@ class ResourceManager {
   //   return <Hud score={text} position={pos} />;
   // };
 
-  getImageElement = name => {
+  static getImageElement = name => {
     return (
       <img
         src={require(`../game/resources/images/${name}`)}
@@ -24,7 +24,7 @@ class ResourceManager {
   //   return <img src={require(`sprites/${name}`)} alt={`sprite: ${name}`} />;
   // };
 
-  getAudioElement = name => {
+  static getAudioElement = name => {
     // let out = new Audio("../../../game/resources/audio/" + name);
     // return out;
     return <audio src={require(`../game/resources/audio/${name}`)} />;
@@ -35,7 +35,7 @@ class ResourceManager {
   //   return (String)`image/${name}`;
   // };
 
-  getAudioPath = name => {
+  static getAudioPath = name => {
     return require(`../game/resources/audio/${name}`);
   };
 
