@@ -17,6 +17,12 @@ class Body {
   setTop(value) {
     this.top = value;
   }
+  setHeight(value) {
+    this.height = value;
+  }
+  setWidth(value) {
+    this.width = value;
+  }
 
   // getters
   getLeft() {
