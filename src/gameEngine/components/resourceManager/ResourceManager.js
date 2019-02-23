@@ -24,18 +24,20 @@ class ResourceManager {
   //   return <img src={require(`sprites/${name}`)} alt={`sprite: ${name}`} />;
   // };
 
-  // getAudioElement = (name, ref) => {
-  //   return <audio ref={ref} src={require(`audio/${name}`)} />;
-  // };
+  getAudioElement = name => {
+    // let out = new Audio("../../../game/resources/audio/" + name);
+    // return out;
+    return <audio src={require(`../../../game/resources/audio/${name}`)} />;
+  };
 
   // ===< Path >=================================================================
   // getImagePath = name => {
-  //   return `image/${name}`;
+  //   return (String)`image/${name}`;
   // };
 
-  // getAudioPath = name => {
-  //   return `audio/${name}`;
-  // };
+  getAudioPath = name => {
+    return require(`../../../game/resources/audio/${name}`);
+  };
 
   // getSpritePath = name => {
   //   return `sprite/${name}`;

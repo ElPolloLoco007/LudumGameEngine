@@ -29,18 +29,17 @@ The folder structure in our game engine is like this.
   - extra (diagram etc.)
   - HowTo (setup and help)
   - ~~node_modules (react library)~~
-  - public ()
   - src (where the code is)
     - \_\_tests\_\_
     - game
     - gameEngine
       - components
-      * entity.js
-    * resource
+      - entity.js
+    - resource
       - images
       - audio
     - style (.css)
-    * utils
+    - utils
   - packages and more
 
 ## Github commands

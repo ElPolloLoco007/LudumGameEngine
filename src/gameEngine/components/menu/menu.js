@@ -26,8 +26,8 @@ class Menu extends React.Component {
       });
   }
   render() {
-    const menuItems = this.state.menuItems.map(item => (
-      <MenuItem item={item} handleClick={this.handleClick} />
+    const menuItems = this.state.menuItems.map((item, index) => (
+      <MenuItem key={index} item={item} handleClick={this.handleClick} />
     ));
 
     let scoreBoard = (
