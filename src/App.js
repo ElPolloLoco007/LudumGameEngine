@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./style/App.css";
-import Background from "./gameEngine/components/background/Background";
+import Background from "./gameEngine/components/Background";
 // import ResourceManager from "./gameEngine/components/resourceManager/ResourceManager";
 import Bird from "./game/objects/Bird";
 import backgroundImg from "./game/resources/images/background.png";
 import Pipe from "./game/objects/Pipe";
 // import Pipe1 from "./game/objects/Pipe1";
 // import Pipe2 from "./game/objects/Pipe2";
-import Menu from "./gameEngine/components/menu/menu";
+import Menu from "./gameEngine/components/menu";
 class Game extends Component {
   constructor(props) {
     super(props);

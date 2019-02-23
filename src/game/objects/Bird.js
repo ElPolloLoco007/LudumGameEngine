@@ -7,7 +7,7 @@ import BirdSprites from "../resources/sprites/birds.png";
 import { isNullOrUndefined } from "util";
 // import mp3 from "../resources/audio/SoundEffect1.mp3";
 import mp3Three from "../resources/audio/SoundEffect3.mp3";
-import ResMan from "../../gameEngine/components/resourceManager/ResourceManager";
+import ResMan from "../../utils/ResourceManager";
 
 class Bird {
   constructor() {
