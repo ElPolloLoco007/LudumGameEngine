@@ -14,10 +14,10 @@ class Bird {
       "Bird",
       new Body(this, 300, 540, 100, 200),
       new Physics(this, 0, 5),
-      new CollisionDetection(this)
+      new CollisionDetection(this),
+      new AudioManager([ResMan.getAudioPath("soundEffect1.mp3"), ResMan.getAudioPath("soundEffect2.mp3"), ResMan.getAudioPath("soundEffect3.mp3")])
     );
     this.counterBirdJump = 0;
-    this.audioManager = new AudioManager([ResMan.getAudioPath("soundEffect1.mp3"), ResMan.getAudioPath("soundEffect2.mp3"), ResMan.getAudioPath("soundEffect3.mp3")])
     this.enum = {
       BIRD_JUMPS: 0,
       BIRD_SCORE: 1,
@@ -46,17 +46,22 @@ class Bird {
   }
 
   // entity method
+  getAudioManager() {
+    return this.entity.getAudioManager();
+  }
+
+  // entity method
   update(value) {
     // if the bird touches the bottom of the screen, it will be restored to the starting position
-    if (this.entity.getBody().getTop() > 1040) {
-      this.entity.getBody().setTop(400);
-      this.entity.getBody().setLeft(300);
+    if (this.getBody().getTop() > 1040) {
+      this.getBody().setTop(400);
+      this.getBody().setLeft(300);
     }
 
     // if collision flag is set true
-    if (this.entity.getCollisionDetection().getFlag() === true) {
+    if (this.getCollisionDetection().getFlag() === true) {
       console.log("Collsion flagged!");
-      this.audioManager.play(this.enum.BIRD_DIES)
+      this.getAudioManager().play(this.enum.BIRD_DIES)
     }
 
     //if value is something else than null or undefined, it will be put into a switch
@@ -66,7 +71,7 @@ class Bird {
         case "ArrowUp":
         case " ":
           this.counterBirdJump += 10;
-          this.audioManager.play(this.enum.BIRD_JUMPS);
+          this.getAudioManager().play(this.enum.BIRD_JUMPS);
           break;
         default:
           console.log(value + " Invalid input!");
@@ -76,17 +81,17 @@ class Bird {
 
     // bird jump and gravity
     if (this.counterBirdJump > 0) {
-      this.entity.getPhysics().setTop(0);
+      this.getPhysics().setTop(0);
       --this.counterBirdJump;
-      this.entity.getBody().setTop(this.getEntityProps().bodyTop - 12);
+      this.getBody().setTop(this.getEntityProps().bodyTop - 12);
     } else {
       const gravityAcceleration = 0.5;
-      const prevTop = this.entity.getPhysics().getTop();
+      const prevTop = this.getPhysics().getTop();
       if (prevTop < 20) {
         if (prevTop === 0) {
-          this.entity.getPhysics().setTop(1);
+          this.getPhysics().setTop(1);
         } else {
-          this.entity.getPhysics().setTop(prevTop + gravityAcceleration);
+          this.getPhysics().setTop(prevTop + gravityAcceleration);
         }
       }
     }

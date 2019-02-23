@@ -1,19 +1,39 @@
 class Entity {
-  constructor(name, body, physics, collisionDetection) {
+  constructor(name, body, physics, collisionDetection, audioManager) {
     // name of entity
     this.name = name;
+    console.log(this.name);
 
+    // Body component
     if (body !== null) {
       this.body = body;
       console.log("Successfully set body!");
+    } else {
+      console.log("Body component omitted!")
     }
+
+    // Physics component
     if (physics !== null) {
       this.physics = physics;
       console.log("Successfully set physics!");
+    } else {
+      console.log("Physics component omitted!")
     }
+
+    // CollisionDetection component
     if (collisionDetection !== null) {
       this.collisionDetection = collisionDetection;
       console.log("Successfully set collisionDetection!");
+    } else {
+      console.log("CollisionDetection component omitted!")
+    }
+
+    // AudioManager component
+    if (audioManager !== null) {
+      this.audioManager = audioManager;
+      console.log("Successfully set audioManager");
+    } else {
+      console.log("AudioManager component omitted!")
     }
   }
 
@@ -35,6 +55,10 @@ class Entity {
 
   getCollisionDetection() {
     return this.collisionDetection;
+  }
+
+  getAudioManager() {
+    return this.audioManager;
   }
 
   update() {
