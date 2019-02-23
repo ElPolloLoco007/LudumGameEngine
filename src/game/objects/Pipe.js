@@ -12,7 +12,8 @@ class Pipe {
       "Pipe set 1",
       new Body(this, 1920 + 200, 1080 - 500, 800, 150),
       new Physics(this, -12.85, 0),
-      new CollisionDetection(this)
+      new CollisionDetection(this),
+      null
     );
 
     this.entity2 = new Entity(

@@ -14,7 +14,8 @@ class Pipe extends React.Component {
       "Pipe set 3",
       new Body(this, 1920 + 1200, 1080 - 500, 800, 150),
       new Physics(this, -10, 0),
-      new CollisionDetection(this)
+      new CollisionDetection(this),
+      null
     );
     let entityProps = entity.getEntityProps();
     this.state = {
