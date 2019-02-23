@@ -8,51 +8,46 @@ import "../../style/Frame.css";
 
 class Pipe {
   constructor() {
-    let entity = new Entity(
+    this.entity = new Entity(
       "Pipe set 1",
       new Body(this, 1920 + 200, 1080 - 500, 800, 150),
       new Physics(this, -12.85, 0),
       new CollisionDetection(this)
     );
-    let entityProps = entity.getEntityProps();
-    this.state = {
-      entity: entity,
-      entityProps: entityProps
-    };
   }
 
   // entity method
   getCollisionDetection() {
-    return this.state.entity.getCollisionDetection();
+    return this.entity.getCollisionDetection();
   }
 
   // entity method
   getEntity() {
-    return this.state.entity;
+    return this.entity;
   }
 
   // entity method
   getBody() {
-    return this.state.entity.getBody();
+    return this.entity.getBody();
   }
 
   // entity method
   getPhysics() {
-    return this.state.entity.getPhysics();
+    return this.entity.getPhysics();
   }
 
   // entity method
   update() {
-    this.state.entity.update();
+    this.entity.update();
   }
 
   // entity method
   getEntityProps() {
-    return this.state.entity.getEntityProps();
+    return this.entity.getEntityProps();
   }
 
   respawn = () => {
-    let entity = Object.assign({}, this.state.entity); //creating copy of object
+    let entity = Object.assign({}, this.entity); //creating copy of object
     const min = 200;
     const max = 500;
     const len = min + Math.random() * max;

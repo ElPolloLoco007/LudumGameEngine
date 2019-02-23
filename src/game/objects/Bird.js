@@ -5,18 +5,18 @@ import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import BirdSprites from "../resources/sprites/birds.png";
 import { isNullOrUndefined } from "util";
-import mp3 from "../resources/audio/SoundEffect1.mp3";
+// import mp3 from "../resources/audio/SoundEffect1.mp3";
 import mp3Three from "../resources/audio/SoundEffect3.mp3";
+import ResMan from "../../gameEngine/components/resourceManager/ResourceManager";
 
 class Bird {
   constructor() {
     this.entity = new Entity(
       "Bird",
-      new Body(this, 300, 540, 100, 100),
+      new Body(this, 300, 540, 100, 200),
       new Physics(this, 0, 5),
       new CollisionDetection(this)
     );
-
     this.counterBirdJump = 0;
   }
 
@@ -61,7 +61,7 @@ class Bird {
         case "ArrowUp":
         case " ":
           this.counterBirdJump += 10;
-          new Audio(mp3).play(); // only for testing
+          new Audio(new ResMan().getAudioPath("soundEffect1.mp3")).play(); // only for testing
           break;
         default:
           console.log(value + " Invalid input!");
