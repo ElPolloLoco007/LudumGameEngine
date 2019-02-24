@@ -20,7 +20,8 @@ class Pipe {
       "Pipe set 2",
       new Body(this, 1920, 0 - 500, 800, 150),
       new Physics(this, -12.85, 0),
-      new CollisionDetection(this)
+      new CollisionDetection(this),
+      null
     );
 
     this.entity = [this.entity1, this.entity2];
@@ -28,9 +29,17 @@ class Pipe {
 
   // entity method
   getCollisionDetection() {
+    // for (let i = 0; i < this.entity.length; i++) {
+    //   if (this.entity[i].getCollisionDetection()) {
+    //     return true;
+    //   }
+    // }
+    let f;
     for (let i = 0; i < this.entity.length; i++) {
-      return this.entity[1].getCollisionDetection();
+      f = this.entity[i].getCollisionDetection();
+      return f.splice();
     }
+
     // return this.entity.map(item => {
     //   return item.getCollisionDetection();
     // });
@@ -39,16 +48,31 @@ class Pipe {
 
   // entity method
   getEntity() {
-    for (let i = 0; i < this.entity.length; i++) {
-      return this.entity[1];
-    }
+    // let f = [];
+    // for (let i = 0; i < this.entity.length; i++) {
+    //   console.log("f.");
+    //   console.log(this.entity[i]);
+    //   f[i] = this.entity[i];
+    //   console.log("f.text");
+    //   console.log(f);
+    // }
+    // return f.splice();
+
+    return this.entity.map(stuff => {
+      return stuff;
+    });
+    // console.log("f.text");
+    // console.log(f.body);
+    // return f.map(stuff => {
+    //   return stuff;
+    // });
     //return this.entity1;
   }
 
   // entity method
   getBody() {
     for (let i = 0; i < this.entity.length; i++) {
-      return this.entity[1].getBody();
+      return this.entity[i].getBody();
     }
     // return this.entity.map(item => {
     //   return item.body.getBody();
@@ -59,15 +83,17 @@ class Pipe {
 
   // entity method
   getPhysics() {
+    let f;
     for (let i = 0; i < this.entity.length; i++) {
-      return this.entity[1].getPhysics();
+      f = this.entity[i].getPhysics();
     }
+    return f.splice();
     // return this.entity1.getPhysics();
   }
 
   // entity method
   update() {
-    //this.entity1.update();
+    this.entity1.update();
     this.entity2.update();
   }
 
