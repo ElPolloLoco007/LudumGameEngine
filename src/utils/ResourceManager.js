@@ -31,9 +31,9 @@ class ResourceManager {
   };
 
   // ===< Path >=================================================================
-  // getImagePath = name => {
-  //   return (String)`image/${name}`;
-  // };
+  static getImagePath = name => {
+    return require(`../game/resources/images/${name}`);
+  };
 
   static getAudioPath = name => {
     return require(`../game/resources/audio/${name}`);

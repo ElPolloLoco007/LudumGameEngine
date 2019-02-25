@@ -1,10 +1,10 @@
 import Entity from "../../gameEngine/Entity";
 import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
-import PipeImg from "../resources/images/pipe.png";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import "../../style/Frame.css";
+import ResMan from "../../utils/ResourceManager";
 
 class Pipe {
   constructor() {
@@ -127,10 +127,10 @@ class Pipe {
     return (
       <span className="frame">
         <div style={divStyleTop}>
-          <img src={PipeImg} style={imgStyle} />
+          <img src={ResMan.getImagePath("pipe.png")} style={imgStyle} />
         </div>
         <div style={divStyle}>
-          <img src={PipeImg} style={imgStyle} />
+          <img src={ResMan.getImagePath("pipe.png")} style={imgStyle} />
         </div>
       </span>
     );
