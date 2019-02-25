@@ -8,6 +8,8 @@ import Pipe from "./game/objects/Pipe";
 // import Pipe1 from "./game/objects/Pipe1";
 // import Pipe2 from "./game/objects/Pipe2";
 import Menu from "./gameEngine/components/menu";
+import HUD from "./utils/Hud.js";
+
 class Game extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,8 @@ class Game extends Component {
       delta: 0,
       input: "default",
       keyPressed: false,
-      endGame: false
+      endGame: false,
+      score: 0
     };
 
     // commencing the game loop
@@ -101,6 +104,7 @@ class Game extends Component {
     //    let img = new ResourceManager().getImageElement("background.png");
     return (
       <div onKeyDown={e => this.getInput(e)} tabIndex="0">
+        <HUD score={this.state.score} position={"tc"} />{" "}
         <Background
           height={1080}
           width={1920}
