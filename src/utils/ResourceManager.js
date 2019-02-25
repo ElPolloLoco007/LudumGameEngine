@@ -14,7 +14,7 @@ class ResourceManager {
   static getImageElement = name => {
     return (
       <img
-        src={require(`../game/resources/images/${name}`)}
+        src={require(`../flappy/resources/images/${name}`)}
         alt={`pic: ${name}`}
       />
     );
@@ -25,18 +25,18 @@ class ResourceManager {
   // };
 
   static getAudioElement = name => {
-    // let out = new Audio("../../../game/resources/audio/" + name);
+    // let out = new Audio("../../../flappy/resources/audio/" + name);
     // return out;
-    return <audio src={require(`../game/resources/audio/${name}`)} />;
+    return <audio src={require(`../flappy/resources/audio/${name}`)} />;
   };
 
   // ===< Path >=================================================================
   static getImagePath = name => {
-    return require(`../game/resources/images/${name}`);
+    return require(`../flappy/resources/images/${name}`);
   };
 
   static getAudioPath = name => {
-    return require(`../game/resources/audio/${name}`);
+    return require(`../flappy/resources/audio/${name}`);
   };
 
   // getSpritePath = name => {
