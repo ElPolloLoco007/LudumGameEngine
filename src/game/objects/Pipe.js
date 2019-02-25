@@ -12,7 +12,7 @@ class Pipe {
     this.entity1 = new Entity(
       "Pipe set 1",
       new Body(this, 1920 + 200, 1080 - 500, 800, 150),
-      new Physics(this, -12.85, 0),
+      new Physics(this, -2.85, 0),
       new CollisionDetection(this),
       null
     );
@@ -20,7 +20,7 @@ class Pipe {
     this.entity2 = new Entity(
       "Pipe set 2",
       new Body(this, 1920, 0 - 500, 800, 150),
-      new Physics(this, -12.85, 0),
+      new Physics(this, -2.85, 0),
       new CollisionDetection(this),
       null
     );
@@ -52,18 +52,7 @@ class Pipe {
 
   // entity method
   update() {
-    this.entity[0].getCollisionDetection();
-    this.entity[0];
-    this.entity[0].getBody();
-    this.entity[0].getPhysics();
-
     this.entity[0].update();
-
-    this.entity[1].getCollisionDetection();
-    this.entity[1];
-    this.entity[1].getBody();
-    this.entity[1].getPhysics();
-
     this.entity[1].update();
   }
 

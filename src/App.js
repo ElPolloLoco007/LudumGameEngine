@@ -5,14 +5,14 @@ import Background from "./gameEngine/components/Background";
 import Bird from "./game/objects/Bird";
 import backgroundImg from "./game/resources/images/background.png";
 import Pipe from "./game/objects/Pipe";
-// import Pipe1 from "./game/objects/Pipe1";
-// import Pipe2 from "./game/objects/Pipe2";
+import Pipe1 from "./game/objects/Pipe1";
+import Pipe2 from "./game/objects/Pipe2";
 import Menu from "./gameEngine/components/menu";
 class Game extends Component {
   constructor(props) {
     super(props);
 
-    let playerArr = [new Bird(), new Pipe()];
+    let playerArr = [new Bird(), new Pipe(), new Pipe1(), new Pipe2()];
 
     this.state = {
       playerArr: playerArr.slice(),
@@ -46,7 +46,7 @@ class Game extends Component {
       // restart game / end game
       if (this.state.endGame === true) {
         this.setState({
-          playerArr: [new Bird(), new Pipe()],
+          playerArr: [new Bird(), new Pipe(), new Pipe1(), new Pipe2()],
           endGame: false
         });
       }
