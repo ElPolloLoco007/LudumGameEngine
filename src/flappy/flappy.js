@@ -63,6 +63,15 @@ class Flappy extends Component {
           .getCollisionDetection()
           .checkForCollision(this.state.playerArr[index].getEntity());
 
+        if (hasPlayerCollided) {
+          if (this.state.playerArr[index].getEntity().name == "Score") {
+            this.setState({
+              score: this.state.score + 1
+            });
+            hasPlayerCollided = false;
+          }
+        }
+
         // if a collision is detected, checkForCollision() returns true
         if (hasPlayerCollided === true) {
           // breaking for loop is player has collided and resetting game with new objects
