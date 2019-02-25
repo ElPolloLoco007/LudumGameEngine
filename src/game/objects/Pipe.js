@@ -8,6 +8,7 @@ import "../../style/Frame.css";
 
 class Pipe {
   constructor() {
+    this.switch = true;
     this.entity1 = new Entity(
       "Pipe set 1",
       new Body(this, 1920 + 200, 1080 - 500, 800, 150),
@@ -29,72 +30,41 @@ class Pipe {
 
   // entity method
   getCollisionDetection() {
-    // for (let i = 0; i < this.entity.length; i++) {
-    //   if (this.entity[i].getCollisionDetection()) {
-    //     return true;
-    //   }
-    // }
-    let f;
-    for (let i = 0; i < this.entity.length; i++) {
-      f = this.entity[i].getCollisionDetection();
-      return f.splice();
-    }
-
-    // return this.entity.map(item => {
-    //   return item.getCollisionDetection();
-    // });
-    // return this.entity1.getCollisionDetection();
+    return this.entity[1].getCollisionDetection();
   }
 
   // entity method
   getEntity() {
-    // let f = [];
-    // for (let i = 0; i < this.entity.length; i++) {
-    //   console.log("f.");
-    //   console.log(this.entity[i]);
-    //   f[i] = this.entity[i];
-    //   console.log("f.text");
-    //   console.log(f);
-    // }
-    // return f.splice();
-
-    return this.entity.map(stuff => {
-      return stuff;
-    });
-    // console.log("f.text");
-    // console.log(f.body);
-    // return f.map(stuff => {
-    //   return stuff;
-    // });
-    //return this.entity1;
+    this.switch = !this.switch;
+    return this.switch ? this.entity[0] : this.entity[1];
   }
 
   // entity method
   getBody() {
-    for (let i = 0; i < this.entity.length; i++) {
-      return this.entity[i].getBody();
-    }
-    // return this.entity.map(item => {
-    //   return item.body.getBody();
-    // });
-    //return this.entity[1].getBody();
-    // return this.entity1.getBody();
+    this.entity[1].body.left = this.entity[0].body.left;
+    return this.entity[0].getBody();
   }
 
   // entity method
   getPhysics() {
-    let f;
-    for (let i = 0; i < this.entity.length; i++) {
-      f = this.entity[i].getPhysics();
-    }
-    return f.splice();
-    // return this.entity1.getPhysics();
+    return this.entity[1].getPhysics();
   }
 
   // entity method
   update() {
-    this.entity1.update();
-    this.entity2.update();
+    this.entity[0].getCollisionDetection();
+    this.entity[0];
+    this.entity[0].getBody();
+    this.entity[0].getPhysics();
+
+    this.entity[0].update();
+
+    this.entity[1].getCollisionDetection();
+    this.entity[1];
+    this.entity[1].getBody();
+    this.entity[1].getPhysics();
+
+    this.entity[1].update();
   }
 
   // entity method
@@ -122,8 +92,7 @@ class Pipe {
   render() {
     let entityProps = this.getEntityProps();
     let entityProps2 = this.getEntityProps2();
-    console.log(entityProps2);
-    console.log(this.entity2.body);
+    // s// console.log(this.entity2.body);
     if (entityProps.bodyLeft < -150 || entityProps2.bodyLeft < -150) {
       this.respawn();
     }
@@ -142,9 +111,9 @@ class Pipe {
       transform: "scaleY(-1)",
       position: "absolute",
       overflow: "hidden",
-      height: entityProps2.bodyHeight,
-      width: entityProps2.bodyWidth,
-      left: entityProps2.bodyLeft,
+      height: entityProps.bodyHeight,
+      width: entityProps.bodyWidth,
+      left: entityProps.bodyLeft,
       top: entityProps.bodyTop - 280 - 800
     };
 

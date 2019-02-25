@@ -6,7 +6,7 @@ import React from "react";
 import BirdSprites from "../resources/sprites/birds.png";
 import { isNullOrUndefined } from "util";
 import ResMan from "../../utils/ResourceManager";
-import AudioManager from '../../gameEngine/components/AudioManager';
+import AudioManager from "../../gameEngine/components/AudioManager";
 
 class Bird {
   constructor() {
@@ -15,14 +15,18 @@ class Bird {
       new Body(this, 300, 540, 100, 200),
       new Physics(this, 0, 5),
       new CollisionDetection(this),
-      new AudioManager([ResMan.getAudioPath("soundEffect1.mp3"), ResMan.getAudioPath("soundEffect2.mp3"), ResMan.getAudioPath("soundEffect3.mp3")])
+      new AudioManager([
+        ResMan.getAudioPath("soundEffect1.mp3"),
+        ResMan.getAudioPath("soundEffect2.mp3"),
+        ResMan.getAudioPath("soundEffect3.mp3")
+      ])
     );
     this.counterBirdJump = 0;
     this.enum = {
       BIRD_JUMPS: 0,
       BIRD_SCORE: 1,
       BIRD_DIES: 2
-    }
+    };
   }
 
   // entity method
@@ -61,7 +65,7 @@ class Bird {
     // if collision flag is set true
     if (this.getCollisionDetection().getFlag() === true) {
       console.log("Collsion flagged!");
-      this.getAudioManager().play(this.enum.BIRD_DIES)
+      this.getAudioManager().play(this.enum.BIRD_DIES);
     }
 
     //if value is something else than null or undefined, it will be put into a switch
