@@ -1,4 +1,4 @@
-class Sprites {
+class Sprite {
   constructor(entity, spriteImg) {
     this.entity = entity;
     this.spriteImg = spriteImg;
@@ -13,4 +13,4 @@ class Sprites {
   }
 }
 
-export default Sprites;
+export default Sprite;

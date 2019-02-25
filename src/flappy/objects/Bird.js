@@ -6,7 +6,7 @@ import React from "react";
 import { isNullOrUndefined } from "util";
 import ResMan from "../../utils/ResourceManager";
 import AudioManager from "../../gameEngine/components/AudioManager";
-import Sprites from "../../gameEngine/components/Sprites";
+import Sprites from "../../gameEngine/components/Sprite";
 
 class Bird {
   constructor() {
