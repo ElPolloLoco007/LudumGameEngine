@@ -39,6 +39,10 @@ class ResourceManager {
     return require(`../flappy/resources/audio/${name}`);
   };
 
+  static getSpritePath = name => {
+    return require(`../flappy/resources/sprites/${name}`);
+  }
+
   // getSpritePath = name => {
   //   return `sprite/${name}`;
   // };

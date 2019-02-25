@@ -1,5 +1,5 @@
 class Entity {
-  constructor(name, body, physics, collisionDetection, audioManager) {
+  constructor(name, body, physics, collisionDetection, audioManager, sprite) {
     // name of entity
     this.name = name;
     console.log(this.name);
@@ -35,6 +35,15 @@ class Entity {
     } else {
       console.log("AudioManager component omitted!")
     }
+
+    // sprite component
+    if (sprite !== null)
+    {
+      this.sprite = sprite;
+      console.log("Successfully set sprite");
+    } else {
+      console.log("sprite component omitted!")
+    }
   }
 
   getEntity() {
@@ -59,6 +68,10 @@ class Entity {
 
   getAudioManager() {
     return this.audioManager;
+  }
+
+  getSprite() {
+    return this.sprite;
   }
 
   update() {

@@ -3,10 +3,10 @@ import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
-import BirdSprites from "../resources/sprites/birds.png";
 import { isNullOrUndefined } from "util";
 import ResMan from "../../utils/ResourceManager";
 import AudioManager from "../../gameEngine/components/AudioManager";
+import Sprites from "../../gameEngine/components/Sprites";
 
 class Bird {
   constructor() {
@@ -19,7 +19,8 @@ class Bird {
         ResMan.getAudioPath("soundEffect1.mp3"),
         ResMan.getAudioPath("soundEffect2.mp3"),
         ResMan.getAudioPath("soundEffect3.mp3")
-      ])
+      ]),
+      new Sprites(this, ResMan.getSpritePath("birds.png"))
     );
     this.counterBirdJump = 0;
     this.enum = {
@@ -52,6 +53,11 @@ class Bird {
   // entity method
   getAudioManager() {
     return this.entity.getAudioManager();
+  }
+
+  // entity method
+  getSprite() {
+    return this.entity.getSprite();
   }
 
   // entity method
@@ -133,7 +139,7 @@ class Bird {
 
     return (
       <div style={divStyle}>
-        <img src={BirdSprites} style={imgStyle} />
+        <img src={this.getSprite().getSprite()} style={imgStyle} />
       </div>
     );
   }
