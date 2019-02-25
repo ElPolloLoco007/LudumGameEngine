@@ -1,6 +1,6 @@
 import React from "react";
 import "../../style/menu.css";
-import Score from "./Score";
+import ScoreBoard from "./ScoreBoard";
 
 class Menu extends React.Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class Menu extends React.Component {
 
     let scoreBoard = (
       <div className="wrapper">
-        <Score />
+        <ScoreBoard />
       </div>
     );
     let gameMenu = <div className="wrapper"> {menuItems}</div>;
