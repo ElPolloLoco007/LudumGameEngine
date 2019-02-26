@@ -27,4 +27,24 @@ describe("Body", () => {
     };
     expect(body).toMatchObject(res);
   });
+
+  it("setWidth", () => {
+    body.setWidth(100);
+    expect(body.width).toBe(100);
+  });
+
+  it("setHeight", () => {
+    body.setHeight(100);
+    expect(body.height).toBe(100);
+  });
+
+  it("setTop", () => {
+    body.setTop(100);
+    expect(body.top).toBe(100);
+  });
+
+  it("setLeft", () => {
+    body.setLeft(100);
+    expect(body.left).toBe(100);
+  });
 });
