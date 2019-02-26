@@ -56,13 +56,8 @@ describe("Physics", () => {
   });
 
   it("setEntity", () => {
-    let player = new Player();
-    player.getPhysics().setEntity("player");
-    expect(
-      player
-        .getPhysics()
-        .getEntity()
-        .toBe("player")
-    );
+    let x = new Player();
+    x.getPhysics().setEntity();
+    expect(x.entity.name).toBe("Player");
   });
 });
