@@ -1,4 +1,6 @@
 import Body from "../gameEngine/components/Body";
+import Physics from "../gameEngine/components/Physics";
+import CollisionDetection from "../gameEngine/components/CollisionDetection";
 
 describe("Body", () => {
   const body = new Body(this, 20, 10, 100, 200);
@@ -46,5 +48,10 @@ describe("Body", () => {
   it("setLeft", () => {
     body.setLeft(100);
     expect(body.left).toBe(100);
+  });
+
+  it("setEntity", () => {
+    body.setEntity("player");
+    expect(body.entity).toBe("player");
   });
 });

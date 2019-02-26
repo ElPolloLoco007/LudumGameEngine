@@ -40,6 +40,7 @@ describe("Physics", () => {
     const res = player.getPhysics().getTop();
     expect(res).toBe(1);
   });
+
   it("setLeft to 1", () => {
     let player = new Player();
 
@@ -52,5 +53,16 @@ describe("Physics", () => {
     let player = new Player();
     player.update();
     expect(player.getBody().getLeft()).toBe(5);
+  });
+
+  it("setEntity", () => {
+    let player = new Player();
+    player.getPhysics().setEntity("player");
+    expect(
+      player
+        .getPhysics()
+        .getEntity()
+        .toBe("player")
+    );
   });
 });
