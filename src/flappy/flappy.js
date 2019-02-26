@@ -9,6 +9,7 @@ import Pipe1 from "./objects/Pipe1";
 import Pipe2 from "./objects/Pipe2";
 import Menu from "../gameEngine/components/Menu";
 import HUD from "../utils/Hud";
+import { AppContext } from "./context";
 
 class Flappy extends Component {
   constructor(props) {
@@ -103,19 +104,21 @@ class Flappy extends Component {
   render() {
     //    let img = new ResourceManager().getImageElement("background.png");
     return (
-      <div onKeyDown={e => this.getInput(e)} tabIndex="0">
-        <HUD score={this.state.score} position={"tc"} />{" "}
-        <Background
-          height={1080}
-          width={1920}
-          speed={0.5}
-          image={backgroundImg}
-        >
-          {" "}
-        </Background>{" "}
-        {this.getObjects()}
-        <Menu />
-      </div>
+      <AppContext.Provider value={this.state}>
+        <div onKeyDown={e => this.getInput(e)} tabIndex="0">
+          <HUD score={this.state.score} position={"tc"} />{" "}
+          <Background
+            height={1080}
+            width={1920}
+            speed={0.5}
+            image={backgroundImg}
+          >
+            {" "}
+          </Background>{" "}
+          {this.getObjects()}
+          <Menu />
+        </div>
+      </AppContext.Provider>
     );
   }
 }

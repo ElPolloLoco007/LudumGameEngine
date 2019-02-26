@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import "../../style/Score.css";
+import { AppContext } from "../../flappy/context";
 
 // Shows the top ten scoreboard
-class Score extends Component {
+class ScoreBoard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      list: [props.score]
+      list: []
     };
   }
 
@@ -27,6 +28,13 @@ class Score extends Component {
       return <img src="http://goo.gl/u1KKqp" />;
     }
     return null;
+  }
+
+  // Called immediately after a component is mounted. Setting state that trigger re-rendering
+  componentDidMount() {
+    let newList = this.state.list.slice(); //creates the clone of the state
+    newList.push(this.context.score);
+    this.setState({ list: newList }); 
   }
 
   render() {
@@ -66,4 +74,6 @@ const TableHeader = () => {
   );
 };
 
-export default Score;
+ScoreBoard.contextType = AppContext;
+
+export default ScoreBoard;
