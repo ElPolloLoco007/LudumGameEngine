@@ -1,4 +1,6 @@
 import Body from "../gameEngine/components/Body";
+import Physics from "../gameEngine/components/Physics";
+import CollisionDetection from "../gameEngine/components/CollisionDetection";
 
 describe("Body", () => {
   const body = new Body(this, 20, 10, 100, 200);
@@ -26,5 +28,30 @@ describe("Body", () => {
       width: 200
     };
     expect(body).toMatchObject(res);
+  });
+
+  it("setWidth", () => {
+    body.setWidth(100);
+    expect(body.width).toBe(100);
+  });
+
+  it("setHeight", () => {
+    body.setHeight(100);
+    expect(body.height).toBe(100);
+  });
+
+  it("setTop", () => {
+    body.setTop(100);
+    expect(body.top).toBe(100);
+  });
+
+  it("setLeft", () => {
+    body.setLeft(100);
+    expect(body.left).toBe(100);
+  });
+
+  it("setEntity", () => {
+    body.setEntity("player");
+    expect(body.entity).toBe("player");
   });
 });
