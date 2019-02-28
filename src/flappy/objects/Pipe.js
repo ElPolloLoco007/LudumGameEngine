@@ -12,25 +12,28 @@ class Pipe {
     this.bottomPipe = new Entity(
       "Bottom pipe",
       new Body(this, 1920 + 200, 1080 - 500, 800, 150),
-      new Physics(this, -2.85, 0),
+      new Physics(this, -12.85, 0),
       new CollisionDetection(this),
+      null,
       null
     );
 
     this.topPipe = new Entity(
       "Top pipe",
-      new Body(this, 1920 + 200, 1080 - 500 - 280, 800, 150),
+      new Body(this, 1920 + 200, 1080 - 500 - 280 - 800, 800, 150),
       //new Body(this, 1920 + 200, 200 - 500, 800, 150),
-      new Physics(this, -2.85, 0),
+      new Physics(this, -12.85, 0),
       new CollisionDetection(this),
+      null,
       null
     );
 
     this.score = new Entity(
       "Score",
       new Body(this, 1920 + 200 + 150, 1080 - 500 - 280, 280, 150),
-      new Physics(this, -2.85, 0),
+      new Physics(this, -12.85, 0),
       new CollisionDetection(this),
+      null,
       null
     );
 
@@ -40,7 +43,17 @@ class Pipe {
   // entity method
   getCollisionDetection() {
     // return this.entity[0].getCollisionDetection();
-    return this.bottomPipe.getCollisionDetection();
+    switch (this.switch) {
+      case -1:
+        return this.bottomPipe.getCollisionDetection();
+      case 0:
+        return this.topPipe.getCollisionDetection();
+      // case 1:
+      //   return this.score.getCollisionDetection();
+      default:
+        console.log("Error E2233");
+    }
+    //return this.bottomPipe.getCollisionDetection();
   }
 
   // entity method
@@ -52,11 +65,11 @@ class Pipe {
       //return this.entity[0];
       case 0:
         this.switch += 1;
-        return this.topPipe;
+        return this.score;
       // return this.entity[1];
       case 1:
         this.switch = -1;
-        return this.score;
+        return this.topPipe;
       // return this.entity[2];
       default:
         console.log("Error E2233");
@@ -71,15 +84,37 @@ class Pipe {
     //this.entity[2].body.left = this.entity[0].body.left;
     //return this.entity[0].getBody();
 
-    this.topPipe.body.left = this.bottomPipe.body.left;
-    this.score.body.left = this.bottomPipe.body.left + 150;
-    return this.bottomPipe.getBody();
+    switch (this.switch) {
+      case -1:
+        return this.bottomPipe.getBody();
+      case 0:
+        return this.topPipe.getBody();
+      case 1:
+        return this.score.getBody();
+      default:
+        console.log("Error E2233");
+    }
+
+    //this.topPipe.body.left = this.bottomPipe.body.left;
+    //this.score.body.left = this.bottomPipe.body.left + 150;
+    //return this.bottomPipe.getBody();
   }
 
   // entity method
   getPhysics() {
     // return this.entity[0].getPhysics();
-    return this.bottomPipe.getPhysics();
+    switch (this.switch) {
+      case -1:
+        return this.bottomPipe.getPhysics();
+      case 0:
+        return this.topPipe.getPhysics();
+      case 1:
+        return this.score.getPhysics();
+      default:
+        console.log("Error E2233");
+    }
+
+    // return this.bottomPipe.getPhysics();
   }
 
   // entity method
@@ -94,6 +129,19 @@ class Pipe {
 
   // entity method
   getEntityProps() {
+    switch (this.switch) {
+      case -1:
+        return this.bottomPipe.getEntityProps();
+      case 0:
+        return this.topPipe.getEntityProps();
+      case 1:
+        return this.score.getEntityProps();
+      default:
+        console.log("Error E2233");
+      //return this.bottomPipe.getEntityProps();
+    }
+  }
+  getEntityProps1() {
     return this.bottomPipe.getEntityProps();
   }
 
@@ -113,20 +161,20 @@ class Pipe {
     this.bottomPipe.body.left = 1920; //updating value
     this.bottomPipe.body.top = 1080 - len;
 
-    this.score.body.left = 1920 + 150; //updating value
-    this.score.body.top = 1080 - len - 280;
-
     this.topPipe.body.left = 1920; //updating value
     this.topPipe.body.top = 1080 - len - 280 - 800;
+
+    this.score.body.left = 1920 + 150; //updating value
+    this.score.body.top = 1080 - len - 280;
   };
 
   render() {
-    let entityProps = this.getEntityProps();
+    let entityProps1 = this.getEntityProps1();
     let entityProps2 = this.getEntityProps2();
     let entityProps3 = this.getEntityProps3();
 
     // s// console.log(this.entity2.body);
-    if (entityProps.bodyLeft < -150 || entityProps2.bodyLeft < -150) {
+    if (entityProps1.bodyLeft < -150 || entityProps2.bodyLeft < -150) {
       this.respawn();
     }
     //let delta = this.props.delta; // this.state.arr[0][0]
@@ -134,10 +182,10 @@ class Pipe {
     let divStyle = {
       position: "absolute",
       overflow: "hidden",
-      height: entityProps.bodyHeight,
-      width: entityProps.bodyWidth,
-      left: entityProps.bodyLeft,
-      top: entityProps.bodyTop
+      height: entityProps1.bodyHeight,
+      width: entityProps1.bodyWidth,
+      left: entityProps1.bodyLeft,
+      top: entityProps1.bodyTop
     };
 
     let divStyleTop = {
@@ -147,7 +195,7 @@ class Pipe {
       height: entityProps2.bodyHeight,
       width: entityProps2.bodyWidth,
       left: entityProps2.bodyLeft,
-      top: entityProps2.bodyTop - 280 - 800
+      top: entityProps2.bodyTop
     };
 
     let divScore = {

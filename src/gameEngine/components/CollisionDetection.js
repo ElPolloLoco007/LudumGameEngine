@@ -33,6 +33,10 @@ class CollisionDetection {
       rect1.y + rect1.height > rect2.y
     ) {
       this.flag = true;
+      console.log(
+        `:::::::::::::::::::::: ${player.name} collided with ${object.name}`
+      );
+
       return this.flag;
     } else {
       this.flag = false;
