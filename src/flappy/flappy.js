@@ -27,7 +27,7 @@ class Flappy extends Component {
       keyPressed: false,
       endGame: false,
       score: 0,
-      gameRunning: true,
+      gameRunning: false,
       showMenu: true
     };
 
@@ -98,6 +98,16 @@ class Flappy extends Component {
         });
       } else {
         this.setState({ showMenu: true });
+      }
+
+      // if player reaches screen top/bottom, restart
+      if (player.getBody().getTop() > 990) {
+        this.setState({ endGame: true });
+        this.setState({ gameRunning: false });
+      }
+      if (player.getBody().getTop() < 0) {
+        this.setState({ endGame: true });
+        this.setState({ gameRunning: false });
       }
 
       // when game is not running
