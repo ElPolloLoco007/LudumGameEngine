@@ -128,22 +128,30 @@ class Flappy extends Component {
 
   render() {
     //    let img = new ResourceManager().getImageElement("background.png");
+    var scalability = {
+      position: "absolute",
+      width: 1920,
+      height: 1080,
+      overflow: "hidden"
+    };
     return (
-      <AppContext.Provider value={this.state}>
-        <div onKeyDown={e => this.getInput(e)} tabIndex="0">
-          <HUD score={this.state.score} position={"tc"} />{" "}
-          <Background
-            height={1080}
-            width={1920}
-            speed={0.5}
-            image={ResourceManager.getImagePath("background.png")}
-          >
-            {" "}
-          </Background>{" "}
-          {this.getObjects()}
-          <Menu showMenu={this.state.showMenu} />{" "}
-        </div>
-      </AppContext.Provider>
+      <div style={scalability}>
+        <AppContext.Provider value={this.state}>
+          <div onKeyDown={e => this.getInput(e)} tabIndex="0">
+            <HUD score={this.state.score} position={"tc"} />{" "}
+            <Background
+              height={1080}
+              width={1920}
+              speed={0.5}
+              image={ResourceManager.getImagePath("background.png")}
+            >
+              {" "}
+            </Background>{" "}
+            {this.getObjects()}
+            <Menu showMenu={this.state.showMenu} />{" "}
+          </div>
+        </AppContext.Provider>
+      </div>
     );
   }
 }
