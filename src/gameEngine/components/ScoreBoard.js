@@ -13,34 +13,48 @@ class ScoreBoard extends Component {
   }
 
   // Function to remove the last item in the array
-  removeLastItem() {
+  removeLowestScore = () => {
     this.setState(index => {
       const list = this.state.list.slice(index, -1);
       return {
         list
       };
     });
-  }
+  };
 
   // Function to render a picture, to number one on the scoreboard
-  renderPrize(index) {
+  renderPrize = index => {
     if (index === 0) {
       return <img src="http://goo.gl/u1KKqp" />;
     }
     return null;
-  }
+  };
 
   // Called immediately after a component is mounted. Setting state that trigger re-rendering
   componentDidMount() {
     let newList = this.state.list.slice(); //creates the clone of the state
     newList.push(this.context.score);
-    this.setState({ list: newList }); 
+    this.setState({ list: newList });
+
+    // store array to localstorage
+    localStorage.setItem("list_data_key", JSON.stringify(newList));
+  }
+
+  // Called immediately before mounting occurs
+  componentWillMount() {
+    // retrieve stored data (JSON stringified) and convert
+    let storedData = localStorage.getItem("list_data_key");
+    if (storedData) {
+      let newList = this.state.list.slice();
+      newList = JSON.parse(storedData);
+      this.setState({ list: newList });
+    }
   }
 
   render() {
     // Only allow 10 items in the list
     if (this.state.list.length > 10) {
-      this.removeLastItem();
+      this.removeLowestScore();
     }
     return (
       <table>
