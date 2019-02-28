@@ -1,5 +1,4 @@
 import React from "react";
-import bla from "../../resources/images";
 
 // function ResourceManager(props) {
 //   return props.type + "/" + props.name;
