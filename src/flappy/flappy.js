@@ -3,7 +3,7 @@ import "../style/App.css";
 import Background from "../gameEngine/components/Background";
 // import ResourceManager from "./gameEngine/components/resourceManager/ResourceManager";
 import Bird from "./objects/Bird";
-import backgroundImg from "./resources/images/background.png";
+import ResourceManager from "../utils/ResourceManager";
 import Pipe from "./objects/Pipe";
 import Pipe1 from "./objects/Pipe1";
 import Pipe2 from "./objects/Pipe2";
@@ -120,7 +120,7 @@ class Flappy extends Component {
             height={1080}
             width={1920}
             speed={0.5}
-            image={backgroundImg}
+            image={ResourceManager.getImagePath("background.png")}
           >
             {" "}
           </Background>{" "}
