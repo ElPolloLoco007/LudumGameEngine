@@ -3,7 +3,7 @@ import "../style/App.css";
 import Background from "../gameEngine/components/Background";
 // import ResourceManager from "./gameEngine/components/resourceManager/ResourceManager";
 import Bird from "./objects/Bird";
-import backgroundImg from "./resources/images/background.png";
+import ResourceManager from "../utils/ResourceManager";
 import Pipe from "./objects/Pipe";
 import Pipe1 from "./objects/Pipe1";
 import Pipe2 from "./objects/Pipe2";
@@ -26,7 +26,9 @@ class Flappy extends Component {
       input: "default",
       keyPressed: false,
       endGame: false,
-      score: 0
+      score: 0,
+      gameRunning: false,
+      showMenu: true
     };
 
     // commencing the game loop
@@ -68,19 +70,43 @@ class Flappy extends Component {
         if (hasPlayerCollided === true) {
           // breaking for loop is player has collided and resetting game with new objects
           this.setState({ endGame: true });
+          this.setState({ gameRunning: false });
           break;
         }
       }
 
       // updating every player
-      this.state.playerArr.forEach(element => {
-        if (this.state.keyPressed === true) {
-          element.update(this.state.input);
-          this.setState({ keyPressed: false });
-        } else {
-          element.update();
-        }
-      });
+      if (this.state.gameRunning === true) {
+        this.setState({ showMenu: false });
+
+        this.state.playerArr.forEach(element => {
+          if (this.state.keyPressed === true) {
+            element.update(this.state.input);
+            this.setState({ keyPressed: false });
+          } else {
+            element.update();
+          }
+        });
+      } else {
+        this.setState({ showMenu: true });
+      }
+
+      // if player reaches screen top/bottom, restart
+      if (player.getBody().getTop() > 990) {
+        this.setState({ endGame: true });
+        this.setState({ gameRunning: false });
+      }
+      if (player.getBody().getTop() < 0) {
+        this.setState({ endGame: true });
+        this.setState({ gameRunning: false });
+      }
+
+      // when game is not running
+      // if space is pressed, run the game
+      if (this.state.keyPressed === true && this.state.gameRunning === false) {
+        this.setState({ gameRunning: true });
+        this.setState({ keyPressed: false });
+      }
 
       // forcing this component to update
       //this.forceUpdate();
@@ -103,22 +129,30 @@ class Flappy extends Component {
 
   render() {
     //    let img = new ResourceManager().getImageElement("background.png");
+    var scalability = {
+      position: "absolute",
+      width: 1920,
+      height: 1080,
+      overflow: "hidden"
+    };
     return (
-      <AppContext.Provider value={this.state}>
-        <div onKeyDown={e => this.getInput(e)} tabIndex="0">
-          <HUD score={this.state.score} position={"tc"} />{" "}
-          <Background
-            height={1080}
-            width={1920}
-            speed={0.5}
-            image={backgroundImg}
-          >
-            {" "}
-          </Background>{" "}
-          {this.getObjects()}
-          <Menu />
-        </div>
-      </AppContext.Provider>
+      <div style={scalability}>
+        <AppContext.Provider value={this.state}>
+          <div onKeyDown={e => this.getInput(e)} tabIndex="0">
+            <HUD score={this.state.score} position={"tc"} />{" "}
+            <Background
+              height={1080}
+              width={1920}
+              speed={0.5}
+              image={ResourceManager.getImagePath("background.png")}
+            >
+              {" "}
+            </Background>{" "}
+            {this.getObjects()}
+            <Menu showMenu={this.state.showMenu} />{" "}
+          </div>
+        </AppContext.Provider>
+      </div>
     );
   }
 }

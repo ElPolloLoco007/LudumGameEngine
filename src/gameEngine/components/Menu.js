@@ -39,7 +39,7 @@ class Menu extends React.Component {
 
     return (
       <div className={`menu ${this.props.position}`}>
-        {this.state.showMenu ? gameMenu : this.props.showMenu}
+        {this.props.showMenu ? gameMenu : this.state.showMenu}
         {this.state.showScore ? scoreBoard : this.props.showScore}
       </div>
     );
