@@ -5,8 +5,8 @@ import Background from "../gameEngine/components/Background";
 import Bird from "./objects/Bird";
 import backgroundImg from "./resources/images/background.png";
 import Pipe from "./objects/Pipe";
-// import Pipe1 from "./objects/Pipe1";
-// import Pipe2 from "./objects/Pipe2";
+import Pipe1 from "./objects/Pipe1";
+import Pipe2 from "./objects/Pipe2";
 import Menu from "../gameEngine/components/Menu";
 import HUD from "../utils/Hud";
 import { AppContext } from "./context";
@@ -15,7 +15,7 @@ class Flappy extends Component {
   constructor(props) {
     super(props);
 
-    let playerArr = [new Bird(), new Pipe()];
+    let playerArr = [new Bird(), new Pipe(), new Pipe1(), new Pipe2()];
 
     this.state = {
       playerArr: playerArr.slice(),
@@ -50,7 +50,7 @@ class Flappy extends Component {
       // restart game / end game
       if (this.state.endGame === true) {
         this.setState({
-          playerArr: [new Bird(), new Pipe()],
+          playerArr: [new Bird(), new Pipe(), new Pipe1(), new Pipe2()],
           endGame: false
         });
       }
@@ -63,15 +63,6 @@ class Flappy extends Component {
         let hasPlayerCollided = player
           .getCollisionDetection()
           .checkForCollision(this.state.playerArr[index].getEntity());
-
-        if (hasPlayerCollided) {
-          if (this.state.playerArr[index].getEntity().name == "Score") {
-            hasPlayerCollided = false;
-            this.setState({
-              score: this.state.score + 1
-            });
-          }
-        }
 
         // if a collision is detected, checkForCollision() returns true
         if (hasPlayerCollided === true) {

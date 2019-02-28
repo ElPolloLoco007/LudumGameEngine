@@ -110,7 +110,7 @@ class Pipe {
       overflow: "hidden",
       height: 280,
       width: entityProps.bodyWidth,
-      left: entityProps.bodyLeft,
+      left: entityProps.bodyLeft + 150,
       top: entityProps.bodyTop - 280
     };
 
