@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../style/Score.css";
-import { AppContext } from "../../flappy/context";
+import { AppContext } from "../../flappy/Context";
 
 // Shows the top ten scoreboard
 class ScoreBoard extends Component {
@@ -41,7 +41,7 @@ class ScoreBoard extends Component {
   }
 
   // Called immediately before mounting occurs
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     // retrieve stored data (JSON stringified) and convert
     let storedData = localStorage.getItem("list_data_key");
     if (storedData) {

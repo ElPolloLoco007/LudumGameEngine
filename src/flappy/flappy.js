@@ -9,7 +9,7 @@ import Pipe1 from "./objects/Pipe1";
 import Pipe2 from "./objects/Pipe2";
 import Menu from "../gameEngine/components/Menu";
 import HUD from "../utils/Hud";
-import { AppContext } from "./context";
+import { AppContext } from "./Context";
 
 class Flappy extends Component {
   constructor(props) {
@@ -149,7 +149,9 @@ class Flappy extends Component {
               {" "}
             </Background>{" "}
             {this.getObjects()}
-            <Menu showMenu={this.state.showMenu} />{" "}
+            <Menu
+              showMenu={this.state.showMenu}
+            />{" "}
           </div>
         </AppContext.Provider>
       </div>
