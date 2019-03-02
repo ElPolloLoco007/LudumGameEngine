@@ -1,9 +1,17 @@
+@font-face {
+  font-family: flappy;
+  src: url(../resources/fonts/flappy-bird.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
 .hud {
   position: absolute;
   z-index: 9;
-  font-family: "later";
+  font-family: "flappy";
   font-size: 128px;
   font: bolder;
+  color: #57c440;
 }
 .c {
   top: 50%;

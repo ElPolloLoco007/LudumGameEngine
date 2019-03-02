@@ -1,17 +1,39 @@
-.wrapper {
-  position: absolute;
-  z-index: 1;
-  left: 10%;
-  top: 10%;
-  background-color: red;
+@font-face {
+  font-family: flappy;
+  src: url(../resources/fonts/flappy-bird.ttf);
+  font-weight: normal;
+  font-style: normal;
 }
 
+.wrapper-menu {
+  position: absolute;
+  z-index: 1;
+  left: 35%;
+  top: 20%;
+}
+
+.wrapper-scoreBoard {
+  position: absolute;
+  z-index: 1;
+  left: 30%;
+  top: 20%;
+}
+
+.menu-text {
+  color: #57c440; /* White text */
+  font-family: "flappy";
+  font-size: 60px;
+  font: bolder;
+  padding: 10px 24px; /* Some padding */
+  width: 100%; /* Set a width if needed */
+  display: block; /* Make the buttons appear below each other */
+}
 .menu-item {
   background-color: #f5d014; /* Green background */
   border: 1px solid #57c440; /* Green border */
-  color: white; /* White text */
-  font-family: "later";
-  font-size: 80px;
+  color: #57c440; /* White text */
+  font-family: "flappy";
+  font-size: 60px;
   font: bolder;
   padding: 10px 24px; /* Some padding */
   cursor: pointer; /* Pointer/hand icon */
