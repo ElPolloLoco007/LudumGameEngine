@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../style/Score.css";
-import { AppContext } from "../../flappy/Context";
+import { AppContext } from "../../flappy/context";
 
 // Shows the top ten scoreboard
 class ScoreBoard extends Component {

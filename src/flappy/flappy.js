@@ -8,7 +8,7 @@ import Pipe1 from "./objects/Pipe1";
 import ScoreBox from "./objects/ScoreBox";
 import Menu from "../gameEngine/components/Menu";
 import HUD from "../utils/Hud";
-import { AppProvider } from "./Context";
+import { AppProvider } from "./context";
 
 class Flappy extends Component {
   constructor(props) {
