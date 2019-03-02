@@ -1,21 +1,35 @@
 import React, { Component } from "react";
 import "../style/App.css";
 import Background from "../gameEngine/components/Background";
-// import ResourceManager from "./gameEngine/components/resourceManager/ResourceManager";
 import Bird from "./objects/Bird";
 import ResourceManager from "../utils/ResourceManager";
 import Pipe from "./objects/Pipe";
 import Pipe1 from "./objects/Pipe1";
-import Pipe2 from "./objects/Pipe2";
+import ScoreBox from "./objects/ScoreBox";
 import Menu from "../gameEngine/components/Menu";
 import HUD from "../utils/Hud";
-import { AppContext } from "./context";
+import { AppProvider } from "./context";
 
 class Flappy extends Component {
   constructor(props) {
     super(props);
-
-    let playerArr = [new Bird(), new Pipe(), new Pipe1(), new Pipe2()];
+    var playerArr;
+    <AppProvider>
+      {
+        (playerArr = [
+          new Bird(),
+          new Pipe(200, 1080 - 500, 800, 150),
+          new Pipe1(200, -500, 800, 150),
+          new ScoreBox(200, 1080 - 500 - 280, 280, 150),
+          new Pipe(800, 1080 - 500, 800, 150),
+          new Pipe1(800, -500, 800, 150),
+          new ScoreBox(800, 1080 - 500 - 280, 280, 150),
+          new Pipe(1400, 1080 - 500, 800, 150),
+          new Pipe1(1400, -500, 800, 150),
+          new ScoreBox(1400, 1080 - 500 - 280, 280, 150)
+        ])
+      }
+    </AppProvider>;
 
     this.state = {
       playerArr: playerArr.slice(),
@@ -27,6 +41,8 @@ class Flappy extends Component {
       keyPressed: false,
       endGame: false,
       score: 0,
+      gap: 200 + Math.random() * 500,
+      left: 6,
       gameRunning: false,
       showMenu: true
     };
@@ -52,7 +68,18 @@ class Flappy extends Component {
       // restart game / end game
       if (this.state.endGame === true) {
         this.setState({
-          playerArr: [new Bird(), new Pipe(), new Pipe1(), new Pipe2()],
+          playerArr: [
+            new Bird(),
+            new Pipe(200, 1080 - 500, 800, 150),
+            new Pipe1(200, -500, 800, 150),
+            new ScoreBox(200, 1080 - 500 - 280, 280, 150),
+            new Pipe(800, 1080 - 500, 800, 150),
+            new Pipe1(800, -500, 800, 150),
+            new ScoreBox(800, 1080 - 500 - 280, 280, 150),
+            new Pipe(1400, 1080 - 500, 800, 150),
+            new Pipe1(1400, -500, 800, 150),
+            new ScoreBox(1400, 1080 - 500 - 280, 280, 150)
+          ],
           endGame: false
         });
       }
@@ -60,12 +87,41 @@ class Flappy extends Component {
       // checking for collision
       let player = this.state.playerArr[0];
 
+      // generate random number between 200-700
+      const min = 200;
+      const max = 500;
+      const len = min + Math.random() * max;
+
       // only checking if player has collided with player2, player3 or player4
       for (let index = 1; index < this.state.playerArr.length; index++) {
+        let temp = this.state.playerArr;
+        temp[index].len = len;
+        this.setState({
+          playerArr: temp
+        });
+
         let hasPlayerCollided = player
           .getCollisionDetection()
           .checkForCollision(this.state.playerArr[index].getEntity());
 
+        if (
+          hasPlayerCollided &&
+          this.state.playerArr[index].getEntity().name === "Score box"
+        ) {
+          this.setState({
+            score: this.state.score + 500
+          });
+          hasPlayerCollided = false;
+        }
+
+        // const min = 200;
+        // const max = 500;
+        // const len = min + Math.floor(Math.random() * max);
+        // this.setState({
+        //   gap: len
+        // });
+
+        //this.context.gap = len;
         // if a collision is detected, checkForCollision() returns true
         if (hasPlayerCollided === true) {
           // breaking for loop is player has collided and resetting game with new objects
@@ -117,6 +173,13 @@ class Flappy extends Component {
 
   // returning all the objects of the playerArr
   getObjects = () => {
+    // const min = 200;
+    // const max = 500;
+    // const len = min + Math.floor(Math.random() * max);
+    // this.setState({
+    //   gap: len
+    // });
+
     return this.state.playerArr.map(object => {
       return object.render();
     });
@@ -137,7 +200,7 @@ class Flappy extends Component {
     };
     return (
       <div style={scalability}>
-        <AppContext.Provider value={this.state}>
+        <AppProvider value={this.state}>
           <div onKeyDown={e => this.getInput(e)} tabIndex="0">
             <HUD score={this.state.score} position={"tc"} />{" "}
             <Background
@@ -149,9 +212,11 @@ class Flappy extends Component {
               {" "}
             </Background>{" "}
             {this.getObjects()}
-            <Menu showMenu={this.state.showMenu} />{" "}
+            <Menu showMenu={this.state.showMenu} />
+            {/* <Pipe />
+            <Pipe1 /> */}
           </div>
-        </AppContext.Provider>
+        </AppProvider>
       </div>
     );
   }

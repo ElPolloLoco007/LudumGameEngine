@@ -2,11 +2,16 @@ class CollisionDetection {
   constructor(entity) {
     this.entity = entity;
     this.flag = false;
+    this.type;
   }
 
   // getter
   getFlag() {
     return this.flag;
+  }
+
+  getType() {
+    return this.type;
   }
 
   // checking if two entites have collided
@@ -33,6 +38,7 @@ class CollisionDetection {
       rect1.y + rect1.height > rect2.y
     ) {
       this.flag = true;
+      this.type = object.name;
       console.log(
         `:::::::::::::::::::::: ${player.name} collided with ${object.name}`
       );
