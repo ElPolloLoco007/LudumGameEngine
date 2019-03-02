@@ -2,11 +2,10 @@ import Entity from "../../gameEngine/Entity";
 import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
-import React from "react";
 import { isNullOrUndefined } from "util";
 import ResMan from "../../utils/ResourceManager";
 import AudioManager from "../../gameEngine/components/AudioManager";
-import Sprites from "../../gameEngine/components/Sprite";
+import Sprite from "../../gameEngine/components/Sprite";
 
 class Bird {
   constructor() {
@@ -20,7 +19,7 @@ class Bird {
         ResMan.getAudioPath("soundEffect2.mp3"),
         ResMan.getAudioPath("soundEffect3.mp3")
       ]),
-      new Sprites(this, ResMan.getSpritePath("birds.png"))
+      new Sprite(this, ResMan.getSpritePath("birds.png"), 2, 4, 75, 75, 12)
     );
     this.counterBirdJump = 0;
     this.enum = {
@@ -98,12 +97,14 @@ class Bird {
       this.getPhysics().setTop(0);
       --this.counterBirdJump;
       this.getBody().setTop(this.getEntityProps().bodyTop - 12);
+      this.getSprite().setSpeed(6); // increasing speed of bird's wings while jumping
     } else {
       const gravityAcceleration = 0.5;
       const prevTop = this.getPhysics().getTop();
       if (prevTop < 20) {
         if (prevTop === 0) {
           this.getPhysics().setTop(1);
+          this.getSprite().setSpeed(12); // decreasing speed of bird's wings while coming down
         } else {
           this.getPhysics().setTop(prevTop + gravityAcceleration);
         }
@@ -121,30 +122,8 @@ class Bird {
 
   // rendering this class
   render() {
-    let entityProps = this.getEntityProps();
-
-    let divStyle = {
-      width: 100,
-      height: 100,
-      top: entityProps.bodyTop,
-      left: entityProps.bodyLeft,
-      overflow: "hidden",
-      position: "absolute",
-      background: "red"
-    };
-
-    let imgStyle = {
-      width: entityProps.bodyWidth,
-      height: entityProps.bodyHeight,
-      top: 0,
-      left: 0,
-      position: "absolute"
-    };
-
     return (
-      <div style={divStyle}>
-        <img src={this.getSprite().getSprite()} style={imgStyle} />
-      </div>
+      this.getSprite().render() // rendering sprite animation
     );
   }
 }
