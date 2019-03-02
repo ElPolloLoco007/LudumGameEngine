@@ -7,7 +7,7 @@ class Menu extends React.Component {
     super(props);
 
     this.state = {
-      menuItems: [{ text: "Start Game" }, { text: "Score" }],
+      menuItems: [{ text: "Score" }],
       showMenu: true,
       showScore: false
     };
@@ -16,10 +16,6 @@ class Menu extends React.Component {
   }
 
   handleClick(e) {
-    if (e === "Start Game")
-      this.setState({
-        showMenu: false
-      });
     if (e === "Score")
       this.setState({
         showScore: !this.state.showScore
@@ -31,11 +27,17 @@ class Menu extends React.Component {
     ));
 
     let scoreBoard = (
-      <div className="wrapper">
+      <div className="wrapper-scoreBoard">
         <ScoreBoard />
       </div>
     );
-    let gameMenu = <div className="wrapper"> {menuItems}</div>;
+    let gameMenu = (
+      <div className="wrapper-menu">
+        <div className="menu-items">
+          <div className="menu-text">Press any key to start</div> {menuItems}
+        </div>
+      </div>
+    );
 
     return (
       <div className={`menu ${this.props.position}`}>

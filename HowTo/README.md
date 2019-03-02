@@ -64,6 +64,15 @@ Create a new branch **branch name should be the same as the task name**
    3. <code>git checkout **_[name of your branch]_** </code> (f.x. git checkout KT-Player-Class) this switches your work space into your branch
 4. Code or do what your task needs.
 
+#### Step 4.
+
+In terminal:
+
+1. npm i
+2. npm install --save file-loader url-loader
+3. npm install --save style-loader css-loader
+4. npm start
+
 ### Upload your work
 
 To upload your work you need to write these commands
