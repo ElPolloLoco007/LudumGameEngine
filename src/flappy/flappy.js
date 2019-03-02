@@ -8,7 +8,7 @@ import Pipe1 from "./objects/Pipe1";
 import ScoreBox from "./objects/ScoreBox";
 import Menu from "../gameEngine/components/Menu";
 import HUD from "../utils/Hud";
-import { AppProvider } from "./context";
+import { AppProvider } from "./Context";
 
 class Flappy extends Component {
   constructor(props) {
@@ -212,9 +212,7 @@ class Flappy extends Component {
               {" "}
             </Background>{" "}
             {this.getObjects()}
-            <Menu showMenu={this.state.showMenu} />
-            {/* <Pipe />
-            <Pipe1 /> */}
+            <Menu showMenu={this.state.showMenu} />{" "}
           </div>
         </AppProvider>
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../style/Score.css";
-import { AppContext } from "../../flappy/context";
+import { AppContext } from "../../flappy/Context";
 
 // Shows the top ten scoreboard
 class ScoreBoard extends Component {
@@ -41,15 +41,15 @@ class ScoreBoard extends Component {
   }
 
   // Called immediately before mounting occurs
-  // componentWillMount() {
-  //   // retrieve stored data (JSON stringified) and convert
-  //   let storedData = localStorage.getItem("list_data_key");
-  //   if (storedData) {
-  //     let newList = this.state.list.slice();
-  //     newList = JSON.parse(storedData);
-  //     this.setState({ list: newList });
-  //   }
-  // }
+  UNSAFE_componentWillMount() {
+    // retrieve stored data (JSON stringified) and convert
+    let storedData = localStorage.getItem("list_data_key");
+    if (storedData) {
+      let newList = this.state.list.slice();
+      newList = JSON.parse(storedData);
+      this.setState({ list: newList });
+    }
+  }
 
   render() {
     // Only allow 10 items in the list
