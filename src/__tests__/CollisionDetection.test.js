@@ -46,9 +46,14 @@ class Obstical {
   }
 }
 
+let player;
+
 describe("Collision Detection", () => {
-  it("Coll be true", () => {
-    let player = new Player();
+  beforeAll(() => {
+    player = new Player();
+  });
+
+  it("collision", () => {
     let obs = new Obstical(50, 50, 100, 100);
 
     const res = player
@@ -56,9 +61,9 @@ describe("Collision Detection", () => {
       .checkForCollision(obs.getEntity());
     expect(res).toBe(true);
     expect(player.getCollisionDetection().getFlag()).toBe(true);
+    expect(player.getCollisionDetection().getType()).toBe("Obs");
   });
-  it("Coll be false", () => {
-    let player = new Player();
+  it("no collision", () => {
     let obs = new Obstical(150, 150, 100, 100);
 
     const res = player

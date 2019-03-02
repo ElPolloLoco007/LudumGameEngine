@@ -12,7 +12,7 @@ class Bird {
   constructor() {
     this.entity = new Entity(
       "Bird",
-      new Body(this, 300, 540, 100, 200),
+      new Body(this, 300, 540, 100, 100),
       new Physics(this, 0, 5),
       new CollisionDetection(this),
       new AudioManager([
@@ -71,7 +71,11 @@ class Bird {
     // if collision flag is set true
     if (this.getCollisionDetection().getFlag() === true) {
       console.log("Collsion flagged!");
-      this.getAudioManager().play(this.enum.BIRD_DIES);
+      if (this.getCollisionDetection().getType() === "Score box") {
+        this.getAudioManager().play(this.enum.BIRD_SCORE);
+      } else {
+        this.getAudioManager().play(this.enum.BIRD_DIES);
+      }
     }
 
     //if value is something else than null or undefined, it will be put into a switch

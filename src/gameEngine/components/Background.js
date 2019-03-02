@@ -39,7 +39,7 @@ class Background extends Component {
       position: "absolute",
       width: this.props.width,
       height: this.props.height,
-      overflow: 'hidden'
+      overflow: "hidden"
     };
 
     var styleImg1 = {
@@ -51,7 +51,6 @@ class Background extends Component {
       position: "absolute",
       left: this.state.moveImg2
     };
-
     return (
       <div style={styleDiv}>
         <img src={this.props.image} style={styleImg1} />
@@ -60,15 +59,13 @@ class Background extends Component {
     );
   }
 }
-
 Background.defaultProps = {
-    speed: 0,
-    height: 1080,
-    width: 1920
+  speed: 0,
+  height: 1080,
+  width: 1920
 };
 
 export default Background;
-
 
 /* **DØMI AT IMPLEMENTERA**
 <div>

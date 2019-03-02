@@ -1,6 +1,4 @@
 import Body from "../gameEngine/components/Body";
-import Physics from "../gameEngine/components/Physics";
-import CollisionDetection from "../gameEngine/components/CollisionDetection";
 
 describe("Body", () => {
   const body = new Body(this, 20, 10, 100, 200);

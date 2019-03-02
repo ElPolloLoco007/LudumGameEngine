@@ -1,16 +1,15 @@
 import Entity from "../../gameEngine/Entity";
 import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
-import ResourceManager from "../../utils/ResourceManager";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import "../../style/Frame.css";
 
-class Pipe {
+class ScoreBox {
   constructor(startPos, topPos, height, width) {
     this.len;
     this.entity = new Entity(
-      "Bottom pipe",
+      "Score box",
       new Body(this, 1920 + startPos, topPos, height, width),
       new Physics(this, -8.85, 0),
       new CollisionDetection(this),
@@ -22,42 +21,46 @@ class Pipe {
   getCollisionDetection() {
     return this.entity.getCollisionDetection();
   }
+
   // entity method
   getEntity() {
     return this.entity;
   }
+
   // entity method
   getBody() {
     return this.entity.getBody();
   }
+
   // entity method
   getPhysics() {
     return this.entity.getPhysics();
   }
+
   // entity method
   update() {
     this.entity.update();
   }
+
   // entity method
   getEntityProps() {
     return this.entity.getEntityProps();
   }
 
-  componentDidUpdate() {
-    this.entity.update();
-  }
+  respawn = () => {
+    this.entity.body.left = 1920;
+    this.entity.body.top = 1080 - this.len - 280;
+  };
 
-  respawn() {
-    this.entity.body.left = 1920; //updating value
-    this.entity.body.top = 1080 - this.len;
-  }
   render() {
     let entityProps = this.getEntityProps();
     if (entityProps.bodyLeft < -150) {
       this.respawn();
     }
+    //let delta = this.props.delta; // this.state.arr[0][0]
 
-    let divStyle = {
+    let divStyleTop = {
+      backgroundColor: "#00b4",
       position: "absolute",
       overflow: "hidden",
       height: entityProps.bodyHeight,
@@ -66,24 +69,12 @@ class Pipe {
       top: entityProps.bodyTop
     };
 
-    const imgStyle = {
-      overflow: "hidden",
-      height: "100%",
-      width: "100%",
-      objectFit: "fill"
-    };
-
     return (
-      <div className="frame">
-        <div style={divStyle}>
-          <img
-            src={ResourceManager.getImagePath("pipe.png")}
-            style={imgStyle}
-          />
-        </div>
-      </div>
+      <span className="frame">
+        <div style={divStyleTop} />
+      </span>
     );
   }
 }
 
-export default Pipe;
+export default ScoreBox;
