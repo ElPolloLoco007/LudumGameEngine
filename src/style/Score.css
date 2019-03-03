@@ -1,59 +1,32 @@
+@font-face {
+  font-family: flappy;
+  src: url(../resources/fonts/flappy-bird.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
 table,
 td,
 th {
   border-style: ridge;
   text-align: left;
   margin: auto;
-}
-
-td:first-child {
-  font-weight: bold;
+  background-color: #f5d014;
 }
 
 table {
+  font-family: "flappy";
+  font-size: 30px;
+  color: #57c440;
   border-collapse: collapse;
-  width: 20%;
-  height: 5%;
+  width: 250%;
+  height: 100%;
 }
 
 th,
 td {
-  padding: 10px;
+  font-family: "flappy";
+  color: #57c440;
+  padding: 5px;
   font-size: 150%;
-}
-
-tr:nth-child(even) {
-  background-color: #f5d014; /* Green background */
-}
-
-tr:nth-child(odd) {
-  border: 1px solid #57c440; /* Green border */
-}
-
-/* The alert message box */
-.alert {
-  padding: 20px;
-  width: 25%;
-  margin: auto;
-  border-style: ridge;
-  position: relative;
-  background-color: rgb(218, 236, 214);
-  color: rgb(0, 0, 0);
-}
-
-/* The close button */
-.closebtn {
-  margin-left: 15px;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* When moving the mouse over the close button */
-.closebtn:hover {
-  color: rgb(156, 155, 155);
 }
