@@ -30,17 +30,17 @@ class ScoreBoard extends Component {
     return null;
   };
 
-  // Called immediately after a component is mounted. Setting state that trigger re-rendering
   componentDidMount() {
-    let newList = this.state.list.slice(); //creates the clone of the state
-    newList.push(this.context.score);
-    this.setState({ list: newList });
-
-    // store array to localstorage
-    localStorage.setItem("list_data_key", JSON.stringify(newList));
+    if (this.state.list.indexOf(this.context.score) == -1) {
+      let newList = this.state.list.slice();
+      newList.push(this.context.score);
+      this.setState({ list: newList });
+ 
+      localStorage.setItem("list_data_key", JSON.stringify(newList));
+      console.log("Array data is stored");
+    }
   }
 
-  // Called immediately before mounting occurs
   UNSAFE_componentWillMount() {
     // retrieve stored data (JSON stringified) and convert
     let storedData = localStorage.getItem("list_data_key");
@@ -48,11 +48,12 @@ class ScoreBoard extends Component {
       let newList = this.state.list.slice();
       newList = JSON.parse(storedData);
       this.setState({ list: newList });
+      console.log("Arrat data is retrieved");
     }
   }
 
   render() {
-    // Only allow 10 items in the list
+    // only allow 10 items in the list
     if (this.state.list.length > 10) {
       this.removeLowestScore();
     }

@@ -8,28 +8,24 @@ import Pipe1 from "./objects/Pipe1";
 import ScoreBox from "./objects/ScoreBox";
 import Menu from "../gameEngine/components/Menu";
 import HUD from "../utils/Hud";
-import { AppProvider } from "./context";
+import { AppContext } from "./context";
 
 class Flappy extends Component {
   constructor(props) {
     super(props);
     var playerArr;
-    <AppProvider>
-      {
-        (playerArr = [
-          new Bird(),
-          new Pipe(200, 1080 - 500, 800, 150),
-          new Pipe1(200, -500, 800, 150),
-          new ScoreBox(200, 1080 - 500 - 280, 280, 150),
-          new Pipe(800, 1080 - 500, 800, 150),
-          new Pipe1(800, -500, 800, 150),
-          new ScoreBox(800, 1080 - 500 - 280, 280, 150),
-          new Pipe(1400, 1080 - 500, 800, 150),
-          new Pipe1(1400, -500, 800, 150),
-          new ScoreBox(1400, 1080 - 500 - 280, 280, 150)
-        ])
-      }
-    </AppProvider>;
+    playerArr = [
+      new Bird(),
+      new Pipe(200, 1080 - 500, 800, 150),
+      new Pipe1(200, -500, 800, 150),
+      new ScoreBox(200, 1080 - 500 - 280, 280, 150),
+      new Pipe(800, 1080 - 500, 800, 150),
+      new Pipe1(800, -500, 800, 150),
+      new ScoreBox(800, 1080 - 500 - 280, 280, 150),
+      new Pipe(1400, 1080 - 500, 800, 150),
+      new Pipe1(1400, -500, 800, 150),
+      new ScoreBox(1400, 1080 - 500 - 280, 280, 150)
+    ];
 
     this.state = {
       playerArr: playerArr.slice(),
@@ -200,7 +196,7 @@ class Flappy extends Component {
     };
     return (
       <div style={scalability}>
-        <AppProvider value={this.state}>
+        <AppContext.Provider value={this.state}>
           <div onKeyDown={e => this.getInput(e)} tabIndex="0">
             <HUD score={this.state.score} position={"tc"} />{" "}
             <Background
@@ -214,7 +210,7 @@ class Flappy extends Component {
             {this.getObjects()}
             <Menu showMenu={this.state.showMenu} />{" "}
           </div>
-        </AppProvider>
+        </AppContext.Provider>
       </div>
     );
   }
