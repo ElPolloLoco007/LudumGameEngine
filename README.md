@@ -1,6 +1,6 @@
 ![Ludum logo](extra/logo_1.png)
 
-Link to our [Game engine](https://bergurijohansen.github.io/Ludum/)
+Link to our [Game engine](https://bergurijohansen.github.io/LudumGameEngine/)
 
 ---
 

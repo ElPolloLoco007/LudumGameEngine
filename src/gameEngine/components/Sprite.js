@@ -1,7 +1,15 @@
-import React from 'react';
+import React from "react";
 
 class Sprite {
-  constructor(entity, spriteSheet, rows, columns, spriteHeight, spriteWidth, speed) {
+  constructor(
+    entity,
+    spriteSheet,
+    rows,
+    columns,
+    spriteHeight,
+    spriteWidth,
+    speed
+  ) {
     this.entity = entity;
     this.spriteSheet = spriteSheet;
     this.spriteHeight = spriteHeight;
@@ -13,15 +21,13 @@ class Sprite {
 
     for (let index = 0; index < rows; index++) {
       for (let j = 0; j < columns; j++) {
-        this.rowsArr.push(-index * this.spriteHeight)
-        console.log(-index * this.spriteHeight)
+        this.rowsArr.push(-index * this.spriteHeight);
       }
     }
 
     for (let index = 0; index < rows; index++) {
       for (let j = 0; j < columns; j++) {
-        this.columnsArr.push(-j * this.spriteWidth)
-        console.log(-j * this.spriteWidth)
+        this.columnsArr.push(-j * this.spriteWidth);
       }
     }
 
@@ -38,42 +44,36 @@ class Sprite {
     this.spriteTop = 0;
     this.speed = speed;
     this.counter = 0;
-    this.size = (rows * columns) - 1;
+    this.size = rows * columns - 1;
 
     requestAnimationFrame(this.animatePlayer);
   }
 
   animatePlayer = () => {
-    this.now = Date.now()
-    this.delta = this.now - this.then
+    this.now = Date.now();
+    this.delta = this.now - this.then;
 
     if (this.delta > this.interval) {
-      ++this.counterChange
+      ++this.counterChange;
 
-      this.then = this.now - (this.delta % this.interval)
+      this.then = this.now - (this.delta % this.interval);
 
       if (this.counterChange > this.speed) {
-        this.spriteTop = this.rowsArr[this.counter]
-        this.spriteLeft = this.columnsArr[this.counter]
+        this.spriteTop = this.rowsArr[this.counter];
+        this.spriteLeft = this.columnsArr[this.counter];
         this.counterChange = 0;
-
-        console.log('Trying to update sprite!')
-        console.log(this.rowsArr[this.counter])
-        console.log(this.columnsArr[this.counter])
 
         if (this.counter >= this.size) {
           this.counter = 0;
+        } else {
+          ++this.counter;
         }
-        else {
-          ++this.counter
-        }
-      }
-      else {
+      } else {
         ++this.counterChange;
       }
     }
-    requestAnimationFrame(this.animatePlayer)
-  }
+    requestAnimationFrame(this.animatePlayer);
+  };
 
   setSpeed(value) {
     this.speed = value;
@@ -85,23 +85,23 @@ class Sprite {
       width: this.spriteWidth,
       top: this.entity.getBody().getTop(),
       left: this.entity.getBody().getLeft(),
-      position: 'absolute',
-      overflow: 'hidden'
-    }
+      position: "absolute",
+      overflow: "hidden"
+    };
 
     let imgStyle = {
       height: this.spriteSheetHeight,
       width: this.spriteSheetWidth,
       top: this.spriteTop,
       left: this.spriteLeft,
-      position: 'absolute'
-    }
+      position: "absolute"
+    };
     return (
       <div style={divStyle}>
-        <img src={this.spriteSheet} style={imgStyle}></img>
+        <img src={this.spriteSheet} style={imgStyle} />
       </div>
-    )
+    );
   }
 }
 
-export default Sprite
+export default Sprite;

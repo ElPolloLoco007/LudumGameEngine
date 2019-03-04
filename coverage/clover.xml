@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <coverage generated="1551631178121" clover="3.2.0">
   <project timestamp="1551631178121" name="All files">
     <metrics statements="83" coveredstatements="68" conditionals="18" coveredconditionals="12" methods="38" coveredmethods="31" elements="139" coveredelements="111" complexity="0" loc="83" ncloc="83" packages="3" files="6" classes="6">
+=======
+<coverage generated="1551625538666" clover="3.2.0">
+  <project timestamp="1551625538666" name="All files">
+    <metrics statements="83" coveredstatements="65" conditionals="18" coveredconditionals="11" methods="38" coveredmethods="29" elements="139" coveredelements="105" complexity="0" loc="83" ncloc="83" packages="3" files="6" classes="6">
+>>>>>>> 5e42a4f10059a20354f9ba8752349e27fd561a69
       <package name="gameEngine">
         <metrics statements="32" coveredstatements="21" conditionals="10" coveredconditionals="5" methods="10" coveredmethods="6"/>
         <file name="Entity.js" path="D:\KT-Verkfrøði\GameEngine\LudumGameEngine\src\gameEngine\Entity.js">

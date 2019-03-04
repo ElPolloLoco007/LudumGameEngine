@@ -2,7 +2,7 @@ class CollisionDetection {
   constructor(entity) {
     this.entity = entity;
     this.flag = false;
-    this.type;
+    this.type = "";
   }
 
   // getter

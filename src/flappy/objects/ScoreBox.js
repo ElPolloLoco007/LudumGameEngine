@@ -8,6 +8,7 @@ import "../../style/Frame.css";
 class ScoreBox {
   constructor(startPos, topPos, height, width) {
     this.len;
+    this.type = "score";
     this.entity = new Entity(
       "Score box",
       new Body(this, 1920 + startPos, topPos, height, width),
