@@ -9,6 +9,7 @@ class ScoreBox {
   constructor(startPos, topPos, height, width) {
     this.len;
     this.type = "score";
+    this.isHit = false;
     this.entity = new Entity(
       "Score box",
       new Body(this, 1920 + startPos, topPos, height, width),
@@ -16,6 +17,10 @@ class ScoreBox {
       new CollisionDetection(this),
       null
     );
+  }
+
+  setIsHit(value) {
+    this.isHit = value;
   }
 
   // entity method
@@ -51,6 +56,7 @@ class ScoreBox {
   respawn = () => {
     this.entity.body.left = 1920;
     this.entity.body.top = 1080 - this.len - 280;
+    this.isHit = false;
   };
 
   render() {
