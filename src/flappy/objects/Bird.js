@@ -69,9 +69,9 @@ class Bird {
 
     // if collision flag is set true
     if (this.getCollisionDetection().getFlag() === true) {
-      console.log("Collsion flagged!");
+      // console.log("Collsion flagged!", this.getCollisionDetection().getType());
       if (this.getCollisionDetection().getType() === "Score box") {
-        this.getAudioManager().play(this.enum.BIRD_SCORE);
+        //  this.getAudioManager().play(this.enum.BIRD_SCORE);
       } else {
         this.getAudioManager().play(this.enum.BIRD_DIES);
       }
@@ -122,9 +122,7 @@ class Bird {
 
   // rendering this class
   render() {
-    return (
-      this.getSprite().render() // rendering sprite animation
-    );
+    return this.getSprite().render(); // rendering sprite animation
   }
 }
 

@@ -110,14 +110,6 @@ class Flappy extends Component {
           hasPlayerCollided = false;
         }
 
-        // const min = 200;
-        // const max = 500;
-        // const len = min + Math.floor(Math.random() * max);
-        // this.setState({
-        //   gap: len
-        // });
-
-        //this.context.gap = len;
         // if a collision is detected, checkForCollision() returns true
         if (hasPlayerCollided === true) {
           // breaking for loop is player has collided and resetting game with new objects
@@ -158,6 +150,7 @@ class Flappy extends Component {
       if (this.state.keyPressed === true && this.state.gameRunning === false) {
         this.setState({ gameRunning: true });
         this.setState({ keyPressed: false });
+        this.setState({ score: 0 });
       }
 
       // forcing this component to update
@@ -169,13 +162,6 @@ class Flappy extends Component {
 
   // returning all the objects of the playerArr
   getObjects = () => {
-    // const min = 200;
-    // const max = 500;
-    // const len = min + Math.floor(Math.random() * max);
-    // this.setState({
-    //   gap: len
-    // });
-
     return this.state.playerArr.map(object => {
       return object.render();
     });

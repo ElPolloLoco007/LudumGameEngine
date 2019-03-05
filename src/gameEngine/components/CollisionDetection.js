@@ -2,7 +2,7 @@ class CollisionDetection {
   constructor(entity) {
     this.entity = entity;
     this.flag = false;
-    this.type;
+    this.type = "";
   }
 
   // getter
@@ -39,9 +39,9 @@ class CollisionDetection {
     ) {
       this.flag = true;
       this.type = object.name;
-      console.log(
-        `:::::::::::::::::::::: ${player.name} collided with ${object.name}`
-      );
+      // console.log(
+      //   `:::::::::::::::::::::: ${player.name} collided with ${object.name}`
+      // );
 
       return this.flag;
     } else {

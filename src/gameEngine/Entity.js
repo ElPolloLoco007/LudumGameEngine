@@ -15,7 +15,7 @@ class Entity {
     // Body component
     if (body !== null) {
       this.body = body;
-      console.log("Successfully set body!");
+      //  console.log("Successfully set body!");
     } else {
       console.log("Body component omitted!");
     }
@@ -23,7 +23,7 @@ class Entity {
     // Physics component
     if (physics !== null) {
       this.physics = physics;
-      console.log("Successfully set physics!");
+      // console.log("Successfully set physics!");
     } else {
       console.log("Physics component omitted!");
     }
@@ -31,7 +31,7 @@ class Entity {
     // CollisionDetection component
     if (collisionDetection !== null) {
       this.collisionDetection = collisionDetection;
-      console.log("Successfully set collisionDetection!");
+      // console.log("Successfully set collisionDetection!");
     } else {
       console.log("CollisionDetection component omitted!");
     }
@@ -39,7 +39,7 @@ class Entity {
     // AudioManager component
     if (audioManager !== null) {
       this.audioManager = audioManager;
-      console.log("Successfully set audioManager");
+      //  console.log("Successfully set audioManager");
     } else {
       console.log("AudioManager component omitted!");
     }
@@ -47,7 +47,7 @@ class Entity {
     // sprite component
     if (sprite !== null) {
       this.sprite = sprite;
-      console.log("Successfully set sprite");
+      //  console.log("Successfully set sprite");
     } else {
       console.log("sprite component omitted!");
     }

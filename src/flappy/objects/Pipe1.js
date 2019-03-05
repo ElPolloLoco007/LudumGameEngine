@@ -9,6 +9,7 @@ import ResourceManager from "../../utils/ResourceManager";
 class Pipe {
   constructor(startPos, topPos, height, width) {
     this.len;
+    this.type = "crash";
     this.entity = new Entity(
       "Top pipe",
       new Body(this, 1920 + startPos, topPos, height, width),

@@ -9,6 +9,7 @@ import "../../style/Frame.css";
 class Pipe {
   constructor(startPos, topPos, height, width) {
     this.len;
+    this.type = "crash";
     this.entity = new Entity(
       "Bottom pipe",
       new Body(this, 1920 + startPos, topPos, height, width),
