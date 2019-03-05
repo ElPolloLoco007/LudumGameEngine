@@ -1,4 +1,3 @@
-
 class Physics {
   constructor(entity, left, top) {
     this.left = left;
@@ -26,12 +25,13 @@ class Physics {
   }
 
   update = () => {
+    console.log("inside pyh: ", this.entity);
     let prevX = this.entity.getBody().getLeft();
     let prevY = this.entity.getBody().getTop();
 
     this.entity.getBody().setLeft(prevX + this.left);
     this.entity.getBody().setTop(prevY + this.top);
-  }
+  };
 }
 
-export default Physics
+export default Physics;

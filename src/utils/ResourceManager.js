@@ -22,8 +22,6 @@ class ResourceManager {
   // };
 
   static getAudioElement = name => {
-    // let out = new Audio("../../../flappy/resources/audio/" + name);
-    // return out;
     return <audio src={require(`../resources/audio/${name}`)} />;
   };
 
@@ -39,14 +37,6 @@ class ResourceManager {
   static getSpritePath = name => {
     return require(`../resources/sprites/${name}`);
   };
-
-  // getSpritePath = name => {
-  //   return `sprite/${name}`;
-  // };
-
-  // getFontPath = name => {
-  //   return `fonts/${name}`;
-  // };
 }
 
 export default ResourceManager;
