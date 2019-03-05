@@ -25,7 +25,6 @@ class Physics {
   }
 
   update = () => {
-    console.log("inside pyh: ", this.entity);
     let prevX = this.entity.getBody().getLeft();
     let prevY = this.entity.getBody().getTop();
 
