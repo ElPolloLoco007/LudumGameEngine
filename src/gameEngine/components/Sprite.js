@@ -22,12 +22,14 @@ class Sprite {
     for (let index = 0; index < rows; index++) {
       for (let j = 0; j < columns; j++) {
         this.rowsArr.push(-index * this.spriteHeight);
+        // console.log(-index * this.spriteHeight);
       }
     }
 
     for (let index = 0; index < rows; index++) {
       for (let j = 0; j < columns; j++) {
         this.columnsArr.push(-j * this.spriteWidth);
+        // console.log(-j * this.spriteWidth);
       }
     }
 
@@ -62,6 +64,10 @@ class Sprite {
         this.spriteTop = this.rowsArr[this.counter];
         this.spriteLeft = this.columnsArr[this.counter];
         this.counterChange = 0;
+
+        // console.log('Trying to update sprite!')
+        console.log(this.rowsArr[this.counter]);
+        console.log(this.columnsArr[this.counter]);
 
         if (this.counter >= this.size) {
           this.counter = 0;

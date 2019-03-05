@@ -3,18 +3,19 @@ import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
+import "../../style/Frame.css";
 import ResMan from "../../utils/ResourceManager";
 
-class Tree1 {
-  constructor() {
+class Tree {
+  constructor(startPos, topPos, height, width) {
+    this.len;
     this.entity = new Entity(
-      "Tree1",
-      new Body(this, 400, 365, 200, 100),
-      new Physics(this, 0, 0),
+      "Tree",
+      new Body(this, 1280 + startPos, topPos, height, width),
+      new Physics(this, -6, 0),
       new CollisionDetection(this),
-      null,
       null
-      );
+    );
   }
 
   // entity method
@@ -38,18 +39,7 @@ class Tree1 {
   }
 
   // entity method
-  getAudioManager() {
-    return this.entity.getAudioManager();
-  }
-
-  // entity method
-  getSprite() {
-    return this.entity.getSprite();
-  }
-
-  // entity method
   update() {
-    // updating this.entity
     this.entity.update();
   }
 
@@ -58,34 +48,41 @@ class Tree1 {
     return this.entity.getEntityProps();
   }
 
-  // rendering this class
+  respawn = () => {
+    this.entity.body.left = 1280;
+    this.entity.body.top = 640 - this.len - 280 - 800;
+  };
+
   render() {
     let entityProps = this.getEntityProps();
+    if (entityProps.bodyLeft < -100) {
+      this.respawn();
+    }
 
     let divStyle = {
-      width: 100,
-      height: 200,
-      top: entityProps.bodyTop,
-      left: entityProps.bodyLeft,
-      overflow: "hidden",
       position: "absolute",
-      background: "red"
+      overflow: "hidden",
+      height: entityProps.bodyHeight,
+      width: entityProps.bodyWidth,
+      left: entityProps.bodyLeft,
+      top: entityProps.bodyTop
     };
 
-    let imgStyle = {
-      width: entityProps.bodyWidth,
-      height: entityProps.bodyHeight,
-      top: 0,
-      left: 0,
-      position: "absolute"
+    const imgStyle = {
+      overflow: "hidden",
+      height: "100%",
+      width: "100%",
+      objectFit: "fill"
     };
 
     return (
-      <div style={divStyle}>
+      <span className="frame">
+        <div style={divStyle}>
           <img src={ResMan.getImagePath("tree.png")} style={imgStyle} />
         </div>
+      </span>
     );
   }
 }
 
-export default Tree1;
+export default Tree;

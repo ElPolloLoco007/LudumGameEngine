@@ -10,10 +10,6 @@ import Menu from "../gameEngine/components/Menu";
 import HUD from "../utils/Hud";
 import { AppContext } from "./context";
 
-var scoring = true;
-var sameSpot = false;
-var scoringIndex = 3;
-
 class Flappy extends Component {
   constructor(props) {
     super(props);
@@ -92,39 +88,25 @@ class Flappy extends Component {
       const max = 500;
       const len = min + Math.random() * max;
 
-      // only checking if player has collided with other bodies
+      // only checking if player has collided with player2, player3 or player4
       for (let index = 1; index < this.state.playerArr.length; index++) {
-        let placeholder = this.state.playerArr;
-        placeholder[index].len = len;
+        let temp = this.state.playerArr;
+        temp[index].len = len;
         this.setState({
-          playerArr: placeholder
+          playerArr: temp
         });
 
         let hasPlayerCollided = player
           .getCollisionDetection()
           .checkForCollision(this.state.playerArr[index].getEntity());
 
-        if (hasPlayerCollided && this.state.playerArr[index].type === "score") {
-          scoringIndex = index;
-        }
-
         if (
-          !player
-            .getCollisionDetection()
-            .checkForCollision(this.state.playerArr[scoringIndex].getEntity())
+          hasPlayerCollided &&
+          this.state.playerArr[index].getEntity().name === "Score box"
         ) {
-          scoring = !scoring;
-          sameSpot = !sameSpot;
-        }
-
-        if (hasPlayerCollided && this.state.playerArr[index].type === "score") {
-          if (scoring === true && sameSpot === false) {
-            sameSpot = !sameSpot;
-            scoring = !scoring;
-            this.setState({
-              score: this.state.score + 1
-            });
-          }
+          this.setState({
+            score: this.state.score + 500
+          });
           hasPlayerCollided = false;
         }
 
@@ -168,7 +150,7 @@ class Flappy extends Component {
       if (this.state.keyPressed === true && this.state.gameRunning === false) {
         this.setState({ gameRunning: true });
         this.setState({ keyPressed: false });
-        // this.setState({ score: 0 });
+        this.setState({ score: 0 });
       }
 
       // forcing this component to update
@@ -180,13 +162,6 @@ class Flappy extends Component {
 
   // returning all the objects of the playerArr
   getObjects = () => {
-    // const min = 200;
-    // const max = 500;
-    // const len = min + Math.floor(Math.random() * max);
-    // this.setState({
-    //   gap: len
-    // });
-
     return this.state.playerArr.map(object => {
       return object.render();
     });

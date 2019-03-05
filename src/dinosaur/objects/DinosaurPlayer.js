@@ -2,8 +2,7 @@ import Entity from "../../gameEngine/Entity";
 import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
-import React from "react";
-import { isNullOrUndefined } from "util";
+//import { isNullOrUndefined } from "util";
 import ResMan from "../../utils/ResourceManager";
 import AudioManager from "../../gameEngine/components/AudioManager";
 import Sprites from "../../gameEngine/components/Sprite";
@@ -12,7 +11,7 @@ class DinosaurPlayer {
   constructor() {
     this.entity = new Entity(
       "DinosaurPlayer",
-      new Body(this, 200, 455, 390, 580),
+      new Body(this, 200, 460, 100, 100),
       new Physics(this, 0, 0),
       new CollisionDetection(this),
       new AudioManager([
@@ -20,9 +19,9 @@ class DinosaurPlayer {
         ResMan.getAudioPath("soundEffect2.mp3"),
         ResMan.getAudioPath("soundEffect3.mp3")
       ]),
-      new Sprites(this, ResMan.getSpritePath("dinosaurs.png"))
+      new Sprites(this, ResMan.getSpritePath("dinosaurs.png"), 3, 4, 100, 100, 12)
     );
-    this.counterBirdJump = 0;
+    this.counterDinosaurJump = 0;
     this.enum = {
       BIRD_JUMPS: 0,
       BIRD_SCORE: 1,
@@ -61,26 +60,15 @@ class DinosaurPlayer {
   }
 
   // entity method
-  update(value) {
+  update() {
 
     // if collision flag is set true
     if (this.getCollisionDetection().getFlag() === true) {
       console.log("Collsion flagged!");
-      this.getAudioManager().play(this.enum.BIRD_DIES);
-    }
-
-    //if value is something else than null or undefined, it will be put into a switch
-    if (!isNullOrUndefined(value)) {
-      switch (value) {
-        case "w":
-        case "ArrowUp":
-        case " ":
-          this.counterBirdJump += 10;
-          this.getAudioManager().play(this.enum.BIRD_JUMPS);
-          break;
-        default:
-          console.log(value + " Invalid input!");
-          break;
+      if (this.getCollisionDetection().getType() === "Score box") {
+        this.getAudioManager().play(this.enum.BIRD_SCORE);
+      } else {
+        this.getAudioManager().play(this.enum.BIRD_DIES);
       }
     }
 
@@ -95,30 +83,8 @@ class DinosaurPlayer {
 
   // rendering this class
   render() {
-    let entityProps = this.getEntityProps();
-
-    let divStyle = {
-      width: 100,
-      height: 100,
-      top: entityProps.bodyTop,
-      left: entityProps.bodyLeft,
-      overflow: "hidden",
-      position: "absolute",
-      background: "red"
-    };
-
-    let imgStyle = {
-      width: entityProps.bodyWidth,
-      height: entityProps.bodyHeight,
-      top: -25,
-      left: -15,
-      position: "absolute"
-    };
-
     return (
-      <div style={divStyle}>
-        <img src={this.getSprite().getSprite()} style={imgStyle} />
-      </div>
+      this.getSprite().render()
     );
   }
 }

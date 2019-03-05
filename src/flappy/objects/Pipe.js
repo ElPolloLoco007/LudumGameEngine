@@ -3,7 +3,7 @@ import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
 import ResourceManager from "../../utils/ResourceManager";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
-import React from "react";
+import ImageRender from "../../gameEngine/components/ImageRender";
 import "../../style/Frame.css";
 
 class Pipe {
@@ -15,7 +15,9 @@ class Pipe {
       new Body(this, 1920 + startPos, topPos, height, width),
       new Physics(this, -8.85, 0),
       new CollisionDetection(this),
-      null
+      null,
+      null,
+      new ImageRender(this, ResourceManager.getImagePath("pipe.png"))
     );
   }
 
@@ -44,6 +46,10 @@ class Pipe {
     return this.entity.getEntityProps();
   }
 
+  getImage() {
+    return this.entity.getImage();
+  }
+
   componentDidUpdate() {
     this.entity.update();
   }
@@ -58,32 +64,7 @@ class Pipe {
       this.respawn();
     }
 
-    let divStyle = {
-      position: "absolute",
-      overflow: "hidden",
-      height: entityProps.bodyHeight,
-      width: entityProps.bodyWidth,
-      left: entityProps.bodyLeft,
-      top: entityProps.bodyTop
-    };
-
-    const imgStyle = {
-      overflow: "hidden",
-      height: "100%",
-      width: "100%",
-      objectFit: "fill"
-    };
-
-    return (
-      <div className="frame">
-        <div style={divStyle}>
-          <img
-            src={ResourceManager.getImagePath("pipe.png")}
-            style={imgStyle}
-          />
-        </div>
-      </div>
-    );
+    return this.getImage().render();
   }
 }
 

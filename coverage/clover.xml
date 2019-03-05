@@ -1,61 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<coverage generated="1551631178121" clover="3.2.0">
-  <project timestamp="1551631178121" name="All files">
-    <metrics statements="83" coveredstatements="68" conditionals="18" coveredconditionals="12" methods="38" coveredmethods="31" elements="139" coveredelements="111" complexity="0" loc="83" ncloc="83" packages="3" files="6" classes="6">
-=======
-<coverage generated="1551625538666" clover="3.2.0">
-  <project timestamp="1551625538666" name="All files">
-    <metrics statements="83" coveredstatements="65" conditionals="18" coveredconditionals="11" methods="38" coveredmethods="29" elements="139" coveredelements="105" complexity="0" loc="83" ncloc="83" packages="3" files="6" classes="6">
->>>>>>> 5e42a4f10059a20354f9ba8752349e27fd561a69
+<coverage generated="1551785611312" clover="3.2.0">
+  <project timestamp="1551785611312" name="All files">
+    <metrics statements="83" coveredstatements="68" conditionals="20" coveredconditionals="13" methods="39" coveredmethods="31" elements="142" coveredelements="112" complexity="0" loc="83" ncloc="83" packages="3" files="6" classes="6">
       <package name="gameEngine">
-        <metrics statements="32" coveredstatements="21" conditionals="10" coveredconditionals="5" methods="10" coveredmethods="6"/>
-        <file name="Entity.js" path="D:\KT-Verkfrøði\GameEngine\LudumGameEngine\src\gameEngine\Entity.js">
-          <metrics statements="32" coveredstatements="21" conditionals="10" coveredconditionals="5" methods="10" coveredmethods="6"/>
-          <line num="4" count="7" type="stmt"/>
-          <line num="5" count="7" type="stmt"/>
-          <line num="8" count="7" type="cond" truecount="1" falsecount="1"/>
-          <line num="9" count="7" type="stmt"/>
-          <line num="10" count="7" type="stmt"/>
-          <line num="12" count="0" type="stmt"/>
+        <metrics statements="32" coveredstatements="21" conditionals="12" coveredconditionals="6" methods="11" coveredmethods="6"/>
+        <file name="Entity.js" path="C:\Users\bergu\Desktop\LudumGameEngine\src\gameEngine\Entity.js">
+          <metrics statements="32" coveredstatements="21" conditionals="12" coveredconditionals="6" methods="11" coveredmethods="6"/>
+          <line num="12" count="7" type="stmt"/>
+          <line num="13" count="7" type="stmt"/>
           <line num="16" count="7" type="cond" truecount="1" falsecount="1"/>
           <line num="17" count="7" type="stmt"/>
-          <line num="18" count="7" type="stmt"/>
           <line num="20" count="0" type="stmt"/>
           <line num="24" count="7" type="cond" truecount="1" falsecount="1"/>
           <line num="25" count="7" type="stmt"/>
-          <line num="26" count="7" type="stmt"/>
           <line num="28" count="0" type="stmt"/>
           <line num="32" count="7" type="cond" truecount="1" falsecount="1"/>
-          <line num="33" count="0" type="stmt"/>
-          <line num="34" count="0" type="stmt"/>
-          <line num="36" count="7" type="stmt"/>
+          <line num="33" count="7" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
           <line num="40" count="7" type="cond" truecount="1" falsecount="1"/>
-          <line num="42" count="0" type="stmt"/>
-          <line num="43" count="0" type="stmt"/>
-          <line num="45" count="7" type="stmt"/>
-          <line num="50" count="0" type="stmt"/>
-          <line num="54" count="0" type="stmt"/>
-          <line num="58" count="5" type="stmt"/>
-          <line num="62" count="5" type="stmt"/>
-          <line num="66" count="5" type="stmt"/>
-          <line num="70" count="0" type="stmt"/>
-          <line num="74" count="0" type="stmt"/>
-          <line num="78" count="1" type="stmt"/>
-          <line num="82" count="4" type="stmt"/>
-          <line num="96" count="4" type="stmt"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="44" count="7" type="stmt"/>
+          <line num="48" count="7" type="cond" truecount="1" falsecount="1"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="52" count="7" type="stmt"/>
+          <line num="55" count="7" type="cond" truecount="1" falsecount="1"/>
+          <line num="56" count="7" type="stmt"/>
+          <line num="57" count="7" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="72" count="5" type="stmt"/>
+          <line num="76" count="5" type="stmt"/>
+          <line num="80" count="5" type="stmt"/>
+          <line num="84" count="0" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+          <line num="92" count="0" type="stmt"/>
+          <line num="96" count="1" type="stmt"/>
+          <line num="100" count="4" type="stmt"/>
+          <line num="114" count="4" type="stmt"/>
         </file>
       </package>
       <package name="gameEngine.components">
         <metrics statements="46" coveredstatements="45" conditionals="8" coveredconditionals="7" methods="23" coveredmethods="23"/>
-        <file name="AudioManager.js" path="D:\KT-Verkfrøði\GameEngine\LudumGameEngine\src\gameEngine\components\AudioManager.js">
-          <metrics statements="4" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
-          <line num="4" count="2" type="stmt"/>
-          <line num="8" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="9" count="0" type="stmt"/>
+        <file name="AudioManager.js" path="C:\Users\bergu\Desktop\LudumGameEngine\src\gameEngine\components\AudioManager.js">
+          <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="7" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
           <line num="11" count="1" type="stmt"/>
         </file>
-        <file name="Body.js" path="D:\KT-Verkfrøði\GameEngine\LudumGameEngine\src\gameEngine\components\Body.js">
+        <file name="Body.js" path="C:\Users\bergu\Desktop\LudumGameEngine\src\gameEngine\components\Body.js">
           <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
           <line num="3" count="8" type="stmt"/>
           <line num="4" count="8" type="stmt"/>
@@ -72,8 +67,8 @@
           <line num="35" count="4" type="stmt"/>
           <line num="38" count="4" type="stmt"/>
         </file>
-        <file name="CollisionDetection.js" path="D:\KT-Verkfrøði\GameEngine\LudumGameEngine\src\gameEngine\components\CollisionDetection.js">
-          <metrics statements="16" coveredstatements="16" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
+        <file name="CollisionDetection.js" path="C:\Users\bergu\Desktop\LudumGameEngine\src\gameEngine\components\CollisionDetection.js">
+          <metrics statements="15" coveredstatements="15" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
           <line num="3" count="7" type="stmt"/>
           <line num="4" count="7" type="stmt"/>
           <line num="5" count="7" type="stmt"/>
@@ -86,12 +81,11 @@
           <line num="34" count="2" type="cond" truecount="2" falsecount="0"/>
           <line num="40" count="1" type="stmt"/>
           <line num="41" count="1" type="stmt"/>
-          <line num="42" count="1" type="stmt"/>
           <line num="46" count="1" type="stmt"/>
           <line num="48" count="1" type="stmt"/>
           <line num="49" count="1" type="stmt"/>
         </file>
-        <file name="Physics.js" path="D:\KT-Verkfrøði\GameEngine\LudumGameEngine\src\gameEngine\components\Physics.js">
+        <file name="Physics.js" path="C:\Users\bergu\Desktop\LudumGameEngine\src\gameEngine\components\Physics.js">
           <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
           <line num="4" count="7" type="stmt"/>
           <line num="5" count="7" type="stmt"/>
@@ -109,12 +103,12 @@
       </package>
       <package name="utils">
         <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
-        <file name="ResourceManager.js" path="D:\KT-Verkfrøði\GameEngine\LudumGameEngine\src\utils\ResourceManager.js">
+        <file name="ResourceManager.js" path="C:\Users\bergu\Desktop\LudumGameEngine\src\utils\ResourceManager.js">
           <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
           <line num="15" count="0" type="stmt"/>
           <line num="27" count="0" type="stmt"/>
-          <line num="32" count="2" type="stmt"/>
-          <line num="36" count="2" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="36" count="4" type="stmt"/>
           <line num="40" count="0" type="stmt"/>
         </file>
       </package>

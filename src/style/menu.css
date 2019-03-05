@@ -15,12 +15,12 @@
 .wrapper-scoreBoard {
   position: absolute;
   z-index: 1;
-  left: 30%;
-  top: 20%;
+  left: 0%;
+  top: 0%;
 }
 
 .menu-text {
-  color: #f5d014  ; /* White text */
+  color: #f5d014; /* White text */
   font-family: "flappy";
   font-size: 60px;
   font: bolder;

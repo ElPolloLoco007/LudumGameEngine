@@ -58,7 +58,6 @@ class ScoreBox {
     if (entityProps.bodyLeft < -150) {
       this.respawn();
     }
-    //let delta = this.props.delta; // this.state.arr[0][0]
 
     let divStyleTop = {
       backgroundColor: "#00b4",
