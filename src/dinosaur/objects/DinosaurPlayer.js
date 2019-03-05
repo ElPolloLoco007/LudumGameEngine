@@ -80,12 +80,12 @@ class DinosaurPlayer {
     }
 
     //if value is something else than null or undefined, it will be put into a switch
-    if (!isNullOrUndefined(value)) {
+    if (!isNullOrUndefined(value) && this.counterDinosaurJump <= 0) {
       switch (value) {
         case "w":
         case "ArrowUp":
         case " ":
-          this.counterDinosaurJump += 10;
+          this.counterDinosaurJump = 10;
           this.getAudioManager().play(this.enum.DINOSAUR_JUMPS);
           break;
         default:
