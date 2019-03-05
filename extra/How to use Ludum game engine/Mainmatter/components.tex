@@ -1,0 +1,80 @@
+\chapter{Components}
+\section{Entity}
+
+All objects that the user wants to create get created via the Entity class.
+
+
+
+The constructor of Entity takes these arguments:
+
+\begin{itemize}
+	\item name
+    \item body
+    \item physics
+    \item collisionDetection
+    \item audioManager
+    \item sprite
+\end{itemize}
+
+
+Example of how to create a $Entity$:
+
+\begin{lstlisting}
+class Pipe {
+  constructor(startPos, topPos, height, width) {
+    this.len;
+    this.entity = new Entity(
+      "Bottom pipe",
+      new Body(this, 1920 + startPos, topPos, height, width),
+      new Physics(this, -8.85, 0),
+      new CollisionDetection(this),
+      null
+    );
+  }
+}
+\end{lstlisting}
+
+
+\section{Body}
+Body class is the body of the entity.  
+
+The constructor of Body takes these arguments:
+
+\begin{itemize}
+	\item entity
+    \item left
+    \item top
+    \item height
+    \item width
+\end{itemize}
+
+The body class contains only setters and getters for these parameters.
+
+\begin{lstlisting}
+class Bird {
+  constructor() {
+    this.entity = new Entity(
+      "Bird",
+      new Body(this, 300, 540, 100, 100),
+      }
+}
+\end{lstlisting}
+
+Here is a small example of how to move the entity bird:
+\begin{lstlisting}
+
+if (this.getBody().getTop() > 1040) {
+      this.getBody().setTop(400);
+      this.getBody().setLeft(300);
+    }
+\end{lstlisting}
+
+\section{CollisionDetection}
+\section{Physics}
+\section{AudioManager}
+\section{Sprite}
+\section{ResourceManager}
+\section{Background}
+\section{Menu}
+\section{ScoreBoard}
+
