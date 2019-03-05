@@ -11,7 +11,7 @@ class Tree {
     this.len;
     this.entity = new Entity(
       "Tree",
-      new Body(this, 1280 + startPos, topPos, height, width),
+      new Body(this, 0 + startPos, topPos, height, width),
       new Physics(this, -6, 0),
       new CollisionDetection(this),
       null
@@ -65,7 +65,8 @@ class Tree {
       height: entityProps.bodyHeight,
       width: entityProps.bodyWidth,
       left: entityProps.bodyLeft,
-      top: entityProps.bodyTop
+      top: entityProps.bodyTop,
+      background: 'red'
     };
 
     const imgStyle = {

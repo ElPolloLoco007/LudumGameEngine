@@ -11,7 +11,7 @@ class Dinosaur extends Component {
   constructor(props) {
     super(props);
     var playerArr;
-    playerArr = [new DinosaurPlayer(), new Tree(0, 365, 200, 100)];
+    playerArr = [new DinosaurPlayer(), new Tree(1280, 365, 200, 100)];
 
     this.state = {
       playerArr: playerArr.slice(),
@@ -48,7 +48,7 @@ class Dinosaur extends Component {
       // restart game / end game
       if (this.state.endGame === true) {
         this.setState({
-          playerArr: [new DinosaurPlayer(), new Tree(0, 365, 200, 100)],
+          playerArr: [new DinosaurPlayer(), new Tree(1280, 365, 200, 100)],
           endGame: false
         });
       }
@@ -94,10 +94,11 @@ class Dinosaur extends Component {
       }
 
       // updating every player
+      /*
       this.state.playerArr.forEach(element => {
         element.update();
-      });
-      /*if (this.state.gameRunning === true) {
+      });*/
+      if (this.state.gameRunning === true) {
         this.setState({ showMenu: false });
 
         this.state.playerArr.forEach(element => {
@@ -110,7 +111,7 @@ class Dinosaur extends Component {
         });
       } else {
         this.setState({ showMenu: true });
-      }*/
+      }
 
       // when game is not running
       // if space is pressed, run the game
