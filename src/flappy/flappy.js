@@ -100,14 +100,20 @@ class Flappy extends Component {
           .getCollisionDetection()
           .checkForCollision(this.state.playerArr[index].getEntity());
 
-        if (
-          hasPlayerCollided &&
-          this.state.playerArr[index].getEntity().name === "Score box"
+        if (hasPlayerCollided && this.state.playerArr[index].getEntity().name === "Score box"
         ) {
-          this.setState({
-            score: this.state.score + 500
-          });
+
           hasPlayerCollided = false;
+
+          if (this.state.playerArr[index].isHit !== true) {
+            let scoreCopy = this.state.score;
+            this.setState({
+              score: scoreCopy + 1
+            });
+            player.getAudioManager().play(1); // testing!!!
+
+          }
+          this.state.playerArr[index].setIsHit(true);
         }
 
         // if a collision is detected, checkForCollision() returns true
@@ -115,6 +121,7 @@ class Flappy extends Component {
           // breaking for loop is player has collided and resetting game with new objects
           this.setState({ endGame: true });
           this.setState({ gameRunning: false });
+          player.getAudioManager().play(2); // testing!!!
           break;
         }
       }

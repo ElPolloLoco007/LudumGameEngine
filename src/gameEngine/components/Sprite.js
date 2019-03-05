@@ -66,8 +66,8 @@ class Sprite {
         this.counterChange = 0;
 
         // console.log('Trying to update sprite!')
-        console.log(this.rowsArr[this.counter]);
-        console.log(this.columnsArr[this.counter]);
+        //console.log(this.rowsArr[this.counter]);
+        //console.log(this.columnsArr[this.counter]);
 
         if (this.counter >= this.size) {
           this.counter = 0;
