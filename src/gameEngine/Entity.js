@@ -1,5 +1,13 @@
 class Entity {
-  constructor(name, body, physics, collisionDetection, audioManager, sprite) {
+  constructor(
+    name,
+    body,
+    physics,
+    collisionDetection,
+    audioManager,
+    sprite,
+    image
+  ) {
     // name of entity
     this.name = name;
     console.log(this.name);
@@ -9,7 +17,7 @@ class Entity {
       this.body = body;
       console.log("Successfully set body!");
     } else {
-      console.log("Body component omitted!")
+      console.log("Body component omitted!");
     }
 
     // Physics component
@@ -17,7 +25,7 @@ class Entity {
       this.physics = physics;
       console.log("Successfully set physics!");
     } else {
-      console.log("Physics component omitted!")
+      console.log("Physics component omitted!");
     }
 
     // CollisionDetection component
@@ -25,7 +33,7 @@ class Entity {
       this.collisionDetection = collisionDetection;
       console.log("Successfully set collisionDetection!");
     } else {
-      console.log("CollisionDetection component omitted!")
+      console.log("CollisionDetection component omitted!");
     }
 
     // AudioManager component
@@ -33,16 +41,22 @@ class Entity {
       this.audioManager = audioManager;
       console.log("Successfully set audioManager");
     } else {
-      console.log("AudioManager component omitted!")
+      console.log("AudioManager component omitted!");
     }
 
     // sprite component
-    if (sprite !== null)
-    {
+    if (sprite !== null) {
       this.sprite = sprite;
       console.log("Successfully set sprite");
     } else {
-      console.log("sprite component omitted!")
+      console.log("sprite component omitted!");
+    }
+
+    if (image !== null) {
+      this.image = image;
+      console.log("Successfully set image");
+    } else {
+      console.log("image component omitted!");
     }
   }
 
@@ -72,6 +86,10 @@ class Entity {
 
   getSprite() {
     return this.sprite;
+  }
+
+  getImage() {
+    return this.image;
   }
 
   update() {
