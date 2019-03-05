@@ -69,9 +69,9 @@ class Bird {
 
     // if collision flag is set true
     if (this.getCollisionDetection().getFlag() === true) {
-      console.log("Collsion flagged!", this.getCollisionDetection().getType());
+      // console.log("Collsion flagged!", this.getCollisionDetection().getType());
       if (this.getCollisionDetection().getType() === "Score box") {
-        this.getAudioManager().play(this.enum.BIRD_SCORE);
+        //  this.getAudioManager().play(this.enum.BIRD_SCORE);
       } else {
         this.getAudioManager().play(this.enum.BIRD_DIES);
       }

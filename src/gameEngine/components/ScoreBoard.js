@@ -35,7 +35,7 @@ class ScoreBoard extends Component {
       let newList = this.state.list.slice();
       newList.push(this.context.score);
       this.setState({ list: newList });
- 
+
       localStorage.setItem("list_data_key", JSON.stringify(newList));
       console.log("Array data is stored");
     }
@@ -60,18 +60,20 @@ class ScoreBoard extends Component {
     return (
       <table>
         <TableHeader />
-        {this.state.list
-          .sort((a, b) => b - a)
-          .map((item, index) => {
-            return (
-              <tr key={index}>
-                <td>{index + 1}.</td>
-                <td>
-                  {item} {this.renderPrize(index)}
-                </td>
-              </tr>
-            );
-          })}
+        <tbody>
+          {this.state.list
+            .sort((a, b) => b - a)
+            .map((item, index) => {
+              return (
+                <tr key={index}>
+                  <td>{index + 1}.</td>
+                  <td>
+                    {item} {this.renderPrize(index)}
+                  </td>
+                </tr>
+              );
+            })}
+        </tbody>
       </table>
     );
   }

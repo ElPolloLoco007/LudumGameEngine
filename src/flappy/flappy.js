@@ -92,27 +92,26 @@ class Flappy extends Component {
       const max = 500;
       const len = min + Math.random() * max;
 
-      // only checking if player has collided with player2, player3 or player4
+      // only checking if player has collided with other bodies
       for (let index = 1; index < this.state.playerArr.length; index++) {
-        let temp = this.state.playerArr;
-        temp[index].len = len;
+        let placeholder = this.state.playerArr;
+        placeholder[index].len = len;
         this.setState({
-          playerArr: temp
+          playerArr: placeholder
         });
 
         let hasPlayerCollided = player
           .getCollisionDetection()
           .checkForCollision(this.state.playerArr[index].getEntity());
 
-        if (hasPlayerCollided === true) {
+        if (hasPlayerCollided && this.state.playerArr[index].type === "score") {
           scoringIndex = index;
         }
+
         if (
-          player
+          !player
             .getCollisionDetection()
-            .checkForCollision(
-              this.state.playerArr[scoringIndex].getEntity()
-            ) === false
+            .checkForCollision(this.state.playerArr[scoringIndex].getEntity())
         ) {
           scoring = !scoring;
           sameSpot = !sameSpot;
