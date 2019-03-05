@@ -97,11 +97,11 @@ class Entity {
   getImage() {
     return this.image;
   }
-
+  // x
   update() {
     this.physics.update();
   }
-
+  // x
   getEntityProps() {
     const props = {
       // entity name

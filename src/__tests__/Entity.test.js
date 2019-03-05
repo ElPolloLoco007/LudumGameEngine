@@ -7,6 +7,38 @@ import ImageRender from "../gameEngine/components/ImageRender";
 import CollisionDetection from "../gameEngine/components/CollisionDetection";
 import ResourceManager from "../utils/ResourceManager";
 
+class Player {
+  constructor() {
+    this.entity = new Entity(
+      "Player",
+      new Body(this, 150, 150, 100, 100),
+      new Physics(this, 100, 100),
+      new CollisionDetection(this),
+      new AudioManager([
+        ResourceManager.getAudioPath("soundEffect1.mp3"),
+        ResourceManager.getAudioPath("soundEffect2.mp3")
+      ]),
+      new Sprite(
+        this,
+        ResourceManager.getSpritePath("birds.png"),
+        2,
+        4,
+        75,
+        100,
+        12
+      ),
+      null
+    );
+  }
+
+  update() {
+    return this.entity.update();
+  }
+  getBody() {
+    return this.entity.getBody();
+  }
+}
+
 var entity = new Entity(
   "entity test",
   new Body(this, 50, 50, 100, 100),
@@ -25,29 +57,10 @@ var entity = new Entity(
     100,
     12
   ),
-  null
+  new ImageRender(this, ResourceManager.getImagePath("logo.png"))
 );
 
-var newEntity = new Entity(
-  "entity test",
-  new Body(this, 150, 150, 100, 100),
-  new Physics(this, 100, 100),
-  new CollisionDetection(this),
-  new AudioManager([
-    ResourceManager.getAudioPath("soundEffect1.mp3"),
-    ResourceManager.getAudioPath("soundEffect2.mp3")
-  ]),
-  new Sprite(
-    this,
-    ResourceManager.getSpritePath("birds.png"),
-    2,
-    4,
-    75,
-    100,
-    12
-  ),
-  null
-);
+var nullEntity = new Entity("entity test", null, null, null, null, null, null);
 
 describe("Entity", () => {
   const sprite = {
@@ -70,12 +83,27 @@ describe("Entity", () => {
     width: 100
   };
 
+  const placeholder = {
+    name: "entity test",
+    bodyHeight: 100,
+    bodyWidth: 100,
+    bodyTop: 50,
+    bodyLeft: 50,
+    physicsLeft: 100,
+    physicsTop: 100
+  };
+
   const audio = {
     srcArr: ["test-file-stub", "test-file-stub"]
   };
 
+  const image = {
+    entity: undefined,
+    imgsrc: "test-file-stub"
+  };
+
   it("Get Image should return null", () => {
-    expect(entity.getImage()).toEqual(null);
+    expect(entity.getImage()).toEqual(image);
   });
 
   it("getSprite() should match sprite", () => {
@@ -102,9 +130,30 @@ describe("Entity", () => {
     expect(entity.getBody()).toMatchObject(body);
   });
 
-  it("getEntityProps()", () => {
-    entity.update();
+  it("getEntityProps() should equal placeholder", () => {
+    expect(entity.getEntityProps()).toEqual(placeholder);
+  });
 
-    expect(entity.getEntityProps()).toMatchObject(newEntity);
+  it("update() should move player 100px right and 100px down", () => {
+    let player = new Player();
+    player.update();
+
+    expect(player.entity.getBody().getLeft()).toBe(250);
+    expect(player.entity.getBody().getTop()).toBe(250);
+  });
+
+  it("getCollisionDetection()", () => {
+    expect(entity.getCollisionDetection()).toMatchObject(
+      new CollisionDetection(this)
+    );
+  });
+
+  it("Everything should return null", () => {
+    expect(nullEntity.getAudioManager()).toBe(null);
+    expect(nullEntity.getBody()).toBe(null);
+    expect(nullEntity.getCollisionDetection()).toBe(null);
+    expect(nullEntity.getEntity()).toBe(nullEntity);
+    expect(nullEntity.getPhysics()).toBe(null);
+    expect(nullEntity.getSprite()).toBe(null);
   });
 });
