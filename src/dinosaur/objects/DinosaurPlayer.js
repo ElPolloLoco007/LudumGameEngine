@@ -94,15 +94,17 @@ class DinosaurPlayer {
       }
     }
 
+    // Dinosaur jumps
     if (this.counterDinosaurJump > 0) {
       --this.counterDinosaurJump;
-      this.getPhysics().setTop(-12);
-      console.log(this.getBody().getTop() + " top");
+      if (this.getBody().getTop() > 459) {
+        this.getPhysics().setTop(-12);
+      }
     } else {
       if (this.getBody().getTop() < 150) {
         this.getPhysics().setTop(6);
       }
-      if (this.getBody().getTop() > 460) {
+      if (this.getBody().getTop() > 459) {
         this.getPhysics().setTop(0);
       }
     }
@@ -118,9 +120,7 @@ class DinosaurPlayer {
 
   // rendering this class
   render() {
-    return (
-    this.getSprite().render()
-    )
+    return this.getSprite().render();
   }
 }
 
