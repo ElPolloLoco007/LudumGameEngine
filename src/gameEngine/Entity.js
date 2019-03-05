@@ -65,19 +65,19 @@ class Entity {
       console.log("image component omitted!");
     }
   }
-
+  // x
   getEntity() {
     return this;
   }
-
+  // x
   getName() {
     return this.name;
   }
-
+  // x
   getBody() {
     return this.body;
   }
-
+  // c
   getPhysics() {
     return this.physics;
   }
@@ -85,15 +85,15 @@ class Entity {
   getCollisionDetection() {
     return this.collisionDetection;
   }
-
+  // x
   getAudioManager() {
     return this.audioManager;
   }
-
+  // x
   getSprite() {
     return this.sprite;
   }
-
+  // x
   getImage() {
     return this.image;
   }

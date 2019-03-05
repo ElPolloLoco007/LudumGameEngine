@@ -22,14 +22,8 @@ class Sprite {
     for (let index = 0; index < rows; index++) {
       for (let j = 0; j < columns; j++) {
         this.rowsArr.push(-index * this.spriteHeight);
-        // console.log(-index * this.spriteHeight);
-      }
-    }
-
-    for (let index = 0; index < rows; index++) {
-      for (let j = 0; j < columns; j++) {
         this.columnsArr.push(-j * this.spriteWidth);
-        // console.log(-j * this.spriteWidth);
+        // console.log(-index * this.spriteHeight);
       }
     }
 
