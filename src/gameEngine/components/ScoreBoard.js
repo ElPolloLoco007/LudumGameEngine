@@ -31,7 +31,8 @@ class ScoreBoard extends Component {
   };
 
   componentDidMount() {
-    if (this.state.list.indexOf(this.context.score) == -1) {
+    let isValueInArr = this.state.list.indexOf(this.context.score);
+    if (isValueInArr == -1 && this.context.score !== 0) {
       let newList = this.state.list.slice();
       newList.push(this.context.score);
       this.setState({ list: newList });
@@ -52,6 +53,22 @@ class ScoreBoard extends Component {
     }
   }
 
+  // Function for sorting the list
+  sortList = () => {
+    return this.state.list
+      .sort((a, b) => b - a)
+      .map((item, index) => {
+        return (
+          <tr key={index}>
+            <td>{index + 1}.</td>
+            <td>
+              {item} {this.renderPrize(index)}
+            </td>
+          </tr>
+        );
+      });
+  };
+
   render() {
     // only allow 10 items in the list
     if (this.state.list.length > 10) {
@@ -60,20 +77,7 @@ class ScoreBoard extends Component {
     return (
       <table>
         <TableHeader />
-        <tbody>
-          {this.state.list
-            .sort((a, b) => b - a)
-            .map((item, index) => {
-              return (
-                <tr key={index}>
-                  <td>{index + 1}.</td>
-                  <td>
-                    {item} {this.renderPrize(index)}
-                  </td>
-                </tr>
-              );
-            })}
-        </tbody>
+        <tbody>{this.sortList()}</tbody>
       </table>
     );
   }
