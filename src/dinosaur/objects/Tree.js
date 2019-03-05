@@ -65,8 +65,7 @@ class Tree {
       height: entityProps.bodyHeight,
       width: entityProps.bodyWidth,
       left: entityProps.bodyLeft,
-      top: entityProps.bodyTop,
-      background: 'red'
+      top: entityProps.bodyTop
     };
 
     const imgStyle = {

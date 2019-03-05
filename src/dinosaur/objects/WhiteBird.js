@@ -2,20 +2,26 @@ import Entity from "../../gameEngine/Entity";
 import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
-import "../../style/Frame.css";
 import ResMan from "../../utils/ResourceManager";
 import Sprites from "../../gameEngine/components/Sprite";
 
 class WhiteBird {
-  constructor(startPos, topPos, height, width) {
-    this.len;
+  constructor() {
     this.entity = new Entity(
       "WhiteBird",
-      new Body(this, 1280 + startPos, topPos, height, width),
-      new Physics(this, -6, 0),
+      new Body(this, 1280, 50, 75, 75),
+      new Physics(this, -3, 0),
       new CollisionDetection(this),
-      new Sprites(this, ResMan.getSpritePath("whiteBird.png"), 1, 3, 100, 100, 12),
-      null
+      null,
+      new Sprites(
+        this,
+        ResMan.getSpritePath("whiteBird.png"),
+        1,
+        3,
+        100,
+        100,
+        12
+      )
     );
   }
 
@@ -40,7 +46,13 @@ class WhiteBird {
   }
 
   // entity method
+  getSprite() {
+    return this.entity.getSprite();
+  }
+
+  // entity method
   update() {
+    // updating this.entity
     this.entity.update();
   }
 
@@ -54,13 +66,16 @@ class WhiteBird {
     this.entity.body.top = 640 - this.len - 280 - 800;
   };
 
+  // rendering this class
   render() {
     let entityProps = this.getEntityProps();
     if (entityProps.bodyLeft < -100) {
       this.respawn();
     }
 
-    return this.getSprite().render();
+    return (
+    this.getSprite().render()
+    )
   }
 }
 

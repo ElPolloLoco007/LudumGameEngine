@@ -6,12 +6,13 @@ import Tree from "./objects/Tree";
 import ResourceManager from "../utils/ResourceManager";
 import Menu from "../gameEngine/components/Menu";
 import HUD from "../utils/Hud";
+import WhiteBird from "./objects/WhiteBird";
 
 class Dinosaur extends Component {
   constructor(props) {
     super(props);
     var playerArr;
-    playerArr = [new DinosaurPlayer(), new Tree(1280, 365, 200, 100)];
+    playerArr = [new DinosaurPlayer(), new WhiteBird(), new Tree(1280, 365, 200, 100)];
 
     this.state = {
       playerArr: playerArr.slice(),
@@ -48,7 +49,7 @@ class Dinosaur extends Component {
       // restart game / end game
       if (this.state.endGame === true) {
         this.setState({
-          playerArr: [new DinosaurPlayer(), new Tree(1280, 365, 200, 100)],
+          playerArr: [new DinosaurPlayer(), new WhiteBird(), new Tree(1280, 365, 200, 100)],
           endGame: false
         });
       }
