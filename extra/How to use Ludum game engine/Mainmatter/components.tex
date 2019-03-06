@@ -70,11 +70,130 @@ if (this.getBody().getTop() > 1040) {
 \end{lstlisting}
 
 \section{CollisionDetection}
+To check for collitionDectection use:
+\begin{lstlisting}
+  checkForCollision(otherEntity)
+\end{lstlisting}
+
+Example of this can be:
+\begin{lstlisting}
+
+let hasPlayerCollided = player
+          .getCollisionDetection()
+          .checkForCollision(this.state.playerArr[index].getEntity());
+\end{lstlisting}
+
+
 \section{Physics}
+
 \section{AudioManager}
+example to use audioManager:
+
+Object:
+\begin{lstlisting}
+    new AudioManager([
+        ResMan.getAudioPath("soundEffect1.mp3"),
+        ResMan.getAudioPath("soundEffect2.mp3"),
+        ResMan.getAudioPath("soundEffect3.mp3")
+      ]),    
+    this.enum = {
+      BIRD_JUMPS: 0,
+      BIRD_SCORE: 1,
+      BIRD_DIES: 2
+};
+\end{lstlisting}
+
+Then if something happens:
+\begin{lstlisting}
+
+object.getAudioManager().play(2); // testing!!!
+\end{lstlisting}
+
+
 \section{Sprite}
 \section{ResourceManager}
-\section{Background}
-\section{Menu}
-\section{ScoreBoard}
 
+To use the ResourceManager simply import the class and use it like this:
+
+\begin{lstlisting}
+ResourceManager.getImagePath("background.png")
+\end{lstlisting}
+
+\begin{lstlisting}
+ResourceManager.getAudioPath("one.mp3")
+\end{lstlisting}
+
+\begin{lstlisting}
+ResourceManager.getSpritePath("birds.png")
+\end{lstlisting}
+
+The $ResourceManager$ uses a default paths:
+
+\begin{itemize}
+	\item ../resources/image/
+    \item ../resources/audio/
+    \item ../resources/sprite/
+\end{itemize}
+
+You can change these paths in the $resourceManager$ file
+
+\section{Background}
+
+To use the $Background$ component, simply add it to the component.
+
+\begin{lstlisting}
+<Background
+              height={1080}
+              width={1920}
+              speed={0.5}
+              image={ResourceManager.getImagePath("background.png")}
+            >
+              {" "}
+            </Background>{" "}
+\end{lstlisting}
+
+$ackground$ contains $defaultProps$, so it is not needed to set $height$, $width$ and $speed$. To set a image you can either use the $ResourceManager$ or simply import a image.
+
+\section{HUD}
+To use the HUD simply add the HUD component
+\begin{lstlisting}
+<HUD score={this.state.score} position={"tc"} />{" "}
+\end{lstlisting}
+
+Where score is a score variable from the game.
+
+\section{Menu}
+To use the menu, simply import the component into the file you want.
+
+\begin{lstlisting}
+<Menu showMenu={this.state.showMenu}
+\end{lstlisting}
+
+Using ${this.state.showMenu}$ gives you the option of toggling it on and off, depending of a boolean $showMenu$.
+
+To add more menu options, simply add more items into the $menuItems$, and use $handleClick(e)$ for the event.
+
+\section{ScoreBoard}
+To use scoreboard simply add:
+
+\begin{lstlisting}
+<ScoreBoard />
+\end{lstlisting}
+
+To get the score from the game, $context$ is recommended, as it is shown in the $flappy$ demo, since normally a $menuItem$ shows a scoreboard.
+
+\section{Logger}
+To use the logger simply use:
+
+\begin{lstlisting}
+Logger.setText("flappy.js", `score: ${this.state.score}`);
+\end{lstlisting}
+
+where first argument is the name of file and second argument is what you want to log.
+
+Then you can add this to the game:
+\begin{lstlisting}
+<LoggerManager /> 
+\end{lstlisting}
+
+  
