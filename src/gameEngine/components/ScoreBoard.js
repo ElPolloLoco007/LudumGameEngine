@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../../style/Score.css";
 import { AppContext } from "../../flappy/context";
-
+import Logger from "../../utils/Logger";
 // Shows the top ten scoreboard
 class ScoreBoard extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class ScoreBoard extends Component {
       this.setState({ list: newList });
 
       localStorage.setItem("list_data_key", JSON.stringify(newList));
-      console.log("Array data is stored");
+      Logger.setText("ScoreBoard.js", "Array data is stored");
     }
   }
 
@@ -49,7 +49,7 @@ class ScoreBoard extends Component {
       let newList = this.state.list.slice();
       newList = JSON.parse(storedData);
       this.setState({ list: newList });
-      console.log("Array data is retrieved");
+      Logger.setText("ScoreBoard.js", "Array data is retrieved");
     }
   }
 

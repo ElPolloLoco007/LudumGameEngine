@@ -1,3 +1,4 @@
+import Logger from "../utils/Logger";
 class Entity {
   constructor(
     name,
@@ -10,59 +11,59 @@ class Entity {
   ) {
     // name of entity
     this.name = name;
-    console.log(this.name);
+    Logger.setText("Entity.js", `name: ${this.name}`);
 
     // Body component
     if (body !== null) {
       this.body = body;
-      //  console.log("Successfully set body!");
+      Logger.setText("Entity.js", "Successfully set body!");
     } else {
       this.body = null;
-      console.log("Body component omitted!");
+      Logger.setText("Entity.js", "Body component omitted!");
     }
 
     // Physics component
     if (physics !== null) {
       this.physics = physics;
-      // console.log("Successfully set physics!");
+      Logger.setText("Entity.js", "Successfully set physics!");
     } else {
       this.physics = null;
-      console.log("Physics component omitted!");
+      Logger.setText("Entity.js", "physics component omitted!");
     }
 
     // CollisionDetection component
     if (collisionDetection !== null) {
       this.collisionDetection = collisionDetection;
-      // console.log("Successfully set collisionDetection!");
+      Logger.setText("Entity.js", "Successfully set collisionDetection!");
     } else {
       this.collisionDetection = null;
-      console.log("CollisionDetection component omitted!");
+      Logger.setText("Entity.js", "collisionDetection component omitted!");
     }
 
     // AudioManager component
     if (audioManager !== null) {
       this.audioManager = audioManager;
-      //  console.log("Successfully set audioManager");
+      Logger.setText("Entity.js", "Successfully set audioManager!");
     } else {
       this.audioManager = null;
-      console.log("AudioManager component omitted!");
+      Logger.setText("Entity.js", "audioManager component omitted!");
     }
 
     // sprite component
     if (sprite !== null) {
       this.sprite = sprite;
-      //  console.log("Successfully set sprite");
+      Logger.setText("Entity.js", "Successfully set sprite!");
     } else {
       this.sprite = null;
-      console.log("sprite component omitted!");
+      Logger.setText("Entity.js", "sprite component omitted!");
     }
 
     if (image !== null) {
       this.image = image;
-      console.log("Successfully set image");
+      Logger.setText("Entity.js", "Successfully set image!");
     } else {
       this.image = null;
-      console.log("image component omitted!");
+      Logger.setText("Entity.js", "image component omitted!");
     }
   }
   // x

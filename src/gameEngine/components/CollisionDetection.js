@@ -1,3 +1,5 @@
+import Logger from "../../utils/Logger";
+
 class CollisionDetection {
   constructor(entity) {
     this.entity = entity;
@@ -39,9 +41,11 @@ class CollisionDetection {
     ) {
       this.flag = true;
       this.type = object.name;
-      // console.log(
-      //   `:::::::::::::::::::::: ${player.name} collided with ${object.name}`
-      // );
+
+      Logger.setText(
+        "CollisionDetection.js",
+        `${player.name} collided with ${object.name}`
+      );
 
       return this.flag;
     } else {
