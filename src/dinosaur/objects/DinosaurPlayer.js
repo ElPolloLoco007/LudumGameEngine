@@ -9,9 +9,10 @@ import Sprites from "../../gameEngine/components/Sprite";
 
 class DinosaurPlayer {
   constructor() {
+    this.isSpacePressed = false;
     this.entity = new Entity(
       "DinosaurPlayer",
-      new Body(this, 250, 460, 75, 75),
+      new Body(this, 250, 460, 70, 70),
       new Physics(this, 0, 0),
       new CollisionDetection(this),
       new AudioManager([
@@ -80,13 +81,16 @@ class DinosaurPlayer {
     }
 
     //if value is something else than null or undefined, it will be put into a switch
-    if (!isNullOrUndefined(value) && this.counterDinosaurJump <= 0) {
+    console.log(this.counterDinosaurJump + " dinosaur jump");
+    if (!isNullOrUndefined(value) && this.isSpacePressed === false) {
       switch (value) {
         case "w":
         case "ArrowUp":
         case " ":
-          this.counterDinosaurJump = 10;
+          this.counterDinosaurJump = 20;
           this.getAudioManager().play(this.enum.DINOSAUR_JUMPS);
+          this.isSpacePressed = true;
+          console.log("Space pressed");
           break;
         default:
           console.log(value + " Invalid input!");
@@ -94,18 +98,24 @@ class DinosaurPlayer {
       }
     }
 
-    // Dinosaur jumps
-    if (this.counterDinosaurJump > 0) {
+    if (this.counterDinosaurJump > 0){
       --this.counterDinosaurJump;
+    }
+
+    // Dinosaur jumps
+    if (this.counterDinosaurJump >= 10) {
       if (this.getBody().getTop() > 459) {
-        this.getPhysics().setTop(-12);
+        this.getPhysics().setTop(-12); // jump up
+        this.getSprite().setSpeed(100); // decrease speed
       }
     } else {
       if (this.getBody().getTop() < 150) {
-        this.getPhysics().setTop(6);
+        this.getPhysics().setTop(6); // jump dow
       }
       if (this.getBody().getTop() > 459) {
-        this.getPhysics().setTop(0);
+        this.getPhysics().setTop(0); // stop jump
+        this.getSprite().setSpeed(12); // speed back to normal
+        this.isSpacePressed = false
       }
     }
 

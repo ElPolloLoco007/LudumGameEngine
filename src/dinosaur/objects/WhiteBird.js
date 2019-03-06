@@ -9,7 +9,7 @@ class WhiteBird {
   constructor() {
     this.entity = new Entity(
       "WhiteBird",
-      new Body(this, 1280, 50, 75, 75),
+      new Body(this, 1280, 70, 75, 75),
       new Physics(this, -3, 0),
       new CollisionDetection(this),
       null,
@@ -63,7 +63,7 @@ class WhiteBird {
 
   respawn = () => {
     this.entity.body.left = 1280;
-    this.entity.body.top = 640 - this.len - 280 - 800;
+    this.entity.body.top = 50;
   };
 
   // rendering this class
@@ -73,9 +73,7 @@ class WhiteBird {
       this.respawn();
     }
 
-    return (
-    this.getSprite().render()
-    )
+    return this.getSprite().render();
   }
 }
 

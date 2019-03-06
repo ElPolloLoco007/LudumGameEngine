@@ -49,7 +49,7 @@ class ScoreBoard extends Component {
       let newList = this.state.list.slice();
       newList = JSON.parse(storedData);
       this.setState({ list: newList });
-      Logger.setText("ScoreBoard.js", "Arrat data is retrieved");
+      Logger.setText("ScoreBoard.js", "Array data is retrieved");
     }
   }
 
