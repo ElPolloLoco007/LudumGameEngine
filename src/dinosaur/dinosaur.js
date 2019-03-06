@@ -12,7 +12,12 @@ class Dinosaur extends Component {
   constructor(props) {
     super(props);
     var playerArr;
-    playerArr = [new DinosaurPlayer(), new WhiteBird(), new Tree(1280, 365, 200, 100)];
+    playerArr = [
+      new DinosaurPlayer(),
+      new WhiteBird(),
+      new Tree(1280, 365, 200, 100),
+      new Tree(1280 * 2, 365, 200, 100)
+    ];
 
     this.state = {
       playerArr: playerArr.slice(),
@@ -49,7 +54,12 @@ class Dinosaur extends Component {
       // restart game / end game
       if (this.state.endGame === true) {
         this.setState({
-          playerArr: [new DinosaurPlayer(), new WhiteBird(), new Tree(1280, 365, 200, 100)],
+          playerArr: [
+            new DinosaurPlayer(),
+            new WhiteBird(),
+            new Tree(1280, 365, 200, 100),
+            new Tree(1280 * 2, 365, 200, 100)
+          ],
           endGame: false
         });
       }
@@ -58,9 +68,27 @@ class Dinosaur extends Component {
       let player = this.state.playerArr[0];
 
       // generate random number between 200-700
-      const min = 200;
-      const max = 500;
+      const min = 0;
+      const max = 1280;
       const len = min + Math.random() * max;
+
+      let tree1 = this.state.playerArr[2];
+      let tree2 = this.state.playerArr[3];
+
+      // if space between tree1 and tree2 is smaller than 400
+      if (
+        tree2.getBody().getLeft() - tree1.getBody().getLeft() < 450 &&
+        tree2.getBody().getLeft() - tree1.getBody().getLeft() >= 0
+      ) {
+        tree2.getBody().setLeft(1280);
+      }
+      // if space between tree2 and tree1 is smaller than 400
+      if (
+        tree1.getBody().getLeft() - tree2.getBody().getLeft() < 450 &&
+        tree1.getBody().getLeft() - tree2.getBody().getLeft() >= 0
+      ) {
+        tree1.getBody().setLeft(1280);
+      }
 
       // only checking if player has collided with player2, player3 or player4
       for (let index = 1; index < this.state.playerArr.length; index++) {

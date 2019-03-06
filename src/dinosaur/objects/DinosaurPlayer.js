@@ -11,7 +11,7 @@ class DinosaurPlayer {
   constructor() {
     this.entity = new Entity(
       "DinosaurPlayer",
-      new Body(this, 250, 460, 75, 75),
+      new Body(this, 250, 460, 70, 70),
       new Physics(this, 0, 0),
       new CollisionDetection(this),
       new AudioManager([
@@ -98,14 +98,16 @@ class DinosaurPlayer {
     if (this.counterDinosaurJump > 0) {
       --this.counterDinosaurJump;
       if (this.getBody().getTop() > 459) {
-        this.getPhysics().setTop(-12);
+        this.getPhysics().setTop(-12); // jump up
+        this.getSprite().setSpeed(100); // decrease speed
       }
     } else {
       if (this.getBody().getTop() < 150) {
-        this.getPhysics().setTop(6);
+        this.getPhysics().setTop(6); // jump dow
       }
       if (this.getBody().getTop() > 459) {
-        this.getPhysics().setTop(0);
+        this.getPhysics().setTop(0); // stop jump
+        this.getSprite().setSpeed(12); // speed back to normal
       }
     }
 

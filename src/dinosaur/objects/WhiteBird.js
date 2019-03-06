@@ -63,7 +63,7 @@ class WhiteBird {
 
   respawn = () => {
     this.entity.body.left = 1280;
-    this.entity.body.top = 640 - this.len - 280 - 800;
+    this.entity.body.top = 50;
   };
 
   // rendering this class
@@ -73,9 +73,7 @@ class WhiteBird {
       this.respawn();
     }
 
-    return (
-    this.getSprite().render()
-    )
+    return this.getSprite().render();
   }
 }
 
