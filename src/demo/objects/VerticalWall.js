@@ -5,10 +5,10 @@ import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import "../../style/Frame.css";
 
-class WallRight {
+class VerticalWall {
   constructor(x, y, height, width) {
     this.entity = new Entity(
-      "wall right",
+      "vertical wall",
       new Body(this, x, y, height, width),
       new Physics(this, 0, 0),
       new CollisionDetection(this),
@@ -16,6 +16,7 @@ class WallRight {
       null
     );
   }
+
   // entity method
   getCollisionDetection() {
     return this.entity.getCollisionDetection();
@@ -67,4 +68,4 @@ class WallRight {
   }
 }
 
-export default WallRight;
+export default VerticalWall;
