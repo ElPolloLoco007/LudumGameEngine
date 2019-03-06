@@ -5,24 +5,17 @@ import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import "../../style/Frame.css";
 
-class ScoreBox {
-  constructor(startPos, topPos, height, width) {
-    this.len;
-    this.type = "score";
-    this.isHit = false;
+class WallBottom {
+  constructor(x, y, height, width) {
     this.entity = new Entity(
-      "Score box",
-      new Body(this, 1920 + startPos, topPos, height, width),
-      new Physics(this, -8.85, 0),
+      "wall top",
+      new Body(this, x, y, height, width),
+      new Physics(this, 0, 0),
       new CollisionDetection(this),
+      null,
       null
     );
   }
-
-  setIsHit(value) {
-    this.isHit = value;
-  }
-
   // entity method
   getCollisionDetection() {
     return this.entity.getCollisionDetection();
@@ -53,17 +46,8 @@ class ScoreBox {
     return this.entity.getEntityProps();
   }
 
-  respawn = () => {
-    this.entity.body.left = 1920;
-    this.entity.body.top = 1080 - this.len - 280;
-    this.isHit = false;
-  };
-
   render() {
     let entityProps = this.getEntityProps();
-    if (entityProps.bodyLeft < -150) {
-      this.respawn();
-    }
 
     let divStyleTop = {
       backgroundColor: "#00b4",
@@ -83,4 +67,4 @@ class ScoreBox {
   }
 }
 
-export default ScoreBox;
+export default WallBottom;

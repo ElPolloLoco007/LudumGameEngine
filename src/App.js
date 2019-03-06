@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import Flappy from "./flappy/flappy";
-//import Dino from "./dinosaur/dinosaur";
+import Demo from "./demo/demo";
+
 class App extends Component {
   render() {
-    return <Flappy />;
+    return <Demo />;
   }
 }
 

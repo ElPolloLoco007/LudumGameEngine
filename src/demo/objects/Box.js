@@ -2,26 +2,21 @@ import Entity from "../../gameEngine/Entity";
 import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
-import ResMan from "../../utils/ResourceManager";
-import Sprites from "../../gameEngine/components/Sprite";
+import React from "react";
+import "../../style/Frame.css";
+import ImageRender from "../../gameEngine/components/ImageRender";
+import ResourceManager from "../../utils/ResourceManager";
 
-class WhiteBird {
-  constructor() {
+class Box {
+  constructor(startPos, topPos, height, width) {
     this.entity = new Entity(
-      "WhiteBird",
-      new Body(this, 1280, 70, 75, 75),
-      new Physics(this, -3, 0),
+      "Ludum",
+      new Body(this, startPos, topPos, height, width),
+      new Physics(this, 10, -6),
       new CollisionDetection(this),
       null,
-      new Sprites(
-        this,
-        ResMan.getSpritePath("whiteBird.png"),
-        1,
-        3,
-        100,
-        100,
-        12
-      )
+      null,
+      new ImageRender(this, ResourceManager.getImagePath("logo.png"))
     );
   }
 
@@ -46,12 +41,17 @@ class WhiteBird {
   }
 
   // entity method
+  getAudioManager() {
+    return this.entity.getAudioManager();
+  }
+
+  // entity method
   getSprite() {
     return this.entity.getSprite();
   }
 
   // entity method
-  update() {
+  update() {  
     // updating this.entity
     this.entity.update();
   }
@@ -61,20 +61,13 @@ class WhiteBird {
     return this.entity.getEntityProps();
   }
 
-  respawn = () => {
-    this.entity.body.left = 1280;
-    this.entity.body.top = 50;
-  };
-
+  getImage() {
+    return this.entity.getImage();
+  }
   // rendering this class
   render() {
-    let entityProps = this.getEntityProps();
-    if (entityProps.bodyLeft < -100) {
-      this.respawn();
-    }
-
-    return this.getSprite().render();
+    return <span className="frame">{this.getImage().render()}</span>;
   }
 }
 
-export default WhiteBird;
+export default Box;

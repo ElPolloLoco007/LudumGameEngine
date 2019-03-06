@@ -2,25 +2,20 @@ import Entity from "../../gameEngine/Entity";
 import Body from "../../gameEngine/components/Body";
 import Physics from "../../gameEngine/components/Physics";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
+import React from "react";
 import "../../style/Frame.css";
-import ImageRender from "../../gameEngine/components/ImageRender";
-import ResourceManager from "../../utils/ResourceManager";
 
-class Pipe {
-  constructor(startPos, topPos, height, width) {
-    this.len;
-    this.type = "crash";
+class WallRight {
+  constructor(x, y, height, width) {
     this.entity = new Entity(
-      "Top pipe",
-      new Body(this, 1920 + startPos, topPos, height, width),
-      new Physics(this, -8.85, 0),
+      "wall right",
+      new Body(this, x, y, height, width),
+      new Physics(this, 0, 0),
       new CollisionDetection(this),
       null,
-      null,
-      new ImageRender(this, ResourceManager.getImagePath("pipeReverse.png"))
+      null
     );
   }
-
   // entity method
   getCollisionDetection() {
     return this.entity.getCollisionDetection();
@@ -51,23 +46,25 @@ class Pipe {
     return this.entity.getEntityProps();
   }
 
-  getImage() {
-    return this.entity.getImage();
-  }
-
-  respawn = () => {
-    this.entity.body.left = 1920;
-    this.entity.body.top = 1080 - this.len - 280 - 800;
-  };
-
   render() {
     let entityProps = this.getEntityProps();
-    if (entityProps.bodyLeft < -150) {
-      this.respawn();
-    }
 
-    return this.getImage().render();
+    let divStyleTop = {
+      backgroundColor: "#00b4",
+      position: "absolute",
+      overflow: "hidden",
+      height: entityProps.bodyHeight,
+      width: entityProps.bodyWidth,
+      left: entityProps.bodyLeft,
+      top: entityProps.bodyTop
+    };
+
+    return (
+      <span className="frame">
+        <div style={divStyleTop} />
+      </span>
+    );
   }
 }
 
-export default Pipe;
+export default WallRight;

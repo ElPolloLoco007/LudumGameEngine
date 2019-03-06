@@ -4,16 +4,15 @@ import Physics from "../../gameEngine/components/Physics";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import "../../style/Frame.css";
-import ResMan from "../../utils/ResourceManager";
 
-class Tree {
-  constructor(startPos, topPos, height, width) {
-    this.len;
+class WallLeft {
+  constructor(x, y, height, width) {
     this.entity = new Entity(
-      "Tree",
-      new Body(this, 0 + startPos, topPos, height, width),
-      new Physics(this, -6, 0),
+      "wall left",
+      new Body(this, x, y, height, width),
+      new Physics(this, 0, 0),
       new CollisionDetection(this),
+      null,
       null
     );
   }
@@ -48,18 +47,11 @@ class Tree {
     return this.entity.getEntityProps();
   }
 
-  respawn = () => {
-    this.entity.body.left = 1280 + this.len;
-    this.entity.body.top = 365;
-  };
-
   render() {
     let entityProps = this.getEntityProps();
-    if (entityProps.bodyLeft < -100) {
-      this.respawn();
-    }
 
-    let divStyle = {
+    let divStyleTop = {
+      backgroundColor: "#00b4",
       position: "absolute",
       overflow: "hidden",
       height: entityProps.bodyHeight,
@@ -68,21 +60,12 @@ class Tree {
       top: entityProps.bodyTop
     };
 
-    const imgStyle = {
-      overflow: "hidden",
-      height: "100%",
-      width: "100%",
-      objectFit: "fill"
-    };
-
     return (
       <span className="frame">
-        <div style={divStyle}>
-          <img src={ResMan.getImagePath("tree.png")} style={imgStyle} />
-        </div>
+        <div style={divStyleTop} />
       </span>
     );
   }
 }
 
-export default Tree;
+export default WallLeft;
