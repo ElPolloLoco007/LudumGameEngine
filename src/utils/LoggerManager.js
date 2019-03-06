@@ -4,10 +4,6 @@ import Logger from "./Logger";
 class LoggerManager extends React.Component {
   constructor() {
     super();
-    this.state = {
-      level: ["low", "high"],
-      text: []
-    };
   }
 
   dims = () => {
