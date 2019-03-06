@@ -9,7 +9,7 @@ class WhiteBird {
   constructor() {
     this.entity = new Entity(
       "WhiteBird",
-      new Body(this, 1280, 50, 75, 75),
+      new Body(this, 1280, 70, 75, 75),
       new Physics(this, -3, 0),
       new CollisionDetection(this),
       null,
