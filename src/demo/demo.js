@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import "../style/App.css";
 import Box from "./objects/Box";
-import WallButtom from "./objects/WallBottom";
+import WallBottom from "./objects/WallBottom";
+import WallRight from "./objects/WallRight";
+import WallTop from "./objects/WallTop";
+import WallLeft from "./objects/WallLeft";
 
 class Demo extends Component {
   constructor(props) {
     super(props);
     var playerArr;
     playerArr = [
-      new Box(100, 100, 100, 100),
-      new WallButtom(200, 500, 800, 150)
+      new Box(10, 500, 300, 300),
+      new WallBottom(0, 1280, -1, 1280),
+      new WallTop(0, 0, 1, 1280),
+      new WallRight(1280, 0, 1280, -1),
+      new WallLeft(0, 0, 1280, 1)
     ];
 
     this.state = {
@@ -42,37 +48,39 @@ class Demo extends Component {
       // checking for collision
       let player = this.state.playerArr[0];
 
-      // generate random number between 200-700
-      const min = 0;
-      const max = 1280;
-      const len = min + Math.random() * max;
-
       // only checking if player has collided with player2, player3 or player4
       for (let index = 1; index < this.state.playerArr.length; index++) {
-        let temp = this.state.playerArr;
-        temp[index].len = len;
-        this.setState({
-          playerArr: temp
-        });
-
         let hasPlayerCollided = player
           .getCollisionDetection()
           .checkForCollision(this.state.playerArr[index].getEntity());
 
-        if (
-          hasPlayerCollided &&
-          this.state.playerArr[index].getEntity().name === "Score box"
-        ) {
-          this.setState({
-            score: this.state.score + 500
-          });
-          hasPlayerCollided = false;
-        }
-
         //this.context.gap = len;
         // if a collision is detected, checkForCollision() returns true
         if (hasPlayerCollided === true) {
+          let placeholder = this.state.playerArr;
+          if (this.state.playerArr[index].getEntity().name === "wall top") {
+            placeholder[0]
+              .getPhysics()
+              .setTop(this.state.playerArr[0].getPhysics().getTop() * -1);
+          }
+          if (this.state.playerArr[index].getEntity().name === "wall right") {
+            placeholder[0]
+              .getPhysics()
+              .setLeft(this.state.playerArr[0].getPhysics().getLeft() * -1);
+          }
+          if (this.state.playerArr[index].getEntity().name === "wall bottom") {
+            placeholder[0]
+              .getPhysics()
+              .setTop(this.state.playerArr[0].getPhysics().getTop() * -1);
+          }
+          if (this.state.playerArr[index].getEntity().name === "wall left") {
+            placeholder[0]
+              .getPhysics()
+              .setLeft(this.state.playerArr[0].getPhysics().getLeft() * -1);
+          }
+
           // breaking for loop is player has collided and resetting game with new objects
+          this.setState({ playerArr: placeholder });
           this.setState({ endGame: true });
           this.setState({ gameRunning: false });
           break;
@@ -80,10 +88,10 @@ class Demo extends Component {
       }
 
       // updating every player
-      /*
+
       this.state.playerArr.forEach(element => {
         element.update();
-      });*/
+      });
       if (this.state.gameRunning === true) {
         this.setState({ showMenu: false });
 
@@ -112,9 +120,10 @@ class Demo extends Component {
 
   render() {
     var scalability = {
+      background: "#AAA",
       position: "absolute",
       width: 1280,
-      height: 640,
+      height: 1280,
       overflow: "hidden"
     };
     return <div style={scalability}>{this.getObjects()}</div>;

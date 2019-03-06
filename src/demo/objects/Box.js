@@ -4,16 +4,19 @@ import Physics from "../../gameEngine/components/Physics";
 import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import "../../style/Frame.css";
+import ImageRender from "../../gameEngine/components/ImageRender";
+import ResourceManager from "../../utils/ResourceManager";
 
 class Box {
   constructor(startPos, topPos, height, width) {
     this.entity = new Entity(
-      "wall",
-      new Body(this, 1920 + startPos, topPos, height, width),
-      new Physics(this, 0, 0),
+      "Ludum",
+      new Body(this, startPos, topPos, height, width),
+      new Physics(this, 10, -6),
       new CollisionDetection(this),
       null,
-      null
+      null,
+      new ImageRender(this, ResourceManager.getImagePath("logo.png"))
     );
   }
 
@@ -72,25 +75,15 @@ class Box {
     return this.entity.getEntityProps();
   }
 
+  getImage() {
+    return this.entity.getImage();
+  }
+
   // rendering this class
   render() {
-    let entityProps = this.getEntityProps();
+    //let entityProps = this.getEntityProps();
 
-    let divStyleTop = {
-      backgroundColor: "#00b4",
-      position: "absolute",
-      overflow: "hidden",
-      height: entityProps.bodyHeight,
-      width: entityProps.bodyWidth,
-      left: entityProps.bodyLeft,
-      top: entityProps.bodyTop
-    };
-
-    return (
-      <span className="frame">
-        <div style={divStyleTop} />
-      </span>
-    );
+    return <span className="frame">{this.getImage().render()}</span>;
   }
 }
 
