@@ -1,4 +1,4 @@
-import Looger from "../utils/Looger";
+import Logger from "../utils/Logger";
 class Entity {
   constructor(
     name,
@@ -11,59 +11,59 @@ class Entity {
   ) {
     // name of entity
     this.name = name;
-    Looger.setText("Entity.js", `name: ${this.name}`);
+    Logger.setText("Entity.js", `name: ${this.name}`);
 
     // Body component
     if (body !== null) {
       this.body = body;
-      Looger.setText("Entity.js", "Successfully set body!");
+      Logger.setText("Entity.js", "Successfully set body!");
     } else {
       this.body = null;
-      Looger.setText("Entity.js", "Body component omitted!");
+      Logger.setText("Entity.js", "Body component omitted!");
     }
 
     // Physics component
     if (physics !== null) {
       this.physics = physics;
-      Looger.setText("Entity.js", "Successfully set physics!");
+      Logger.setText("Entity.js", "Successfully set physics!");
     } else {
       this.physics = null;
-      Looger.setText("Entity.js", "physics component omitted!");
+      Logger.setText("Entity.js", "physics component omitted!");
     }
 
     // CollisionDetection component
     if (collisionDetection !== null) {
       this.collisionDetection = collisionDetection;
-      Looger.setText("Entity.js", "Successfully set collisionDetection!");
+      Logger.setText("Entity.js", "Successfully set collisionDetection!");
     } else {
       this.collisionDetection = null;
-      Looger.setText("Entity.js", "collisionDetection component omitted!");
+      Logger.setText("Entity.js", "collisionDetection component omitted!");
     }
 
     // AudioManager component
     if (audioManager !== null) {
       this.audioManager = audioManager;
-      Looger.setText("Entity.js", "Successfully set audioManager!");
+      Logger.setText("Entity.js", "Successfully set audioManager!");
     } else {
       this.audioManager = null;
-      Looger.setText("Entity.js", "audioManager component omitted!");
+      Logger.setText("Entity.js", "audioManager component omitted!");
     }
 
     // sprite component
     if (sprite !== null) {
       this.sprite = sprite;
-      Looger.setText("Entity.js", "Successfully set sprite!");
+      Logger.setText("Entity.js", "Successfully set sprite!");
     } else {
       this.sprite = null;
-      Looger.setText("Entity.js", "sprite component omitted!");
+      Logger.setText("Entity.js", "sprite component omitted!");
     }
 
     if (image !== null) {
       this.image = image;
-      Looger.setText("Entity.js", "Successfully set image!");
+      Logger.setText("Entity.js", "Successfully set image!");
     } else {
       this.image = null;
-      Looger.setText("Entity.js", "image component omitted!");
+      Logger.setText("Entity.js", "image component omitted!");
     }
   }
   // x

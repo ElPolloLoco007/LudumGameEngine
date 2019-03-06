@@ -1,4 +1,4 @@
-import Looger from "../../utils/Looger";
+import Logger from "../../utils/Logger";
 
 class CollisionDetection {
   constructor(entity) {
@@ -42,7 +42,7 @@ class CollisionDetection {
       this.flag = true;
       this.type = object.name;
 
-      Looger.setText(
+      Logger.setText(
         "CollisionDetection.js",
         `${player.name} collided with ${object.name}`
       );

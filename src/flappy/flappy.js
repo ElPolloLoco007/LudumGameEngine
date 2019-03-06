@@ -9,8 +9,8 @@ import ScoreBox from "./objects/ScoreBox";
 import Menu from "../gameEngine/components/Menu";
 import HUD from "../utils/Hud";
 import { AppContext } from "./context";
+import LoggerManager from "../utils/LoggerManager";
 import Logger from "../utils/Logger";
-import Looger from "../utils/Looger";
 
 class Flappy extends Component {
   constructor(props) {
@@ -113,7 +113,7 @@ class Flappy extends Component {
             this.setState({
               score: scoreCopy + 1
             });
-            Looger.setText("flappy.js", `score: ${this.state.score}`);
+            Logger.setText("flappy.js", `score: ${this.state.score}`);
             player.getAudioManager().play(1); // testing!!!
           }
           this.state.playerArr[index].setIsHit(true);
@@ -205,7 +205,7 @@ class Flappy extends Component {
             </Background>{" "}
             {this.getObjects()}
             <Menu showMenu={this.state.showMenu} />
-            {Looger.getShow() ? <Logger /> : ""}
+            {Logger.getShow() ? <LoggerManager /> : ""}
           </div>
         </AppContext.Provider>
       </div>
