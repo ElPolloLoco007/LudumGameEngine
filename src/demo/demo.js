@@ -1,29 +1,28 @@
 import React, { Component } from "react";
 import "../style/App.css";
 import Box from "./objects/Box";
-import WallBottom from "./objects/WallBottom";
-import WallRight from "./objects/WallRight";
-import WallTop from "./objects/WallTop";
-import WallLeft from "./objects/WallLeft";
+import HorizontalWall from "./objects/HorizontalWall";
+import VerticalWall from "./objects/VerticalWall";
 
 class Demo extends Component {
   constructor(props) {
     super(props);
     var playerArr;
     playerArr = [
-      new Box(10, 500, 300, 300),
-      new WallBottom(0, 1280, -1, 1280),
-      new WallTop(0, 0, 1, 1280),
-      new WallRight(1280, 0, 1280, -1),
-      new WallLeft(0, 0, 1280, 1)
+      new Box(10, 500, 250, 350),
+      new HorizontalWall(0, 1280, -1, 1280),
+      new HorizontalWall(0, 0, 1, 1280),
+      new VerticalWall(1280, 0, 1280, -1),
+      new VerticalWall(0, 0, 1280, 1)
     ];
 
     this.state = {
       playerArr: playerArr.slice(),
+      backgroundColor: "rgb(200,200,200)",
       now: 0,
       then: Date.now(),
       interval: 1000 / 60,
-      delta: 0,
+      delta: 0
     };
 
     requestAnimationFrame(this.gameLoop);
@@ -53,33 +52,33 @@ class Demo extends Component {
 
         // if a collision is detected, checkForCollision() returns true
         if (hasPlayerCollided === true) {
+          let r = 0 + Math.random() * 255;
+          let g = 0 + Math.random() * 255;
+          let b = 0 + Math.random() * 255;
           let placeholder = this.state.playerArr;
-          if (this.state.playerArr[index].getEntity().name === "wall top") {
+          if (
+            this.state.playerArr[index].getEntity().name === "horizontal wall"
+          ) {
+            this.setState({ backgroundColor: `rgb(${r},${g},${b})` });
             placeholder[0]
               .getPhysics()
               .setTop(this.state.playerArr[0].getPhysics().getTop() * -1);
           }
-          if (this.state.playerArr[index].getEntity().name === "wall right") {
+
+          if (
+            this.state.playerArr[index].getEntity().name === "vertical wall"
+          ) {
+            this.setState({ backgroundColor: `rgb(${r},${g},${b})` });
             placeholder[0]
               .getPhysics()
               .setLeft(this.state.playerArr[0].getPhysics().getLeft() * -1);
           }
-          if (this.state.playerArr[index].getEntity().name === "wall bottom") {
-            placeholder[0]
-              .getPhysics()
-              .setTop(this.state.playerArr[0].getPhysics().getTop() * -1);
-          }
-          if (this.state.playerArr[index].getEntity().name === "wall left") {
-            placeholder[0]
-              .getPhysics()
-              .setLeft(this.state.playerArr[0].getPhysics().getLeft() * -1);
-          }          
         }
       }
       // updating every player
       this.state.playerArr.forEach(element => {
         element.update();
-      });    
+      });
     }
     requestAnimationFrame(this.gameLoop);
   };
@@ -93,7 +92,7 @@ class Demo extends Component {
 
   render() {
     var scalability = {
-      background: "#AAA",
+      background: this.state.backgroundColor,
       position: "absolute",
       width: 1280,
       height: 1280,

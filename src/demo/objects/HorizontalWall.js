@@ -5,10 +5,10 @@ import CollisionDetection from "../../gameEngine/components/CollisionDetection";
 import React from "react";
 import "../../style/Frame.css";
 
-class WallBottom {
+class HorizontalWall {
   constructor(x, y, height, width) {
     this.entity = new Entity(
-      "wall top",
+      "horizontal wall",
       new Body(this, x, y, height, width),
       new Physics(this, 0, 0),
       new CollisionDetection(this),
@@ -67,4 +67,4 @@ class WallBottom {
   }
 }
 
-export default WallBottom;
+export default HorizontalWall;
