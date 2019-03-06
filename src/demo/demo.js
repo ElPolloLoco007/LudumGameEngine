@@ -24,9 +24,6 @@ class Demo extends Component {
       then: Date.now(),
       interval: 1000 / 60,
       delta: 0,
-      input: "default",
-      left: 6,
-      gameRunning: true
     };
 
     requestAnimationFrame(this.gameLoop);
@@ -48,13 +45,12 @@ class Demo extends Component {
       // checking for collision
       let player = this.state.playerArr[0];
 
-      // only checking if player has collided with player2, player3 or player4
+      // only checking if player has collided with walls
       for (let index = 1; index < this.state.playerArr.length; index++) {
         let hasPlayerCollided = player
           .getCollisionDetection()
           .checkForCollision(this.state.playerArr[index].getEntity());
 
-        //this.context.gap = len;
         // if a collision is detected, checkForCollision() returns true
         if (hasPlayerCollided === true) {
           let placeholder = this.state.playerArr;
@@ -77,37 +73,14 @@ class Demo extends Component {
             placeholder[0]
               .getPhysics()
               .setLeft(this.state.playerArr[0].getPhysics().getLeft() * -1);
-          }
-
-          // breaking for loop is player has collided and resetting game with new objects
-          this.setState({ playerArr: placeholder });
-          this.setState({ endGame: true });
-          this.setState({ gameRunning: false });
-          break;
+          }          
         }
       }
-
       // updating every player
-
       this.state.playerArr.forEach(element => {
         element.update();
-      });
-      if (this.state.gameRunning === true) {
-        this.setState({ showMenu: false });
-
-        this.state.playerArr.forEach(element => {
-          if (this.state.keyPressed === true) {
-            element.update(this.state.input);
-            this.setState({ keyPressed: false });
-          } else {
-            element.update();
-          }
-        });
-      } else {
-        this.setState({ showMenu: true });
-      }
+      });    
     }
-
     requestAnimationFrame(this.gameLoop);
   };
 

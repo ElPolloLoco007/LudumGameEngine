@@ -6,17 +6,16 @@ import React from "react";
 import "../../style/Frame.css";
 
 class WallBottom {
-  constructor(startPos, topPos, height, width) {
+  constructor(x, y, height, width) {
     this.entity = new Entity(
-      "wall bottom",
-      new Body(this, startPos, topPos, height, width),
+      "wall top",
+      new Body(this, x, y, height, width),
       new Physics(this, 0, 0),
       new CollisionDetection(this),
       null,
       null
     );
   }
-
   // entity method
   getCollisionDetection() {
     return this.entity.getCollisionDetection();

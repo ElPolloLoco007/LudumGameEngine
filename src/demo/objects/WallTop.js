@@ -16,7 +16,7 @@ class WallTop {
       null
     );
   }
-
+  
   // entity method
   getCollisionDetection() {
     return this.entity.getCollisionDetection();

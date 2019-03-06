@@ -51,21 +51,7 @@ class Box {
   }
 
   // entity method
-  update() {
-    // if the bird touches the bottom of the screen, it will be restored to the starting position
-    if (this.getBody().getTop() > 1040) {
-      this.getBody().setTop(400);
-      this.getBody().setLeft(300);
-    }
-
-    // if collision flag is set true
-    if (this.getCollisionDetection().getFlag() === true) {
-      // console.log("Collsion flagged!", this.getCollisionDetection().getType());
-      if (this.getCollisionDetection().getType() === "Score box") {
-        //  this.getAudioManager().play(this.enum.BIRD_SCORE);
-      }
-    }
-
+  update() {  
     // updating this.entity
     this.entity.update();
   }
@@ -78,11 +64,8 @@ class Box {
   getImage() {
     return this.entity.getImage();
   }
-
   // rendering this class
   render() {
-    //let entityProps = this.getEntityProps();
-
     return <span className="frame">{this.getImage().render()}</span>;
   }
 }

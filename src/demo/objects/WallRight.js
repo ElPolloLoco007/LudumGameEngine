@@ -16,7 +16,6 @@ class WallRight {
       null
     );
   }
-
   // entity method
   getCollisionDetection() {
     return this.entity.getCollisionDetection();
