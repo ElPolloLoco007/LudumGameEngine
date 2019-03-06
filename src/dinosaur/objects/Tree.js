@@ -49,8 +49,8 @@ class Tree {
   }
 
   respawn = () => {
-    this.entity.body.left = 1280;
-    this.entity.body.top = 640 - this.len - 280 - 800;
+    this.entity.body.left = 1280 + this.len;
+    this.entity.body.top = 365;
   };
 
   render() {
