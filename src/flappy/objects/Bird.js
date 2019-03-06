@@ -6,6 +6,7 @@ import { isNullOrUndefined } from "util";
 import ResMan from "../../utils/ResourceManager";
 import AudioManager from "../../gameEngine/components/AudioManager";
 import Sprite from "../../gameEngine/components/Sprite";
+import Looger from "../../utils/Looger";
 
 class Bird {
   constructor() {
@@ -86,8 +87,11 @@ class Bird {
           this.counterBirdJump += 10;
           this.getAudioManager().play(this.enum.BIRD_JUMPS);
           break;
+        case "i":
+          Looger.setShow();
+          break;
         default:
-          console.log(value + " Invalid input!");
+          Looger.setText("Bird.js", `${value} Invalid input!`);
           break;
       }
     }

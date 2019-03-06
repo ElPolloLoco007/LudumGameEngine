@@ -1,3 +1,5 @@
+import Looger from "../../utils/Looger";
+
 class CollisionDetection {
   constructor(entity) {
     this.entity = entity;
@@ -39,9 +41,11 @@ class CollisionDetection {
     ) {
       this.flag = true;
       this.type = object.name;
-      // console.log(
-      //   `:::::::::::::::::::::: ${player.name} collided with ${object.name}`
-      // );
+
+      Looger.setText(
+        "CollisionDetection.js",
+        `${player.name} collided with ${object.name}`
+      );
 
       return this.flag;
     } else {
