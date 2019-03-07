@@ -65,6 +65,7 @@ The constructor of Body takes these arguments:
     \item width
 \end{itemize}
 
+\newpage
 The body class contains only setters and getters for these parameters.
 
 \begin{lstlisting}
@@ -116,6 +117,7 @@ Physics has setters for these items, while getters for left and top.
 Physics also has a update arrow function. This arrow function is used to update the physics of the object from old to new position. 
 
 This method is used in Entity update.
+\newpage
 
 Example:
 
@@ -152,6 +154,40 @@ object.getAudioManager().play(2); // testing!!!
 
 \section{Sprite}
 
+The Sprite component has these variables:
+\begin{itemize}
+	\item entity
+    \item spriteSheet
+    \item rows
+    \item columns
+    \item spriteHeight
+    \item spriteWidth
+    \item speed
+\end{itemize}
+
+Example how to use a 2x4 spritesheet in a entity:
+
+\begin{lstlisting}
+new Sprite(this, ResourceManager.getSpritePath("birds.png"), 2, 4, 75, 75, 12)
+\end{lstlisting}
+
+To get this to work, you need to add:
+\begin{lstlisting}
+
+getSprite() {
+    return this.entity.getSprite();
+  }
+  // rendering this class
+  // rendering this class
+  render() {
+    return this.getSprite().render(); // rendering sprite animation
+  }
+\end{lstlisting}
+
+To the object file.
+
+
+
 
 \section{ImageRender}
 To use ImageRender, simply add:
@@ -178,6 +214,8 @@ class Box {
   }
 \end{lstlisting}
 
+\newpage
+
 To get this to work, you need to add:
 \begin{lstlisting}
 
@@ -191,6 +229,7 @@ To get this to work, you need to add:
 \end{lstlisting}
 
 To the object file.
+
 \section{ResourceManager}
 
 To use the ResourceManager simply import the class and use it like this:
