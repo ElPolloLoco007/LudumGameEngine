@@ -8,10 +8,10 @@ import ImageRender from "../../gameEngine/components/ImageRender";
 import ResourceManager from "../../utils/ResourceManager";
 
 class Box {
-  constructor(startPos, topPos, height, width) {
+  constructor(x, y, height, width) {
     this.entity = new Entity(
       "Ludum",
-      new Body(this, startPos, topPos, height, width),
+      new Body(this, x, y, height, width),
       new Physics(this, 10, -6),
       new CollisionDetection(this),
       null,
@@ -51,7 +51,7 @@ class Box {
   }
 
   // entity method
-  update() {  
+  update() {
     // updating this.entity
     this.entity.update();
   }

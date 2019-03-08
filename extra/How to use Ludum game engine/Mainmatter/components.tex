@@ -14,25 +14,42 @@ The constructor of Entity takes these arguments:
     \item collisionDetection
     \item audioManager
     \item sprite
+    \item imageRender
 \end{itemize}
 
 
 Example of how to create a $Entity$:
 
 \begin{lstlisting}
-class Pipe {
-  constructor(startPos, topPos, height, width) {
-    this.len;
+class Box {
+  constructor(x, y, height, width) {
     this.entity = new Entity(
-      "Bottom pipe",
-      new Body(this, 1920 + startPos, topPos, height, width),
-      new Physics(this, -8.85, 0),
+      "Ludum",
+      new Body(this, x, y, height, width),
+      new Physics(this, 10, -6),
       new CollisionDetection(this),
-      null
+      null,
+      null,
+      new ImageRender(this, ResourceManager.getImagePath("logo.png"))
     );
   }
 }
 \end{lstlisting}
+
+Entity has these methods. These methods return either the component or null.
+
+\begin{itemize}
+	\item getEntity() returns entity
+	\item getName() returns name of entity as a string
+	\item getBody() returns body
+	\item getPhysics() return physics
+	\item getCollisionDetection() return CollisionDetection
+	\item getAudioManager() returns audioManager
+	\item getSprite() returns sprite
+	\item getImgae() returns image	
+	\item getUpdate() updates body of entity through physics
+	\item getEntityProps() returns the newest value in body and physics
+\end{itemize}
 
 
 \section{Body}
@@ -48,13 +65,14 @@ The constructor of Body takes these arguments:
     \item width
 \end{itemize}
 
+\newpage
 The body class contains only setters and getters for these parameters.
 
 \begin{lstlisting}
-class Bird {
+class Object {
   constructor() {
     this.entity = new Entity(
-      "Bird",
+      "Object",
       new Body(this, 300, 540, 100, 100),
       }
 }
@@ -86,6 +104,30 @@ let hasPlayerCollided = player
 
 \section{Physics}
 
+Physics takes 3 arguments:
+
+\begin{itemize}
+	\item entity
+    \item left
+    \item top
+\end{itemize}
+
+Physics has setters for these items, while getters for left and top.
+
+Physics also has a update arrow function. This arrow function is used to update the physics of the object from old to new position. 
+
+This method is used in Entity update.
+\newpage
+
+Example:
+
+\begin{lstlisting}
+ placeholder[0].getPhysics()
+.setTop(this.state.playerArr[0].getPhysics().getTop() * -1);
+\end{lstlisting}
+
+This example is about changing the vertical direction of an object with physics.
+
 \section{AudioManager}
 example to use audioManager:
 
@@ -111,6 +153,83 @@ object.getAudioManager().play(2); // testing!!!
 
 
 \section{Sprite}
+
+The Sprite component has these variables:
+\begin{itemize}
+	\item entity
+    \item spriteSheet
+    \item rows
+    \item columns
+    \item spriteHeight
+    \item spriteWidth
+    \item speed
+\end{itemize}
+
+Example how to use a 2x4 spritesheet in a entity:
+
+\begin{lstlisting}
+new Sprite(this, ResourceManager.getSpritePath("birds.png"), 2, 4, 75, 75, 12)
+\end{lstlisting}
+
+To get this to work, you need to add:
+\begin{lstlisting}
+
+getSprite() {
+    return this.entity.getSprite();
+  }
+  // rendering this class
+  // rendering this class
+  render() {
+    return this.getSprite().render(); // rendering sprite animation
+  }
+\end{lstlisting}
+
+To the object file.
+
+
+
+
+\section{ImageRender}
+To use ImageRender, simply add:
+
+\begin{lstlisting}
+new ImageRender(this, ResourceManager.getImagePath("logo.png"))
+\end{lstlisting}
+
+To an entity.
+
+Example:
+\begin{lstlisting}
+class Box {
+  constructor(x, y, height, width) {
+    this.entity = new Entity(
+      "Ludum",
+      new Body(this, x, y, height, width),
+      new Physics(this, 10, -6),
+      new CollisionDetection(this),
+      null,
+      null,
+      new ImageRender(this, ResourceManager.getImagePath("logo.png"))
+    );
+  }
+\end{lstlisting}
+
+\newpage
+
+To get this to work, you need to add:
+\begin{lstlisting}
+
+ getImage() {
+    return this.entity.getImage();
+  }
+  // rendering this class
+  render() {
+    return <span className="frame">{this.getImage().render()}</span>;
+  }
+\end{lstlisting}
+
+To the object file.
+
 \section{ResourceManager}
 
 To use the ResourceManager simply import the class and use it like this:
