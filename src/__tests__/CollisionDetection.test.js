@@ -25,10 +25,10 @@ class Player {
   }
 }
 class Obstical {
-  constructor(a, b, c, d) {
+  constructor(x, y, h, w) {
     this.entity = new Entity(
       "Obs",
-      new Body(this, a, b, c, d),
+      new Body(this, x, y, h, w),
       new Physics(this, 0, 0),
       new CollisionDetection(this),
       null,
@@ -54,15 +54,31 @@ describe("Collision Detection", () => {
   });
 
   it("collision", () => {
-    let obs = new Obstical(50, 50, 100, 100);
+    let bottomRightCorner = new Obstical(99, 99, 100, 100);
+    let bottomLeftCorner = new Obstical(-99, 99, 100, 100);
+    let topRightCorner = new Obstical(99, -99, 100, 100);
+    let topLeftCorner = new Obstical(-99, -99, 100, 100);
 
-    const res = player
+    const res1 = player
       .getCollisionDetection()
-      .checkForCollision(obs.getEntity());
-    expect(res).toBe(true);
+      .checkForCollision(bottomRightCorner.getEntity());
+    const res2 = player
+      .getCollisionDetection()
+      .checkForCollision(bottomLeftCorner.getEntity());
+    const res3 = player
+      .getCollisionDetection()
+      .checkForCollision(topRightCorner.getEntity());
+    const res4 = player
+      .getCollisionDetection()
+      .checkForCollision(topLeftCorner.getEntity());
+    expect(res1).toBe(true);
+    expect(res2).toBe(true);
+    expect(res3).toBe(true);
+    expect(res4).toBe(true);
     expect(player.getCollisionDetection().getFlag()).toBe(true);
     expect(player.getCollisionDetection().getType()).toBe("Obs");
   });
+
   it("no collision", () => {
     let obs = new Obstical(150, 150, 100, 100);
 

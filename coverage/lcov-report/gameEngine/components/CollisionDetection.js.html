@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">68.75% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>16/16</span>
+        <span class='fraction'>11/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>2/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>3/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">68.75% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>16/16</span>
+        <span class='fraction'>11/16</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -112,25 +112,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,24 +135,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Looger from "../../utils/Looger";
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Logger from "../../utils/Logger";
 &nbsp;
 class CollisionDetection {
   constructor(entity) {
@@ -173,8 +173,8 @@ class CollisionDetection {
     return this.flag;
   }
 &nbsp;
-  getType() {
-    return this.type;
+<span class="fstat-no" title="function not covered" >  ge</span>tType() {
+<span class="cstat-no" title="statement not covered" >    return this.type;</span>
   }
 &nbsp;
   // checking if two entites have collided
@@ -182,7 +182,7 @@ class CollisionDetection {
     let player = this.entity.getEntityProps();
     let object = otherEntity.getEntityProps();
     let rect1 = {
-      x: player.bodyLeft,
+      x: player.bodyLeft + 1000,
       y: player.bodyTop,
       width: player.bodyWidth,
       height: player.bodyHeight
@@ -194,21 +194,21 @@ class CollisionDetection {
       height: object.bodyHeight
     };
 &nbsp;
-    if (
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (
       rect1.x &lt; rect2.x + rect2.width &amp;&amp;
-      rect1.x + rect1.width &gt; rect2.x &amp;&amp;
-      rect1.y &lt; rect2.y + rect2.height &amp;&amp;
-      rect1.y + rect1.height &gt; rect2.y
+<span class="branch-1 cbranch-no" title="branch not covered" >      rect1.x + rect1.width &gt; rect2.x </span>&amp;&amp;
+<span class="branch-2 cbranch-no" title="branch not covered" >      rect1.y &lt; rect2.y + rect2.height </span>&amp;&amp;
+<span class="branch-3 cbranch-no" title="branch not covered" >      rect1.y + rect1.height &gt; rect2.y</span>
     ) {
-      this.flag = true;
-      this.type = object.name;
+<span class="cstat-no" title="statement not covered" >      this.flag = true;</span>
+<span class="cstat-no" title="statement not covered" >      this.type = object.name;</span>
 &nbsp;
-      Looger.setText(
+<span class="cstat-no" title="statement not covered" >      Logger.setText(</span>
         "CollisionDetection.js",
         `${player.name} collided with ${object.name}`
       );
 &nbsp;
-      return this.flag;
+<span class="cstat-no" title="statement not covered" >      return this.flag;</span>
     } else {
       this.flag = false;
       return this.flag;
@@ -223,7 +223,7 @@ export default CollisionDetection;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Mar 06 2019 12:24:59 GMT+0000 (Western European Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Mar 10 2019 10:40:21 GMT+0000 (GMT, normaltid)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>
