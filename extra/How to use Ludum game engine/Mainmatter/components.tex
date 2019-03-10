@@ -134,9 +134,9 @@ example to use audioManager:
 Object:
 \begin{lstlisting}
     new AudioManager([
-        ResMan.getAudioPath("soundEffect1.mp3"),
-        ResMan.getAudioPath("soundEffect2.mp3"),
-        ResMan.getAudioPath("soundEffect3.mp3")
+        ResourceManager.getAudioPath("soundEffect1.mp3"),
+        ResourceManager.getAudioPath("soundEffect2.mp3"),
+        ResourceManager.getAudioPath("soundEffect3.mp3")
       ]),    
     this.enum = {
       BIRD_JUMPS: 0,
@@ -148,7 +148,7 @@ Object:
 Then if something happens:
 \begin{lstlisting}
 
-object.getAudioManager().play(2); // testing!!!
+object.getAudioManager().play(2); 
 \end{lstlisting}
 
 
@@ -177,8 +177,7 @@ To get this to work, you need to add:
 getSprite() {
     return this.entity.getSprite();
   }
-  // rendering this class
-  // rendering this class
+
   render() {
     return this.getSprite().render(); // rendering sprite animation
   }
