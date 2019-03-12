@@ -8,7 +8,7 @@ Link to [**flappy bird**](https://ElPolloLoco007.github.io/LudumFlappy/)
 
 Link to [**dinosaur**](https://ElPolloLoco007.github.io/LudumDino/)
 
-Link to [**tetris**](https://ElPolloLoco007.github.io/ludumtetris/) (developed in a 5 hour competition - !not finished!)
+Link to [**tetris**](https://ElPolloLoco007.github.io/LudumTetris/) (developed in a 5 hour competition - !not finished!)
 
 ---
 
